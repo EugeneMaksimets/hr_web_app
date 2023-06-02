@@ -77,7 +77,7 @@ class StringsRu {
   static const String question = 'вопросы';
   static const String number = 'Номер телефона';
   static const String enter_number = 'Введите номер телефона';
-  static const String call = 'Позвонить мне';
+  static const String call_me = 'Позвонить мне';
   static const String call_to = 'Вызов на номер ';
   static const String invalid_number = 'Введите корректный номер';
 

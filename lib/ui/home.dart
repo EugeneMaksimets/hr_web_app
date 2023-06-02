@@ -13,27 +13,54 @@ import 'dart:html' as html;
 
 import 'hr.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   final BuildContext context;
 
   HomePage(this.context);
 
-  // int _languageNumber;
+  @override
+  _HomePage createState() => _HomePage();
+}
+
+class _HomePage extends State<HomePage> {
+  var isHoveredImageButton =
+      List<bool>.filled(Strings.text_for_button_image.length, false);
+  var isHoveredTextButton = List<bool>.filled(Strings.offers_way.length, false);
+  var isHoveredTextWithButton =
+      List<bool>.filled(Strings.text_about_offer.length, false);
+  var isHoveredTextButtonButFirst =
+      List<bool>.filled(Strings.why_we_offer.length, false);
+  var isHoveredTextButtonButSecond =
+      List<bool>.filled(Strings.why_we_offer.length, false);
+  var isHoveredTextButtonButThird =
+      List<bool>.filled(Strings.why_we_offer.length, false);
+  var isHovered = false;
+  var isHoveredCall = false;
+  var paddingForDoubleText = 170.0;
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final horizontalPadding = screenWidth * 0;
     return Material(
       color: Color(0xFFF7F8FA),
       child: Padding(
-        padding: EdgeInsets.symmetric(
-            horizontal: (ScreenUtil.getInstance().setWidth(108))), //144
+        // padding: EdgeInsets.symmetric(
+        // horizontal: (ScreenUtil.getInstance().setWidth(108))), //144
+        padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: _buildAppBar(context),
           drawer: _buildDrawer(context),
-          body: LayoutBuilder(builder: (context, constraints) {
-            return _buildBody(context, constraints);
-          }),
+          body: Container(
+            width: double.infinity,
+            height: double.infinity,
+            color: Colors.white,
+            child: _buildBody(context),
+          ),
+          // body: LayoutBuilder(builder: (context, constraints) {
+          //   return _buildBody(context, constraints);
+          // }),
         ),
       ),
     );
@@ -169,15 +196,60 @@ class HomePage extends StatelessWidget {
   }
 
   //Screen Methods:-------------------------------------------------------------
-  Widget _buildBody(BuildContext context, BoxConstraints constraints) {
+  Widget _buildBody(BuildContext context) {
     return SingleChildScrollView(
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-            minWidth: constraints.maxWidth, minHeight: constraints.maxHeight),
-        child: ResponsiveWidget(
-          largeScreen: _buildLargeScreen(context),
-          mediumScreen: _buildMediumScreen(context),
-          smallScreen: _buildSmallScreen(context),
+      child: ResponsiveWidget(
+        largeScreen: _buildLargeScreen(context),
+        mediumScreen: _buildMediumScreen(context),
+        smallScreen: _buildSmallScreen(context),
+      ),
+    );
+  } //Screen Methods:-------------------------------------------------------------
+  // Widget _buildBody(BuildContext context, BoxConstraints constraints) {
+  //   return SingleChildScrollView(
+  //     child: ConstrainedBox(
+  //       constraints: BoxConstraints(
+  //           minWidth: constraints.maxWidth, minHeight: constraints.maxHeight),
+  //       child: ResponsiveWidget(
+  //         largeScreen: _buildLargeScreen(context),
+  //         mediumScreen: _buildMediumScreen(context),
+  //         smallScreen: _buildSmallScreen(context),
+  //       ),
+  //     ),
+  //   );
+  // }
+
+  Widget _buildTextHead(BuildContext context) {
+    return Container(
+      height: 200,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          colors: [Colors.black, Colors.black87],
+        ),
+      ),
+      child: Center(
+        child: RichText(
+          textAlign: TextAlign.center,
+          text: TextSpan(
+            children: <TextSpan>[
+              TextSpan(
+                text: 'УСЛУГИ',
+                style: TextStyles.heading.copyWith(
+                  fontFamily: Fonts.nexa_light,
+                  fontSize: ResponsiveWidget.isSmallScreen(context) ? 36 : 45.0,
+                  color: Colors.white,
+                ),
+              ),
+              TextSpan(
+                text: ' КАДРОВОГО АГЕНТСТВА',
+                style: TextStyles.heading.copyWith(
+                  color: Colors.deepOrange,
+                  fontSize: ResponsiveWidget.isSmallScreen(context) ? 36 : 45.0,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -189,16 +261,17 @@ class HomePage extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
+          _buildTextHead(context),
           Expanded(
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
                 Expanded(flex: 1, child: _buildContent(context)),
-                _buildIllustration(),
+                // _buildIllustration(),
               ],
             ),
           ),
-          _buildFooter(context)
+          _buildFooter(context),
         ],
       ),
     );
@@ -210,6 +283,7 @@ class HomePage extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
+          _buildTextHead(context),
           Expanded(
             child: Row(
               mainAxisSize: MainAxisSize.max,
@@ -229,14 +303,15 @@ class HomePage extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
+          _buildTextHead(context),
           Expanded(flex: 1, child: _buildContent(context)),
           Divider(),
           _buildCopyRightText(context),
           SizedBox(
               height: ResponsiveWidget.isSmallScreen(context) ? 12.0 : 0.0),
           _buildSocialIcons(),
-          SizedBox(
-              height: ResponsiveWidget.isSmallScreen(context) ? 12.0 : 0.0),
+          // SizedBox(
+          // height: ResponsiveWidget.isSmallScreen(context) ? 12.0 : 0.0),
         ],
       ),
     );
@@ -254,34 +329,89 @@ class HomePage extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: <Widget>[
-        SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 24.0 : 0.0),
-        _buildAboutUs(context),
-        SizedBox(height: 4.0),
-        _buildHeadline(context),
         SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 12.0 : 24.0),
-        _buildSummary(),
-        SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 12.0 : 40.0),
-        _buildTextTopTextButton(),
-        _buildTextButtons(Strings.offers_way),
+        Expanded(
+          child: !ResponsiveWidget.isSmallScreen(context)
+              ? Column(
+                  children: [
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Expanded(
+                          flex: 1,
+                          child:
+                              _buildImageButtons(Strings.text_for_button_image),
+                        ),
+                        Expanded(
+                          child: Column(
+                            children: [
+                              _buildTextOurOffer(),
+                              SizedBox(height: 20.0),
+                              _buildTextButtonsWithArrow(
+                                  Strings.offers_way,
+                                  isHoveredTextButton,
+                                  Colors.black,
+                                  Colors.deepOrange,
+                                  20.0),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 24.0),
+                    Expanded(
+                      flex: 1,
+                      child: _buildTextWithButton(Strings.text_about_offer,
+                          Strings.text_more_about_offer),
+                    ),
+                    SizedBox(height: 24),
+                    _buildContactUs(),
+                    // SizedBox(height: 24),
+                  ],
+                )
+              : Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    SizedBox(height: 24.0),
+                    _buildImageButtons(Strings.text_for_button_image),
+                    SizedBox(height: 24.0),
+                    _buildTextOurOffer(),
+                    SizedBox(height: 24.0),
+                    _buildTextButtonsWithArrow(
+                        Strings.offers_way,
+                        isHoveredTextButton,
+                        Colors.black,
+                        Colors.deepOrange,
+                        20),
+                    SizedBox(height: 24.0),
+                    _buildTextWithButton(Strings.text_about_offer,
+                        Strings.text_more_about_offer),
+                    SizedBox(height: 24),
+                    _buildContactUs(),
+                    SizedBox(height: 24),
+                  ],
+                ),
+        ),
         SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 24.0 : 48.0),
-        ResponsiveWidget.isSmallScreen(context)
-            ? Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  // _buildEducation(),
-                  SizedBox(height: 24.0),
-                  _buildOffers(context),
-                ],
-              )
-            : _buildOffers(context),
+        _buildBottomInfo(),
+        // Expanded(
+        //   // _buildOffers(context),
+        //   flex: 1,
+        //   child: _buildTextWithButton(
+        //       Strings.text_about_offer, Strings.text_more_about_offer),
+        // ),
+        // _buildContactUs(),
+        // SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 10.0 : 24.0),
+        // _buildContactUs(),
       ],
     );
   }
 
-  Widget _buildTextTopTextButton() {
+  Widget _buildTextOurOffer() {
     return Text(
       Strings.our_offer,
       style: TextStyles.logo.copyWith(
@@ -291,22 +421,38 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildTextButtons(List<String> offersWay) {
+  Widget _buildImageButtons(List<String> textForButton) {
     var buttons = <Widget>[];
 
-    for (var i = 0; i < offersWay.length; i++) {
+    for (var i = 0; i < textForButton.length; i++) {
       buttons.add(
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(right: 8.0, bottom: 8.0),
-              child: Image.network(
-                Assets.arrow_right,
-                height: ScreenUtil.getInstance().setWidth(20),
+        MouseRegion(
+          // onEnter: (event) => isHovered[i] = true,
+          // onHover: (event) => isHovered[i] = true,
+          // onExit: (event) => isHovered[i] = false,
+          onHover: (event) {
+            setState(() {
+              isHoveredImageButton[i] = true;
+            });
+          },
+          onExit: (event) {
+            setState(() {
+              isHoveredImageButton[i] = false;
+            });
+          },
+          child: Container(
+            height: 120, // Задайте желаемую высоту кнопки
+            width: 500,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(Assets.background_1 + i.toString() + '.jpg'),
+                fit: BoxFit.cover,
               ),
+              border: isHoveredImageButton[i]
+                  ? Border.all(color: Colors.deepOrange, width: 4.0)
+                  : null,
             ),
-            InkWell(
+            child: InkWell(
               onTap: () {
                 Navigator.push(
                   context,
@@ -315,18 +461,24 @@ class HomePage extends StatelessWidget {
               },
               child: FittedBox(
                 fit: BoxFit.scaleDown,
-                child: Text(
-                  offersWay[i],
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
-                  style: TextStyles.menu_item.copyWith(
-                    fontSize: ResponsiveWidget.isSmallScreen(context) ? 12 : 16.0,
-                    color: Colors.black,
+                child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    textForButton[i],
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                    style: TextStyles.menu_item.copyWith(
+                      fontSize:
+                          ResponsiveWidget.isSmallScreen(context) ? 12 : 16.0,
+                      color: isHoveredImageButton[i]
+                          ? Colors.deepOrange
+                          : Colors.white,
+                    ),
                   ),
                 ),
               ),
             ),
-          ],
+          ),
         ),
       );
     }
@@ -336,29 +488,507 @@ class HomePage extends StatelessWidget {
     );
   }
 
+  Widget _buildTextButtonsWithArrow(
+      List<String> stringsList,
+      List<bool> hoveredValidation,
+      Color firstColor,
+      Color secondColor,
+      double sizeArrow) {
+    var buttons = <Widget>[];
 
-  Widget _buildAboutUs(BuildContext context) {
+    for (var i = 0; i < stringsList.length; i++) {
+      buttons.add(
+        MouseRegion(
+          // onEnter: (event) => isHovered[i] = true,
+          // onHover: (event) => isHovered[i] = true,
+          // onExit: (event) => isHovered[i] = false,
+          onHover: (event) {
+            setState(() {
+              hoveredValidation[i] = true;
+            });
+          },
+          onExit: (event) {
+            setState(() {
+              hoveredValidation[i] = false;
+            });
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(right: 8.0, bottom: 8.0),
+                child: Image.network(
+                  Assets.arrow_right,
+                  height: ScreenUtil.getInstance().setWidth(sizeArrow),
+                ),
+              ),
+              InkWell(
+                hoverColor: Colors.transparent,
+                // hoverColor: Colors.deepOrange.withAlpha(50),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ContactPage(context)),
+                  );
+                },
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    stringsList[i],
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                    style: TextStyles.menu_item.copyWith(
+                      fontSize:
+                          ResponsiveWidget.isSmallScreen(context) ? 12 : 16.0,
+                      // color: Colors.black,
+                      color: hoveredValidation[i] ? secondColor : firstColor,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    return Column(
+      children: buttons,
+    );
+  }
+
+  Widget _buildTextWithButton(
+      List<String> offersTitle, List<String> offerMore) {
+    var buttons = <Widget>[];
+
+    for (var i = 0; i < offersTitle.length; i++) {
+      buttons.add(
+        MouseRegion(
+          onHover: (event) {
+            setState(() {
+              isHoveredTextWithButton[i] = true;
+            });
+          },
+          onExit: (event) {
+            setState(() {
+              isHoveredTextWithButton[i] = false;
+            });
+          },
+          child: Container(
+            height: ResponsiveWidget.isSmallScreen(context) ? 82 : 150,
+            decoration: BoxDecoration(
+              border: isHoveredTextWithButton[i]
+                  ? Border.all(color: Colors.deepOrange, width: 3.0)
+                  : Border.all(color: Color(0xFF3B3B3B), width: 1.0),
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                colors: [Colors.black, Colors.black87],
+              ),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        right: 8.0,
+                        top: ResponsiveWidget.isSmallScreen(context) ? 0 : 25),
+                    // Промежуток между текстом и кнопкой
+                    child: _buildDoubleText(offersTitle[i], offerMore[i]),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ContactPage(context),
+                      ),
+                    );
+                  },
+                  child: isHoveredTextWithButton[i]
+                      ? Tooltip(
+                          message: Strings.learn_more,
+                          textStyle: TextStyles.menu_item.copyWith(
+                            fontSize: ResponsiveWidget.isSmallScreen(context)
+                                ? 10
+                                : 20.0,
+                            color: Colors.white,
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                right: ResponsiveWidget.isSmallScreen(context)
+                                    ? 0
+                                    : paddingForDoubleText),
+                            child: MouseRegion(
+                              onHover: (event) {
+                                setState(() {
+                                  isHovered = true;
+                                });
+                              },
+                              onExit: (event) {
+                                setState(() {
+                                  isHovered = false;
+                                });
+                              },
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                  side: MaterialStateProperty.all(
+                                    BorderSide(
+                                        color: Colors.deepOrange, width: 2.0),
+                                  ),
+                                  minimumSize:
+                                      MaterialStateProperty.all(Size(200, 50)),
+                                  padding: MaterialStateProperty.all(
+                                      EdgeInsets.all(10)),
+                                  backgroundColor: isHovered
+                                      ? MaterialStateProperty.all<Color>(
+                                          Colors.deepOrange)
+                                      : MaterialStateProperty.all<Color>(
+                                          Colors.black),
+                                ),
+                                child: Text(
+                                  Strings.more,
+                                  style: TextStyles.menu_item.copyWith(
+                                    fontSize:
+                                        ResponsiveWidget.isSmallScreen(context)
+                                            ? 10
+                                            : 20.0,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
+                      : Padding(
+                          padding: EdgeInsets.only(right: 8.0),
+                          child: Text(
+                            '',
+                            style: TextStyles.menu_item.copyWith(
+                              fontSize: ResponsiveWidget.isSmallScreen(context)
+                                  ? 10
+                                  : 20.0,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
+
+    return Column(
+      children: buttons,
+    );
+  }
+
+  Widget _buildDoubleText(String firstText, String secondText) {
+    var underline = '';
+    for (var i = 0; i < firstText.length; i++) {
+      underline = underline + '_';
+    }
+    ;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      // Выравнивание текста по левому краю
+      children: [
+        SizedBox(height: 10),
+        Padding(
+          padding: EdgeInsets.only(
+              left: ResponsiveWidget.isSmallScreen(context)
+                  ? 0
+                  : paddingForDoubleText),
+          child: Text(
+            firstText,
+            style: TextStyles.menu_item.copyWith(
+              fontSize: ResponsiveWidget.isSmallScreen(context) ? 10 : 20.0,
+              color: Colors.white,
+              // decoration: TextDecoration.underline,
+              // decorationColor: Colors.deepOrange,
+              // decorationThickness: 2,
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(
+              left: ResponsiveWidget.isSmallScreen(context)
+                  ? 0
+                  : paddingForDoubleText,
+              bottom: 1.0),
+          child: Text(
+            underline,
+            style: TextStyles.menu_item.copyWith(
+              fontSize: ResponsiveWidget.isSmallScreen(context) ? 5 : 20.0,
+              color: Colors.deepOrange,
+              decoration: TextDecoration.underline,
+              decorationColor: Colors.deepOrange,
+              decorationThickness: 4,
+            ),
+          ),
+        ),
+        SizedBox(height: 10), // Расстояние между текстами
+        Padding(
+          padding: EdgeInsets.only(
+              left: ResponsiveWidget.isSmallScreen(context)
+                  ? 0
+                  : paddingForDoubleText),
+          child: Text(
+            secondText,
+            style: TextStyles.menu_item.copyWith(
+              fontSize: ResponsiveWidget.isSmallScreen(context) ? 7 : 15.0,
+              color: Colors.white,
+            ),
+          ),
+        ),
+        SizedBox(height: 10),
+      ],
+    );
+  }
+
+  // -----------------------------------------------------------------------------
+
+  Widget _buildContactUs() {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          colors: [Colors.white12, Colors.white38],
+        ),
+      ),
+      child: Center(
+        child: !ResponsiveWidget.isSmallScreen(context)
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                // Центрирование по горизонтали
+                children: [
+                  Icon(Icons.call),
+                  SizedBox(width: 10), // Пространство между иконкой и текстом
+                  Text(
+                    Strings.contact_us_offer,
+                    style: TextStyles.menu_item.copyWith(
+                      fontSize:
+                          ResponsiveWidget.isSmallScreen(context) ? 11 : 20.0,
+                      color: Colors.black,
+                    ),
+                  ),
+                  SizedBox(width: 15), // Пространство между текстом и кнопкой
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      side: MaterialStateProperty.all(
+                        BorderSide(color: Colors.deepOrange, width: 2.0),
+                      ),
+                      minimumSize: MaterialStateProperty.all(
+                          ResponsiveWidget.isSmallScreen(context)
+                              ? Size(140, 50)
+                              : Size(200, 50)),
+                      padding: MaterialStateProperty.all(EdgeInsets.all(10)),
+                      backgroundColor: isHoveredCall
+                          ? MaterialStateProperty.all<Color>(Color(0xFFFA4812))
+                          : MaterialStateProperty.all<Color>(Colors.deepOrange),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ContactPage(context)),
+                      );
+                    },
+                    child: MouseRegion(
+                      onHover: (event) {
+                        setState(() {
+                          isHoveredCall = true;
+                        });
+                      },
+                      onExit: (event) {
+                        setState(() {
+                          isHoveredCall = false;
+                        });
+                      },
+                      child: Text(
+                        Strings.call,
+                        style: TextStyles.menu_item.copyWith(
+                          fontSize: ResponsiveWidget.isSmallScreen(context)
+                              ? 10
+                              : 20.0,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            : Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                // Центрирование по горизонтали
+                children: [
+                  Icon(Icons.call),
+                  SizedBox(width: 10), // Пространство между иконкой и текстом
+                  Text(
+                    Strings.contact_us_offer,
+                    style: TextStyles.menu_item.copyWith(
+                      fontSize:
+                          ResponsiveWidget.isSmallScreen(context) ? 11 : 20.0,
+                      color: Colors.black,
+                    ),
+                  ),
+                  SizedBox(width: 15, height: 15,), // Пространство между текстом и кнопкой
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      side: MaterialStateProperty.all(
+                        BorderSide(color: Colors.deepOrange, width: 2.0),
+                      ),
+                      minimumSize: MaterialStateProperty.all(
+                          ResponsiveWidget.isSmallScreen(context)
+                              ? Size(140, 50)
+                              : Size(200, 50)),
+                      padding: MaterialStateProperty.all(EdgeInsets.all(10)),
+                      backgroundColor: isHoveredCall
+                          ? MaterialStateProperty.all<Color>(Color(0xFFFA4812))
+                          : MaterialStateProperty.all<Color>(Colors.deepOrange),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ContactPage(context)),
+                      );
+                    },
+                    child: MouseRegion(
+                      onHover: (event) {
+                        setState(() {
+                          isHoveredCall = true;
+                        });
+                      },
+                      onExit: (event) {
+                        setState(() {
+                          isHoveredCall = false;
+                        });
+                      },
+                      child: Text(
+                        Strings.call,
+                        style: TextStyles.menu_item.copyWith(
+                          fontSize: ResponsiveWidget.isSmallScreen(context)
+                              ? 10
+                              : 20.0,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+      ),
+    );
+  }
+
+  Widget _buildBottomInfo() {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          colors: [Colors.black, Colors.black87],
+        ),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          !ResponsiveWidget.isSmallScreen(context)
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(height: 200, width: 200),
+                    Expanded(
+                      child: _buildColumnBottomText(Strings.why_we,
+                          Strings.why_we_offer, isHoveredTextButtonButFirst),
+                    ),
+                    Expanded(
+                      child: _buildColumnBottomText(
+                          Strings.who_give_work,
+                          Strings.who_give_work_list,
+                          isHoveredTextButtonButSecond),
+                    ),
+                    Expanded(
+                      child: _buildColumnBottomText(Strings.who_worker,
+                          Strings.who_worker_list, isHoveredTextButtonButThird),
+                    ),
+                  ],
+                )
+              : Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(height: 20),
+                    _buildColumnBottomText(Strings.why_we, Strings.why_we_offer,
+                        isHoveredTextButtonButFirst),
+                    SizedBox(height: 20),
+                    _buildColumnBottomText(
+                        Strings.who_give_work,
+                        Strings.who_give_work_list,
+                        isHoveredTextButtonButSecond),
+                    SizedBox(height: 20),
+                    _buildColumnBottomText(Strings.who_worker,
+                        Strings.who_worker_list, isHoveredTextButtonButThird),
+                    SizedBox(height: 20),
+                  ],
+                ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildColumnBottomText(
+      String text, List<String> listButton, List<bool> isHoveredList) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(
+          text,
+          style: TextStyles.menu_item.copyWith(
+            fontSize: 20,
+            color: Colors.white,
+          ),
+        ),
+        _buildUnderline(),
+        SizedBox(height: 15),
+        _buildTextButtonsWithArrow(
+          listButton,
+          isHoveredList,
+          Colors.white,
+          Colors.deepOrange,
+          10,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildUnderline() {
+    var underlineOrange = '_______';
+    var underlineGrey = '______________';
     return RichText(
       text: TextSpan(
-        // Note: Styles for TextSpans must be explicitly defined.
-        // Child text spans will inherit styles from parent
-        style: TextStyle(
-          fontSize: 14.0,
-          color: Colors.black,
-        ),
-        children: <TextSpan>[
+        children: [
           TextSpan(
-            text: Strings.about,
-            style: TextStyles.heading.copyWith(
-              fontFamily: Fonts.nexa_light,
-              fontSize: ResponsiveWidget.isSmallScreen(context) ? 36 : 45.0,
+            text: underlineOrange,
+            style: TextStyles.menu_item.copyWith(
+              fontSize: ResponsiveWidget.isSmallScreen(context) ? 10 : 20.0,
+              color: Colors.deepOrange,
+              decoration: TextDecoration.underline,
+              decorationColor: Colors.deepOrange,
+              decorationThickness: 6,
             ),
           ),
           TextSpan(
-            text: Strings.us,
-            style: TextStyles.heading.copyWith(
-              color: Colors.deepOrange,
-              fontSize: ResponsiveWidget.isSmallScreen(context) ? 36 : 45.0,
+            text: underlineGrey,
+            style: TextStyles.menu_item.copyWith(
+              fontSize: ResponsiveWidget.isSmallScreen(context) ? 10 : 20.0,
+              color: Colors.grey,
+              decoration: TextDecoration.underline,
+              decorationColor: Colors.grey,
+              decorationThickness: 3,
             ),
           ),
         ],
@@ -366,65 +996,65 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildHeadline(BuildContext context) {
-    return Text(
-      ResponsiveWidget.isSmallScreen(context)
-          ? Strings.headline
-          : Strings.headline.replaceFirst(RegExp(r' f'), '\nf'),
-      style: TextStyles.sub_heading,
-    );
-  }
+  // Widget _buildHeadline(BuildContext context) {
+  //   return Text(
+  //     ResponsiveWidget.isSmallScreen(context)
+  //         ? Strings.headline
+  //         : Strings.headline.replaceFirst(RegExp(r' f'), '\nf'),
+  //     style: TextStyles.sub_heading,
+  //   );
+  // }
 
-  Widget _buildSummary() {
-    return Padding(
-      padding: EdgeInsets.only(right: 80.0),
-      child: Text(
-        Strings.summary,
-        style: TextStyles.body.copyWith(
-          fontSize: ResponsiveWidget.isSmallScreen(context) ? 12 : 15.0,
-        ),
-      ),
-    );
-  }
+  // Widget _buildSummary() {
+  //   return Padding(
+  //     padding: EdgeInsets.only(right: 80.0),
+  //     child: Text(
+  //       Strings.summary,
+  //       style: TextStyles.body.copyWith(
+  //         fontSize: ResponsiveWidget.isSmallScreen(context) ? 12 : 15.0,
+  //       ),
+  //     ),
+  //   );
+  // }
 
   // Offers Methods:------------------------------------------------------------
 
-  Widget _buildOffers(BuildContext context) {
-    final List<Widget> widgets = Strings.offers
-        .map((skill) => Padding(
-              padding: EdgeInsets.only(right: 15.0, bottom: 8.0),
-              child: _buildOfferChip(context, skill),
-            ))
-        .toList();
-
-    return Column(
-      mainAxisSize: MainAxisSize.max,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        _buildOffersContainerHeading(),
-        SizedBox(height: 10.0),
-        Wrap(children: widgets),
-      ],
-    );
-  }
-
-  Widget _buildOffersContainerHeading() {
-    return Text(
-      Strings.offer,
-      style: TextStyles.sub_heading,
-    );
-  }
-
-  Widget _buildOfferChip(BuildContext context, String label) {
-    return Chip(
-      label: Text(
-        label,
-        style: TextStyles.chip.copyWith(
-          fontSize: ResponsiveWidget.isSmallScreen(context) ? 10.0 : 11.0,
-        ),
-      ),
-    );
-  }
+  // Widget _buildOffers(BuildContext context) {
+  //   final List<Widget> widgets = Strings.offers
+  //       .map((skill) => Padding(
+  //             padding: EdgeInsets.only(right: 15.0, bottom: 8.0),
+  //             child: _buildOfferChip(context, skill),
+  //           ))
+  //       .toList();
+  //
+  //   return Column(
+  //     mainAxisSize: MainAxisSize.max,
+  //     crossAxisAlignment: CrossAxisAlignment.start,
+  //     children: <Widget>[
+  //       _buildOffersContainerHeading(),
+  //       SizedBox(height: 10.0),
+  //       Wrap(children: widgets),
+  //     ],
+  //   );
+  // }
+  //
+  // Widget _buildOffersContainerHeading() {
+  //   return Text(
+  //     Strings.offer,
+  //     style: TextStyles.sub_heading,
+  //   );
+  // }
+  //
+  // Widget _buildOfferChip(BuildContext context, String label) {
+  //   return Chip(
+  //     label: Text(
+  //       label,
+  //       style: TextStyles.chip.copyWith(
+  //         fontSize: ResponsiveWidget.isSmallScreen(context) ? 10.0 : 11.0,
+  //       ),
+  //     ),
+  //   );
+  // }
 
   // Footer Methods:------------------------------------------------------------
   Widget _buildFooter(BuildContext context) {

@@ -5,6 +5,9 @@ class Assets {
   static const String success = 'assets/images/success.gif';
   static const String arrow_right = 'assets/icons/arrow-dropright.png';
 
+  // button
+  static const String background_1 = 'background_button/background_button_';
+
   // social icons
   static const String dribble = 'assets/icons/ic_dribbble.png';
   static const String evernote = 'assets/icons/ic_evernote.png';

@@ -79,7 +79,7 @@ class LanguageService {
     Strings.question = StringsEng.question;
     Strings.number = StringsEng.number;
     Strings.enter_number = StringsEng.enter_number;
-    Strings.call = StringsEng.call;
+    Strings.call_me = StringsEng.call_me;
     Strings.call_to = StringsEng.call_to;
     Strings.invalid_number = StringsEng.invalid_number;
 
@@ -141,7 +141,7 @@ class LanguageService {
     Strings.question = StringsRu.question;
     Strings.number = StringsRu.number;
     Strings.enter_number = StringsRu.enter_number;
-    Strings.call = StringsRu.call;
+    Strings.call_me = StringsRu.call_me;
     Strings.call_to = StringsRu.call_to;
     Strings.invalid_number = StringsRu.invalid_number;
 
@@ -203,7 +203,7 @@ class LanguageService {
     Strings.question = StringsUa.question;
     Strings.number = StringsUa.number;
     Strings.enter_number = StringsUa.enter_number;
-    Strings.call = StringsUa.call;
+    Strings.call_me = StringsUa.call_me;
     Strings.call_to = StringsUa.call_to;
     Strings.invalid_number = StringsUa.invalid_number;
 

@@ -64,7 +64,8 @@ class Strings {
   static String question;
   static String number;
   static String enter_number;
-  static String call;
+  static String call_me;
+  static String call = 'Позвонить';
   static String call_to;
   static const String ok = 'OK';
   static String invalid_number;
@@ -83,7 +84,36 @@ class Strings {
   static String privacy;
 
   // special strings
-  static String our_offer = 'Специализируемся на подборе сотрудников в таких направлениях:';
+  static String more = 'Подробнее';
+  static String learn_more = 'Узнать больше';
+  static String contact_us_offer = 'Нужны эффективные сотрудники? Звоните:';
+
+  static String why_we = 'Почему мы?';
+  static List<String> why_we_offer = [
+    'О компании',
+    'Отзывы',
+    'Цены',
+    'Контакты'
+  ];
+
+  static String who_give_work = 'Работодателю';
+  static List<String> who_give_work_list = [
+    'Подбор персонала',
+    'Executive search',
+    'Head Hunting',
+    'HR-консалтинг'
+  ];
+
+  static String who_worker = 'Соискателю';
+  static List<String> who_worker_list = [
+    'Советы кандидату',
+    'Правила прохождения интервью',
+    'Подготовка к собеседованию',
+    'Как написать резюме'
+  ];
+
+  static String our_offer =
+      'Специализируемся на подборе сотрудников в таких направлениях:';
   static List<String> offers_way = [
     'IT, web, digital, связь, телеком',
     'Продажи — руководители и менеджеры',
@@ -93,9 +123,38 @@ class Strings {
     'Бухгалтерия, финансы, налоги, аудит',
     'HR, кадры, управление персоналом',
     'ИТР в промышленности и на производстве',
-    'Руководители и ИТР в строительстве и проектировании',
+    'Руководители и ИТР в проектировании',
     'Транспортный отдел, логистика, ВЭД',
     'Рабочий персонал'
+  ];
+
+  static List<String> text_for_button_image = [
+    'ПОИСК И ПОДБОР КВАЛИЦИФИРОВАНЫХ \n'
+        '                    СПЕЦИАЛИСТОВ',
+    'МАССОВЫЙ ПОДБОР ЛИНЕЙНОГО ПЕРСОНАЛА',
+    'EXECUTIVE SEARCH',
+    'ХЭДХАНТИНГ',
+    'АУТСОРСИНГ ПЕРСОНАЛА'
+  ];
+
+  static List<String> text_about_offer = [
+    'Кадровый консалтинг (HR-консалтинг)',
+    'Услуги аутстаффинга персонала',
+    'Региональный подбор персонала',
+    'Поиск сотрудников по резюме',
+    'КАДРОВЫЙ АУТСОРСИНГ услуги кадрового делопроизводства',
+    'Ресечинг (Экспресс поиск кандидатов)',
+    'Скрининг резюме (подбор резюме)'
+  ];
+
+  static List<String> text_more_about_offer = [
+    'Консультирование в эффективному управлению персоналом',
+    'Вывод персонала за штат компании.',
+    'Подбор персонала в регионах Украины и других странах.',
+    'Подбор подходящих резюме сотрудников.',
+    'Предоставление услуг по ведению кадрового делопроизводства',
+    'Организация массового потока соискателей без личной встречи.',
+    'Поиск резюме по указанными Вами параметрам по разным базам.'
   ];
 
   static const List<String> countries = [

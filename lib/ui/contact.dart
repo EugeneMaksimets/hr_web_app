@@ -415,7 +415,7 @@ class _ContactPage extends State<ContactPage> {
                     child: Padding(
                             padding: EdgeInsets.all(10.0),
                             child: Text(
-                              Strings.call,
+                              Strings.call_me,
                               style:
                               TextStyles.company.copyWith(color: Colors.white),
                             ),

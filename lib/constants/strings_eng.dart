@@ -79,7 +79,7 @@ class StringsEng {
   static const String question = 'questions';
   static const String number = 'Number';
   static const String enter_number = 'Enter number';
-  static const String call = 'Call me';
+  static const String call_me = 'Call me';
   static const String call_to = 'Call to ';
   static const String invalid_number = 'Invalid number';
 

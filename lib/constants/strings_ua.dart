@@ -78,7 +78,7 @@ class StringsUa {
   static const String question = 'питання';
   static const String number = 'Номер телефону';
   static const String enter_number = 'Введіть номер телефону';
-  static const String call = 'Подзвонити мені';
+  static const String call_me = 'Подзвонити мені';
   static const String call_to = 'Виклик на номер ';
   static const String invalid_number = 'Введіть правильний номер';
 
