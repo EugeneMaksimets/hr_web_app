@@ -90,7 +90,9 @@ class _HomePage extends State<HomePage> {
         children: <TextSpan>[
           TextSpan(
             text: Strings.company_name,
-            style: TextStyles.logo,
+            style: TextStyles.logo.copyWith(
+              color: Colors.black,
+            ),
           ),
           TextSpan(
             text: Strings.y,
@@ -318,12 +320,13 @@ class _HomePage extends State<HomePage> {
   }
 
   // Body Methods:--------------------------------------------------------------
-  Widget _buildIllustration() {
-    return Image.network(
-      Assets.programmer3,
-      height: ScreenUtil.getInstance().setWidth(345), //480.0
-    );
-  }
+
+  // Widget _buildIllustration() {
+  //   return Image.network(
+  //     Assets.programmer3,
+  //     height: ScreenUtil.getInstance().setWidth(345), //480.0
+  //   );
+  // }
 
   Widget _buildContent(BuildContext context) {
     return Column(
@@ -331,7 +334,7 @@ class _HomePage extends State<HomePage> {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: <Widget>[
-        SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 12.0 : 24.0),
+        SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 0.0 : 24.0),
         Expanded(
           child: !ResponsiveWidget.isSmallScreen(context)
               ? Column(
@@ -355,7 +358,10 @@ class _HomePage extends State<HomePage> {
                                   isHoveredTextButton,
                                   Colors.black,
                                   Colors.deepOrange,
-                                  20.0),
+                                  20.0,
+                                  MainAxisAlignment.start,
+                                  14,
+                                  20),
                             ],
                           ),
                         ),
@@ -367,7 +373,7 @@ class _HomePage extends State<HomePage> {
                       child: _buildTextWithButton(Strings.text_about_offer,
                           Strings.text_more_about_offer),
                     ),
-                    SizedBox(height: 24),
+                    SizedBox(height: 40),
                     _buildContactUs(),
                     // SizedBox(height: 24),
                   ],
@@ -376,17 +382,29 @@ class _HomePage extends State<HomePage> {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    SizedBox(height: 24.0),
+                    // SizedBox(height: 24.0),
                     _buildImageButtons(Strings.text_for_button_image),
                     SizedBox(height: 24.0),
                     _buildTextOurOffer(),
                     SizedBox(height: 24.0),
-                    _buildTextButtonsWithArrow(
-                        Strings.offers_way,
-                        isHoveredTextButton,
-                        Colors.black,
-                        Colors.deepOrange,
-                        20),
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          left: 10.0,
+                        ),
+                        // Промежуток между текстом и кнопкой
+                        child: _buildTextButtonsWithArrow(
+                            Strings.offers_way,
+                            isHoveredTextButton,
+                            Colors.black,
+                            Colors.deepOrange,
+                            20,
+                            MainAxisAlignment.start,
+                            14,
+                            20),
+                      ),
+                    ),
+
                     SizedBox(height: 24.0),
                     _buildTextWithButton(Strings.text_about_offer,
                         Strings.text_more_about_offer),
@@ -459,6 +477,11 @@ class _HomePage extends State<HomePage> {
                   MaterialPageRoute(builder: (context) => ContactPage(context)),
                 );
               },
+              onHighlightChanged: (isPressed) {
+                setState(() {
+                  isHoveredImageButton[i] = true; // TODO TEST
+                });
+              },
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Padding(
@@ -493,7 +516,10 @@ class _HomePage extends State<HomePage> {
       List<bool> hoveredValidation,
       Color firstColor,
       Color secondColor,
-      double sizeArrow) {
+      double sizeArrow,
+      MainAxisAlignment screenAlignment,
+      double sizeFrontSmall,
+      double sizeFrontBig) {
     var buttons = <Widget>[];
 
     for (var i = 0; i < stringsList.length; i++) {
@@ -512,42 +538,52 @@ class _HomePage extends State<HomePage> {
               hoveredValidation[i] = false;
             });
           },
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(right: 8.0, bottom: 8.0),
-                child: Image.network(
-                  Assets.arrow_right,
-                  height: ScreenUtil.getInstance().setWidth(sizeArrow),
+          child: Padding(
+            padding: EdgeInsets.only(bottom: 15.0),
+            child: Row(
+              mainAxisAlignment: screenAlignment,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(right: 8.0),
+                  child: Image.network(
+                    Assets.arrow_right,
+                    height: ScreenUtil.getInstance().setWidth(sizeArrow),
+                  ),
                 ),
-              ),
-              InkWell(
-                hoverColor: Colors.transparent,
-                // hoverColor: Colors.deepOrange.withAlpha(50),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ContactPage(context)),
-                  );
-                },
-                child: FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: Text(
-                    stringsList[i],
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
-                    style: TextStyles.menu_item.copyWith(
-                      fontSize:
-                          ResponsiveWidget.isSmallScreen(context) ? 12 : 16.0,
-                      // color: Colors.black,
-                      color: hoveredValidation[i] ? secondColor : firstColor,
+                InkWell(
+                  hoverColor: Colors.transparent,
+                  // hoverColor: Colors.deepOrange.withAlpha(50),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ContactPage(context),
+                      ), //TODO create validation PAGE
+                    );
+                  },
+                  onHighlightChanged: (isPressed) {
+                    setState(() {
+                      hoveredValidation[i] = true;
+                    });
+                  },
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      stringsList[i],
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                      style: TextStyles.menu_item.copyWith(
+                        fontSize: ResponsiveWidget.isSmallScreen(context)
+                            ? sizeFrontSmall
+                            : sizeFrontBig,
+                        // color: Colors.black,
+                        color: hoveredValidation[i] ? secondColor : firstColor,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       );
@@ -575,81 +611,235 @@ class _HomePage extends State<HomePage> {
               isHoveredTextWithButton[i] = false;
             });
           },
-          child: Container(
-            height: ResponsiveWidget.isSmallScreen(context) ? 82 : 150,
-            decoration: BoxDecoration(
-              border: isHoveredTextWithButton[i]
-                  ? Border.all(color: Colors.deepOrange, width: 3.0)
-                  : Border.all(color: Color(0xFF3B3B3B), width: 1.0),
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                colors: [Colors.black, Colors.black87],
-              ),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                        right: 8.0,
-                        top: ResponsiveWidget.isSmallScreen(context) ? 0 : 25),
-                    // Промежуток между текстом и кнопкой
-                    child: _buildDoubleText(offersTitle[i], offerMore[i]),
-                  ),
-                ),
-                InkWell(
+          child: ResponsiveWidget.isSmallScreen(context)
+              ? InkWell(
                   onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ContactPage(context),
+                        builder: (context) =>
+                            ContactPage(context), // TODO create validator page
                       ),
                     );
                   },
-                  child: isHoveredTextWithButton[i]
-                      ? Tooltip(
-                          message: Strings.learn_more,
-                          textStyle: TextStyles.menu_item.copyWith(
-                            fontSize: ResponsiveWidget.isSmallScreen(context)
-                                ? 10
-                                : 20.0,
-                            color: Colors.white,
-                          ),
+                  onHighlightChanged: (isPressed) {
+                    setState(() {
+                      isHoveredTextWithButton[i] = true; //TODO TEST
+                    });
+                  },
+                  child: Container(
+                    height: ResponsiveWidget.isSmallScreen(context) ? 82 : 150,
+                    decoration: BoxDecoration(
+                      border: isHoveredTextWithButton[i]
+                          ? Border.all(color: Colors.deepOrange, width: 3.0)
+                          : Border.all(color: Color(0xFF3B3B3B), width: 1.0),
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        colors: [Colors.black, Colors.black87],
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
                           child: Padding(
                             padding: EdgeInsets.only(
-                                right: ResponsiveWidget.isSmallScreen(context)
+                                right: 8.0,
+                                top: ResponsiveWidget.isSmallScreen(context)
                                     ? 0
-                                    : paddingForDoubleText),
-                            child: MouseRegion(
-                              onHover: (event) {
-                                setState(() {
-                                  isHovered = true;
-                                });
-                              },
-                              onExit: (event) {
-                                setState(() {
-                                  isHovered = false;
-                                });
-                              },
-                              child: ElevatedButton(
-                                style: ButtonStyle(
-                                  side: MaterialStateProperty.all(
-                                    BorderSide(
-                                        color: Colors.deepOrange, width: 2.0),
+                                    : 25),
+                            // Промежуток между текстом и кнопкой
+                            child:
+                                _buildDoubleText(offersTitle[i], offerMore[i]),
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ContactPage(
+                                    context), //TODO create validator page
+                              ),
+                            );
+                          },
+                          child: isHoveredTextWithButton[i] &&
+                                  !ResponsiveWidget.isSmallScreen(context)
+                              ? Tooltip(
+                                  message: Strings.learn_more,
+                                  textStyle: TextStyles.menu_item.copyWith(
+                                    fontSize:
+                                        ResponsiveWidget.isSmallScreen(context)
+                                            ? 10
+                                            : 20.0,
+                                    color: Colors.white,
                                   ),
-                                  minimumSize:
-                                      MaterialStateProperty.all(Size(200, 50)),
-                                  padding: MaterialStateProperty.all(
-                                      EdgeInsets.all(10)),
-                                  backgroundColor: isHovered
-                                      ? MaterialStateProperty.all<Color>(
-                                          Colors.deepOrange)
-                                      : MaterialStateProperty.all<Color>(
-                                          Colors.black),
+                                  child: Padding(
+                                    padding: EdgeInsets.only(
+                                        right: ResponsiveWidget.isSmallScreen(
+                                                context)
+                                            ? 0
+                                            : paddingForDoubleText),
+                                    child: MouseRegion(
+                                      onHover: (event) {
+                                        setState(() {
+                                          isHovered = true;
+                                        });
+                                      },
+                                      onExit: (event) {
+                                        setState(() {
+                                          isHovered = false;
+                                        });
+                                      },
+                                      child: ElevatedButton(
+                                        style: ButtonStyle(
+                                          side: MaterialStateProperty.all(
+                                            BorderSide(
+                                                color: Colors.deepOrange,
+                                                width: 2.0),
+                                          ),
+                                          minimumSize:
+                                              MaterialStateProperty.all(
+                                                  Size(200, 50)),
+                                          padding: MaterialStateProperty.all(
+                                              EdgeInsets.all(10)),
+                                          backgroundColor: isHovered
+                                              ? MaterialStateProperty.all<
+                                                  Color>(Colors.deepOrange)
+                                              : MaterialStateProperty.all<
+                                                  Color>(Colors.black),
+                                        ),
+                                        child: Text(
+                                          Strings.more,
+                                          style: TextStyles.menu_item.copyWith(
+                                            fontSize:
+                                                ResponsiveWidget.isSmallScreen(
+                                                        context)
+                                                    ? 10
+                                                    : 20.0,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              : Padding(
+                                  padding: EdgeInsets.only(right: 8.0),
+                                  child: Text(
+                                    '',
+                                    style: TextStyles.menu_item.copyWith(
+                                      fontSize: ResponsiveWidget.isSmallScreen(
+                                              context)
+                                          ? 10
+                                          : 20.0,
+                                      color: Colors.white,
+                                    ),
+                                  ),
                                 ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              : Container(
+                  height: ResponsiveWidget.isSmallScreen(context) ? 82 : 150,
+                  decoration: BoxDecoration(
+                    border: isHoveredTextWithButton[i]
+                        ? Border.all(color: Colors.deepOrange, width: 3.0)
+                        : Border.all(color: Color(0xFF3B3B3B), width: 1.0),
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      colors: [Colors.black, Colors.black87],
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              right: 8.0,
+                              top: ResponsiveWidget.isSmallScreen(context)
+                                  ? 0
+                                  : 25),
+                          // Промежуток между текстом и кнопкой
+                          child: _buildDoubleText(offersTitle[i], offerMore[i]),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ContactPage(context),
+                            ),
+                          );
+                        },
+                        child: isHoveredTextWithButton[i] &&
+                                !ResponsiveWidget.isSmallScreen(context)
+                            ? Tooltip(
+                                message: Strings.learn_more,
+                                textStyle: TextStyles.menu_item.copyWith(
+                                  fontSize:
+                                      ResponsiveWidget.isSmallScreen(context)
+                                          ? 10
+                                          : 20.0,
+                                  color: Colors.white,
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.only(
+                                      right: ResponsiveWidget.isSmallScreen(
+                                              context)
+                                          ? 0
+                                          : paddingForDoubleText),
+                                  child: MouseRegion(
+                                    onHover: (event) {
+                                      setState(() {
+                                        isHovered = true;
+                                      });
+                                    },
+                                    onExit: (event) {
+                                      setState(() {
+                                        isHovered = false;
+                                      });
+                                    },
+                                    child: ElevatedButton(
+                                      style: ButtonStyle(
+                                        side: MaterialStateProperty.all(
+                                          BorderSide(
+                                              color: Colors.deepOrange,
+                                              width: 2.0),
+                                        ),
+                                        minimumSize: MaterialStateProperty.all(
+                                            Size(200, 50)),
+                                        padding: MaterialStateProperty.all(
+                                            EdgeInsets.all(10)),
+                                        backgroundColor: isHovered
+                                            ? MaterialStateProperty.all<Color>(
+                                                Colors.deepOrange)
+                                            : MaterialStateProperty.all<Color>(
+                                                Colors.black),
+                                      ),
+                                      child: Text(
+                                        Strings.more,
+                                        style: TextStyles.menu_item.copyWith(
+                                          fontSize:
+                                              ResponsiveWidget.isSmallScreen(
+                                                      context)
+                                                  ? 10
+                                                  : 20.0,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            : Padding(
+                                padding: EdgeInsets.only(right: 8.0),
                                 child: Text(
-                                  Strings.more,
+                                  '',
                                   style: TextStyles.menu_item.copyWith(
                                     fontSize:
                                         ResponsiveWidget.isSmallScreen(context)
@@ -659,25 +849,10 @@ class _HomePage extends State<HomePage> {
                                   ),
                                 ),
                               ),
-                            ),
-                          ),
-                        )
-                      : Padding(
-                          padding: EdgeInsets.only(right: 8.0),
-                          child: Text(
-                            '',
-                            style: TextStyles.menu_item.copyWith(
-                              fontSize: ResponsiveWidget.isSmallScreen(context)
-                                  ? 10
-                                  : 20.0,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ],
-            ),
-          ),
         ),
       );
     }
@@ -706,7 +881,7 @@ class _HomePage extends State<HomePage> {
           child: Text(
             firstText,
             style: TextStyles.menu_item.copyWith(
-              fontSize: ResponsiveWidget.isSmallScreen(context) ? 10 : 20.0,
+              fontSize: ResponsiveWidget.isSmallScreen(context) ? 15 : 25.0,
               color: Colors.white,
               // decoration: TextDecoration.underline,
               // decorationColor: Colors.deepOrange,
@@ -740,7 +915,7 @@ class _HomePage extends State<HomePage> {
           child: Text(
             secondText,
             style: TextStyles.menu_item.copyWith(
-              fontSize: ResponsiveWidget.isSmallScreen(context) ? 7 : 15.0,
+              fontSize: ResponsiveWidget.isSmallScreen(context) ? 10 : 15.0,
               color: Colors.white,
             ),
           ),
@@ -827,7 +1002,8 @@ class _HomePage extends State<HomePage> {
                 // Центрирование по горизонтали
                 children: [
                   Icon(Icons.call),
-                  SizedBox(width: 10), // Пространство между иконкой и текстом
+                  SizedBox(width: 10),
+                  // Пространство между иконкой и текстом
                   Text(
                     Strings.contact_us_offer,
                     style: TextStyles.menu_item.copyWith(
@@ -836,7 +1012,11 @@ class _HomePage extends State<HomePage> {
                       color: Colors.black,
                     ),
                   ),
-                  SizedBox(width: 15, height: 15,), // Пространство между текстом и кнопкой
+                  SizedBox(
+                    width: 15,
+                    height: 15,
+                  ),
+                  // Пространство между текстом и кнопкой
                   ElevatedButton(
                     style: ButtonStyle(
                       side: MaterialStateProperty.all(
@@ -903,18 +1083,25 @@ class _HomePage extends State<HomePage> {
                   children: [
                     SizedBox(height: 200, width: 200),
                     Expanded(
-                      child: _buildColumnBottomText(Strings.why_we,
-                          Strings.why_we_offer, isHoveredTextButtonButFirst),
+                      child: _buildColumnBottomText(
+                        Strings.why_we,
+                        Strings.why_we_offer,
+                        isHoveredTextButtonButFirst,
+                      ),
                     ),
                     Expanded(
                       child: _buildColumnBottomText(
-                          Strings.who_give_work,
-                          Strings.who_give_work_list,
-                          isHoveredTextButtonButSecond),
+                        Strings.who_give_work,
+                        Strings.who_give_work_list,
+                        isHoveredTextButtonButSecond,
+                      ),
                     ),
                     Expanded(
-                      child: _buildColumnBottomText(Strings.who_worker,
-                          Strings.who_worker_list, isHoveredTextButtonButThird),
+                      child: _buildColumnBottomText(
+                        Strings.who_worker,
+                        Strings.who_worker_list,
+                        isHoveredTextButtonButThird,
+                      ),
                     ),
                   ],
                 )
@@ -922,16 +1109,32 @@ class _HomePage extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(height: 20),
-                    _buildColumnBottomText(Strings.why_we, Strings.why_we_offer,
-                        isHoveredTextButtonButFirst),
+                    Padding(
+                      padding: EdgeInsets.only(left: 20),
+                      child: _buildColumnBottomText(
+                        Strings.why_we,
+                        Strings.why_we_offer,
+                        isHoveredTextButtonButFirst,
+                      ),
+                    ),
                     SizedBox(height: 20),
-                    _buildColumnBottomText(
+                    Padding(
+                      padding: EdgeInsets.only(left: 20),
+                      child: _buildColumnBottomText(
                         Strings.who_give_work,
                         Strings.who_give_work_list,
-                        isHoveredTextButtonButSecond),
+                        isHoveredTextButtonButSecond,
+                      ),
+                    ),
                     SizedBox(height: 20),
-                    _buildColumnBottomText(Strings.who_worker,
-                        Strings.who_worker_list, isHoveredTextButtonButThird),
+                    Padding(
+                      padding: EdgeInsets.only(left: 20),
+                      child: _buildColumnBottomText(
+                        Strings.who_worker,
+                        Strings.who_worker_list,
+                        isHoveredTextButtonButThird,
+                      ),
+                    ),
                     SizedBox(height: 20),
                   ],
                 ),
@@ -943,8 +1146,11 @@ class _HomePage extends State<HomePage> {
   Widget _buildColumnBottomText(
       String text, List<String> listButton, List<bool> isHoveredList) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
+      crossAxisAlignment: ResponsiveWidget.isSmallScreen(context)
+          ? CrossAxisAlignment.center
+          : CrossAxisAlignment.stretch,
       children: [
+        SizedBox(height: 15),
         Text(
           text,
           style: TextStyles.menu_item.copyWith(
@@ -955,12 +1161,16 @@ class _HomePage extends State<HomePage> {
         _buildUnderline(),
         SizedBox(height: 15),
         _buildTextButtonsWithArrow(
-          listButton,
-          isHoveredList,
-          Colors.white,
-          Colors.deepOrange,
-          10,
-        ),
+            listButton,
+            isHoveredList,
+            Colors.white,
+            Colors.deepOrange,
+            10,
+            ResponsiveWidget.isSmallScreen(context)
+                ? MainAxisAlignment.center
+                : MainAxisAlignment.start,
+            13,
+            15),
       ],
     );
   }
@@ -974,7 +1184,7 @@ class _HomePage extends State<HomePage> {
           TextSpan(
             text: underlineOrange,
             style: TextStyles.menu_item.copyWith(
-              fontSize: ResponsiveWidget.isSmallScreen(context) ? 10 : 20.0,
+              fontSize: ResponsiveWidget.isSmallScreen(context) ? 5 : 20.0,
               color: Colors.deepOrange,
               decoration: TextDecoration.underline,
               decorationColor: Colors.deepOrange,
@@ -984,7 +1194,7 @@ class _HomePage extends State<HomePage> {
           TextSpan(
             text: underlineGrey,
             style: TextStyles.menu_item.copyWith(
-              fontSize: ResponsiveWidget.isSmallScreen(context) ? 10 : 20.0,
+              fontSize: ResponsiveWidget.isSmallScreen(context) ? 5 : 20.0,
               color: Colors.grey,
               decoration: TextDecoration.underline,
               decorationColor: Colors.grey,
