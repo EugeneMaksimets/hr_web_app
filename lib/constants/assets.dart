@@ -8,6 +8,14 @@ class Assets {
   // button
   static const String background_1 = 'background_button/background_button_';
 
+  //background
+  static const String background_home_img = 'images/home/businessman_background_1_main.jpg';
+  static const String background_home_img_2 = 'images/home/business_background_home_page_2.jpg';
+  static const String img_problem = 'images/home/problem.jpg';
+
+  // png
+  static const String outline_png = 'assets/images/png/landscape_outline_icon.png';
+
   // social icons
   static const String dribble = 'assets/icons/ic_dribbble.png';
   static const String evernote = 'assets/icons/ic_evernote.png';
