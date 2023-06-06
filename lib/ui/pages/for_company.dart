@@ -6,6 +6,7 @@ import 'package:hr_test/constants/text_styles.dart';
 import 'package:hr_test/service/language_service.dart';
 import 'package:hr_test/ui/company.dart';
 import 'package:hr_test/ui/contact.dart';
+import 'package:hr_test/ui/pages/for_employee.dart';
 import 'package:hr_test/ui/privacy.dart';
 import 'package:hr_test/utils/screen/screen_utils.dart';
 import 'package:hr_test/widgets/responsive_widget.dart';
@@ -106,7 +107,9 @@ class _ForCompanyPage extends State<ForCompanyPage> {
       MaterialButton(
         child: Text(
           Strings.menu_home,
-          style: TextStyles.menu_item,
+          style: TextStyles.menu_item.copyWith(
+            color: Colors.black,
+          ),
         ),
         onPressed: () {
           Navigator.push(
@@ -132,19 +135,23 @@ class _ForCompanyPage extends State<ForCompanyPage> {
       MaterialButton(
         child: Text(
           Strings.menu_for_hr,
-          style: TextStyles.menu_item,
+          style: TextStyles.menu_item.copyWith(
+            color: Colors.black,
+          ),
         ),
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => HrPage(context)),
+            MaterialPageRoute(builder: (context) => ForEmployee(context)),
           );
         },
       ),
       MaterialButton(
         child: Text(
           Strings.menu_privacy,
-          style: TextStyles.menu_item,
+          style: TextStyles.menu_item.copyWith(
+            color: Colors.black,
+          ),
         ),
         onPressed: () {
           Navigator.push(
@@ -156,7 +163,9 @@ class _ForCompanyPage extends State<ForCompanyPage> {
       MaterialButton(
         child: Text(
           Strings.menu_contact,
-          style: TextStyles.menu_item,
+          style: TextStyles.menu_item.copyWith(
+            color: Colors.black,
+          ),
         ),
         onPressed: () {
           Navigator.push(
@@ -204,7 +213,6 @@ class _ForCompanyPage extends State<ForCompanyPage> {
     );
   } //Screen Methods:-------------------------------------------------------------
 
-
   Widget _buildTextHead(BuildContext context) {
     return Container(
       height: 200,
@@ -220,7 +228,7 @@ class _ForCompanyPage extends State<ForCompanyPage> {
           text: TextSpan(
             children: <TextSpan>[
               TextSpan(
-                text: 'УСЛУГИ',
+                text: Strings.offer_our_title,
                 style: TextStyles.heading.copyWith(
                   fontFamily: Fonts.nexa_light,
                   fontSize: ResponsiveWidget.isSmallScreen(context) ? 36 : 45.0,
@@ -228,7 +236,7 @@ class _ForCompanyPage extends State<ForCompanyPage> {
                 ),
               ),
               TextSpan(
-                text: ' КАДРОВОГО АГЕНТСТВА',
+                text: Strings.employee_agency_title,
                 style: TextStyles.heading.copyWith(
                   color: Colors.deepOrange,
                   fontSize: ResponsiveWidget.isSmallScreen(context) ? 36 : 45.0,
