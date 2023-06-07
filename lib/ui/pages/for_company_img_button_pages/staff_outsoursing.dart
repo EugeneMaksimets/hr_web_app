@@ -13,16 +13,16 @@ import 'package:hr_test/utils/screen/screen_utils.dart';
 import 'package:hr_test/widgets/responsive_widget.dart';
 import 'dart:html' as html;
 
-class MassRecruitmentPage extends StatefulWidget {
+class StaffOutsourcingPage extends StatefulWidget {
   final BuildContext context;
 
-  MassRecruitmentPage(this.context);
+  StaffOutsourcingPage(this.context);
 
   @override
-  _MassRecruitmentPage createState() => _MassRecruitmentPage();
+  _StaffOutsourcingPage createState() => _StaffOutsourcingPage();
 }
 
-class _MassRecruitmentPage extends State<MassRecruitmentPage> {
+class _StaffOutsourcingPage extends State<StaffOutsourcingPage> {
   var isHoveredTextButtonButFirst =
       List<bool>.filled(Strings.why_we_offer.length, false);
   var isHoveredTextButtonButSecond =
@@ -261,35 +261,37 @@ class _MassRecruitmentPage extends State<MassRecruitmentPage> {
           ),
           SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 24 : 34),
           Text(
-            Strings.mass_recruitment,
+            Strings.staff_out_text,
             style: TextStyles.heading.copyWith(
               fontSize: ResponsiveWidget.isSmallScreen(context) ? 26 : 36.0,
               color: Colors.white,
             ),
           ),
-          _buildUnderlineOrange(Strings.mass_recruitment.length),
+          _buildUnderlineOrange(Strings.staff_out_text.length),
           SizedBox(height: 24),
           !ResponsiveWidget.isSmallScreen(context)
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     _buildFormCallMe(400, 500, _formKey),
-                    SizedBox(width: 50),
+                    SizedBox(width: 100),
                     Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Text(
-                            Strings.with_us,
+                            Strings.why_this_method,
                             style: TextStyles.heading.copyWith(
-                              fontSize: ResponsiveWidget.isSmallScreen(context)
-                                  ? 26
-                                  : 36.0,
+                              fontSize: 36.0,
                               color: Colors.white,
                             ),
                           ),
-                          _buildUnderlineOrange(Strings.with_us.length),
-                          _buildColumnTextFromList(Strings.with_us_more),
+                          _buildUnderlineOrange(Strings.why_this_method.length),
+                          Container(
+                            width: 600,
+                            child: _buildColumnTextFromList(
+                                Strings.staff_out_more),
+                          ),
                         ]),
                   ],
                 )
@@ -298,87 +300,20 @@ class _MassRecruitmentPage extends State<MassRecruitmentPage> {
                     _buildFormCallMe(350, 500, _formKey),
                     SizedBox(height: 24),
                     Text(
-                      Strings.with_us,
+                      Strings.why_this_method,
                       style: TextStyles.heading.copyWith(
-                        fontSize:
-                            ResponsiveWidget.isSmallScreen(context) ? 26 : 36.0,
+                        fontSize: 26,
                         color: Colors.white,
                       ),
                     ),
-                    _buildUnderlineOrange(Strings.with_us.length),
-                    _buildColumnTextFromList(Strings.with_us_more),
+                    _buildUnderlineOrange(Strings.why_this_method.length),
+                    Padding(
+                      padding: EdgeInsets.only(left: 20.0),
+                      child: _buildColumnTextFromList(Strings.staff_out_more),
+                    ),
                   ],
                 )
         ],
-      ),
-    );
-  }
-
-  Widget _buildImageOutlineText(String text) {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        Image.network(
-          Assets.outline_png,
-          height: ScreenUtil.getInstance()
-              .setWidth(ResponsiveWidget.isSmallScreen(context) ? 300 : 150),
-        ),
-        Positioned.fill(
-          child: Align(
-            alignment: Alignment.center,
-            child: Text(
-              text,
-              style: TextStyles.menu_item.copyWith(
-                color: Colors.white,
-                fontSize: ResponsiveWidget.isSmallScreen(context) ? 10 : 15,
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildSimpleButton(bool isHoveredButton, String text) {
-    return ElevatedButton(
-      style: ButtonStyle(
-        side: MaterialStateProperty.all(
-          BorderSide(color: Colors.deepOrange, width: 2.0),
-        ),
-        minimumSize: MaterialStateProperty.all(
-            ResponsiveWidget.isSmallScreen(context)
-                ? Size(140, 50)
-                : Size(200, 75)),
-        padding: MaterialStateProperty.all(EdgeInsets.all(10)),
-        backgroundColor: isHoveredButton
-            ? MaterialStateProperty.all<Color>(Color(0xFFFA4812))
-            : MaterialStateProperty.all<Color>(Colors.deepOrange),
-      ),
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => ContactPage(context)), //TODO VALIDATOR
-        );
-      },
-      child: MouseRegion(
-        onHover: (event) {
-          setState(() {
-            isHoveredButton = true;
-          });
-        },
-        onExit: (event) {
-          setState(() {
-            isHoveredButton = false;
-          });
-        },
-        child: Text(
-          text,
-          style: TextStyles.menu_item.copyWith(
-            fontSize: ResponsiveWidget.isSmallScreen(context) ? 10 : 20.0,
-            color: Colors.white,
-          ),
-        ),
       ),
     );
   }
@@ -443,15 +378,6 @@ class _MassRecruitmentPage extends State<MassRecruitmentPage> {
     );
   }
 
-  // Body Methods:--------------------------------------------------------------
-
-  // Widget _buildIllustration() {
-  //   return Image.network(
-  //     Assets.programmer3,
-  //     height: ScreenUtil.getInstance().setWidth(345), //480.0
-  //   );
-  // }
-
   Widget _buildContent(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -468,7 +394,7 @@ class _MassRecruitmentPage extends State<MassRecruitmentPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[],
                     ),
-                    _buildWhyHrLibrary(),
+                    _buildWhyStaffOut(),
                     SizedBox(height: 24.0),
                     _buildWhyUs(),
                     SizedBox(height: 24.0),
@@ -481,7 +407,7 @@ class _MassRecruitmentPage extends State<MassRecruitmentPage> {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    _buildWhyHrLibrary(),
+                    _buildWhyStaffOut(),
                     SizedBox(height: 24),
                     _buildWhyUs(),
                     SizedBox(height: 24),
@@ -498,7 +424,7 @@ class _MassRecruitmentPage extends State<MassRecruitmentPage> {
     );
   }
 
-  Widget _buildWhyHrLibrary() {
+  Widget _buildWhyStaffOut() {
     return Container(
       // height: 200,
       decoration: BoxDecoration(
@@ -515,20 +441,17 @@ class _MassRecruitmentPage extends State<MassRecruitmentPage> {
                   child: Column(
                     children: [
                       Text(
-                        Strings.why_hr_lib,
+                        Strings.staff_out_why,
                         style: TextStyles.logo.copyWith(
-                          fontSize: ResponsiveWidget.isSmallScreen(context)
-                              ? 20
-                              : 30.0,
+                          fontSize: 30.0,
                           color: Colors.white,
                         ),
                       ),
-                      _buildUnderlineOrange(
-                          Strings.offer_home_page_text.length),
+                      _buildUnderlineOrange(Strings.staff_out_why.length),
                       Padding(
                         padding: EdgeInsets.only(left: 100.0, top: 20.0),
-                        child:
-                            _buildColumnTextFromList(Strings.why_hr_lib_more),
+                        child: _buildColumnTextFromList(
+                            Strings.staff_out_why_more),
                       ),
                     ],
                   ),
@@ -537,22 +460,19 @@ class _MassRecruitmentPage extends State<MassRecruitmentPage> {
                   child: Column(
                     children: [
                       Text(
-                        Strings.mass_recruitment_text,
+                        Strings.staff_out_is,
                         style: TextStyles.logo.copyWith(
-                          fontSize: ResponsiveWidget.isSmallScreen(context)
-                              ? 15
-                              : 20.0,
+                          fontSize: 20,
                           color: Colors.white,
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 20.0, right: 30.0),
+                        padding:
+                            EdgeInsets.only(top: 20.0, right: 30.0, left: 30),
                         child: Text(
-                          Strings.mass_recruitment_text_more,
+                          Strings.staff_out_is_more,
                           style: TextStyles.menu_item.copyWith(
-                            fontSize: ResponsiveWidget.isSmallScreen(context)
-                                ? 13
-                                : 15.0,
+                            fontSize: 15,
                             color: Colors.white,
                           ),
                         ),
@@ -567,34 +487,31 @@ class _MassRecruitmentPage extends State<MassRecruitmentPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  Strings.why_hr_lib,
+                  Strings.staff_out_why,
                   style: TextStyles.logo.copyWith(
-                    fontSize:
-                        ResponsiveWidget.isSmallScreen(context) ? 20 : 30.0,
+                    fontSize: 20,
                     color: Colors.white,
                   ),
                 ),
-                _buildUnderlineOrange(Strings.offer_home_page_text.length),
+                _buildUnderlineOrange(Strings.staff_out_why.length),
                 Padding(
                   padding: EdgeInsets.only(left: 50.0, top: 20.0, right: 50.0),
-                  child: _buildColumnTextFromList(Strings.why_hr_lib_more),
+                  child: _buildColumnTextFromList(Strings.staff_out_why_more),
                 ),
                 SizedBox(height: 24),
                 Text(
-                  Strings.mass_recruitment_text,
+                  Strings.staff_out_is,
                   style: TextStyles.logo.copyWith(
-                    fontSize:
-                        ResponsiveWidget.isSmallScreen(context) ? 15 : 20.0,
+                    fontSize: 15,
                     color: Colors.white,
                   ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 5.0, right: 50.0, left: 50.0),
                   child: Text(
-                    Strings.mass_recruitment_text_more,
+                    Strings.staff_out_is_more,
                     style: TextStyles.menu_item.copyWith(
-                      fontSize:
-                          ResponsiveWidget.isSmallScreen(context) ? 13 : 15.0,
+                      fontSize: 13,
                       color: Colors.white,
                     ),
                   ),
@@ -687,18 +604,18 @@ class _MassRecruitmentPage extends State<MassRecruitmentPage> {
                   child: Column(
                     children: [
                       Text(
-                        Strings.mass_rec_price_validate,
+                        Strings.staff_out_what,
                         style: TextStyles.logo.copyWith(
-                          fontSize: ResponsiveWidget.isSmallScreen(context)
-                              ? 20
-                              : 30.0,
+                          fontSize: 30.0,
                           color: Colors.white,
                         ),
                       ),
-                      _buildUnderlineOrange(
-                          Strings.free_monitoring_learn_head.length),
-                      _buildColumnTextFromList(
-                          Strings.mass_rec_price_validate_more),
+                      _buildUnderlineOrange(Strings.staff_out_what.length),
+                      Padding(
+                        padding: EdgeInsets.only(right: 50.0),
+                        child: _buildColumnTextFromList(
+                            Strings.staff_out_what_more),
+                      ),
                     ],
                   ),
                 ),
@@ -707,16 +624,17 @@ class _MassRecruitmentPage extends State<MassRecruitmentPage> {
           : Column(
               children: [
                 Text(
-                  Strings.mass_rec_price_validate,
+                  Strings.staff_out_what,
                   style: TextStyles.logo.copyWith(
-                    fontSize:
-                        ResponsiveWidget.isSmallScreen(context) ? 20 : 30.0,
+                    fontSize: 20,
                     color: Colors.white,
                   ),
                 ),
-                _buildUnderlineOrange(
-                    Strings.free_monitoring_learn_head.length),
-                _buildColumnTextFromList(Strings.mass_rec_price_validate_more),
+                _buildUnderlineOrange(Strings.staff_out_what.length),
+                Padding(
+                  padding: EdgeInsets.only(right: 20.0, left: 20),
+                  child: _buildColumnTextFromList(Strings.staff_out_what_more),
+                ),
                 Padding(
                   padding: EdgeInsets.only(top: 20.0),
                   child: _buildFormCallMe(350, 400, _formKey_2),

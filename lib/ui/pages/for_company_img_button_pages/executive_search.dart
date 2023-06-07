@@ -282,14 +282,11 @@ class _ExecutiveSearchPage extends State<ExecutiveSearchPage> {
                           Text(
                             Strings.why_this_method,
                             style: TextStyles.heading.copyWith(
-                              fontSize: ResponsiveWidget.isSmallScreen(context)
-                                  ? 26
-                                  : 36.0,
+                              fontSize: 36.0,
                               color: Colors.white,
                             ),
                           ),
-                          _buildUnderlineOrange(
-                              Strings.why_this_method.length),
+                          _buildUnderlineOrange(Strings.why_this_method.length),
                           _buildColumnTextFromList(
                               Strings.why_executive_search_more),
                         ]),
@@ -302,8 +299,7 @@ class _ExecutiveSearchPage extends State<ExecutiveSearchPage> {
                     Text(
                       Strings.why_this_method,
                       style: TextStyles.heading.copyWith(
-                        fontSize:
-                            ResponsiveWidget.isSmallScreen(context) ? 26 : 36.0,
+                        fontSize: 26,
                         color: Colors.white,
                       ),
                     ),
@@ -441,9 +437,7 @@ class _ExecutiveSearchPage extends State<ExecutiveSearchPage> {
                       Text(
                         Strings.executive_search_complex,
                         style: TextStyles.logo.copyWith(
-                          fontSize: ResponsiveWidget.isSmallScreen(context)
-                              ? 20
-                              : 30.0,
+                          fontSize: 30,
                           color: Colors.white,
                         ),
                       ),
@@ -463,9 +457,7 @@ class _ExecutiveSearchPage extends State<ExecutiveSearchPage> {
                       Text(
                         Strings.executive_search_what,
                         style: TextStyles.logo.copyWith(
-                          fontSize: ResponsiveWidget.isSmallScreen(context)
-                              ? 15
-                              : 20.0,
+                          fontSize: 20,
                           color: Colors.white,
                         ),
                       ),
@@ -475,9 +467,7 @@ class _ExecutiveSearchPage extends State<ExecutiveSearchPage> {
                         child: Text(
                           Strings.executive_search_what_more,
                           style: TextStyles.menu_item.copyWith(
-                            fontSize: ResponsiveWidget.isSmallScreen(context)
-                                ? 13
-                                : 15.0,
+                            fontSize: 15,
                             color: Colors.white,
                           ),
                         ),
@@ -494,22 +484,21 @@ class _ExecutiveSearchPage extends State<ExecutiveSearchPage> {
                 Text(
                   Strings.executive_search_complex,
                   style: TextStyles.logo.copyWith(
-                    fontSize:
-                        ResponsiveWidget.isSmallScreen(context) ? 20 : 30.0,
+                    fontSize: 20,
                     color: Colors.white,
                   ),
                 ),
                 _buildUnderlineOrange(Strings.executive_search_complex.length),
                 Padding(
                   padding: EdgeInsets.only(left: 50.0, top: 20.0, right: 50.0),
-                  child: _buildColumnTextFromList(Strings.executive_search_complex_more),
+                  child: _buildColumnTextFromList(
+                      Strings.executive_search_complex_more),
                 ),
                 SizedBox(height: 24),
                 Text(
                   Strings.executive_search_what,
                   style: TextStyles.logo.copyWith(
-                    fontSize:
-                        ResponsiveWidget.isSmallScreen(context) ? 15 : 20.0,
+                    fontSize: 15,
                     color: Colors.white,
                   ),
                 ),
@@ -518,8 +507,7 @@ class _ExecutiveSearchPage extends State<ExecutiveSearchPage> {
                   child: Text(
                     Strings.executive_search_what_more,
                     style: TextStyles.menu_item.copyWith(
-                      fontSize:
-                          ResponsiveWidget.isSmallScreen(context) ? 13 : 15.0,
+                      fontSize: 13,
                       color: Colors.white,
                     ),
                   ),
@@ -614,15 +602,14 @@ class _ExecutiveSearchPage extends State<ExecutiveSearchPage> {
                       Text(
                         Strings.executive_search_price,
                         style: TextStyles.logo.copyWith(
-                          fontSize: ResponsiveWidget.isSmallScreen(context)
-                              ? 20
-                              : 30.0,
+                          fontSize: 30,
                           color: Colors.white,
                         ),
                       ),
                       _buildUnderlineOrange(
                           Strings.executive_search_price.length),
-                      _buildColumnTextFromList(Strings.executive_search_price_more),
+                      _buildColumnTextFromList(
+                          Strings.executive_search_price_more),
                     ],
                   ),
                 ),
@@ -633,13 +620,11 @@ class _ExecutiveSearchPage extends State<ExecutiveSearchPage> {
                 Text(
                   Strings.executive_search_price,
                   style: TextStyles.logo.copyWith(
-                    fontSize:
-                        ResponsiveWidget.isSmallScreen(context) ? 20 : 30.0,
+                    fontSize: 20,
                     color: Colors.white,
                   ),
                 ),
-                _buildUnderlineOrange(
-                    Strings.executive_search_price.length),
+                _buildUnderlineOrange(Strings.executive_search_price.length),
                 _buildColumnTextFromList(Strings.executive_search_price_more),
                 Padding(
                   padding: EdgeInsets.only(top: 20.0),
@@ -899,8 +884,7 @@ class _ExecutiveSearchPage extends State<ExecutiveSearchPage> {
                   Text(
                     Strings.contact_us_offer,
                     style: TextStyles.menu_item.copyWith(
-                      fontSize:
-                          ResponsiveWidget.isSmallScreen(context) ? 11 : 20.0,
+                      fontSize: 20,
                       color: Colors.black,
                     ),
                   ),
@@ -910,10 +894,7 @@ class _ExecutiveSearchPage extends State<ExecutiveSearchPage> {
                       side: MaterialStateProperty.all(
                         BorderSide(color: Colors.deepOrange, width: 2.0),
                       ),
-                      minimumSize: MaterialStateProperty.all(
-                          ResponsiveWidget.isSmallScreen(context)
-                              ? Size(140, 50)
-                              : Size(200, 50)),
+                      minimumSize: MaterialStateProperty.all(Size(200, 50)),
                       padding: MaterialStateProperty.all(EdgeInsets.all(10)),
                       backgroundColor: isHoveredCall
                           ? MaterialStateProperty.all<Color>(Color(0xFFFA4812))
@@ -940,9 +921,7 @@ class _ExecutiveSearchPage extends State<ExecutiveSearchPage> {
                       child: Text(
                         Strings.call,
                         style: TextStyles.menu_item.copyWith(
-                          fontSize: ResponsiveWidget.isSmallScreen(context)
-                              ? 10
-                              : 20.0,
+                          fontSize: 20.0,
                           color: Colors.white,
                         ),
                       ),
@@ -960,8 +939,7 @@ class _ExecutiveSearchPage extends State<ExecutiveSearchPage> {
                   Text(
                     Strings.contact_us_offer,
                     style: TextStyles.menu_item.copyWith(
-                      fontSize:
-                          ResponsiveWidget.isSmallScreen(context) ? 11 : 20.0,
+                      fontSize: 11,
                       color: Colors.black,
                     ),
                   ),
@@ -975,10 +953,7 @@ class _ExecutiveSearchPage extends State<ExecutiveSearchPage> {
                       side: MaterialStateProperty.all(
                         BorderSide(color: Colors.deepOrange, width: 2.0),
                       ),
-                      minimumSize: MaterialStateProperty.all(
-                          ResponsiveWidget.isSmallScreen(context)
-                              ? Size(140, 50)
-                              : Size(200, 50)),
+                      minimumSize: MaterialStateProperty.all(Size(140, 50)),
                       padding: MaterialStateProperty.all(EdgeInsets.all(10)),
                       backgroundColor: isHoveredCall
                           ? MaterialStateProperty.all<Color>(Color(0xFFFA4812))
@@ -1005,9 +980,7 @@ class _ExecutiveSearchPage extends State<ExecutiveSearchPage> {
                       child: Text(
                         Strings.call,
                         style: TextStyles.menu_item.copyWith(
-                          fontSize: ResponsiveWidget.isSmallScreen(context)
-                              ? 10
-                              : 20.0,
+                          fontSize: 10,
                           color: Colors.white,
                         ),
                       ),
