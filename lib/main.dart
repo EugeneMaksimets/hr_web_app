@@ -4,6 +4,7 @@ import 'package:hr_test/ui/home.dart';
 import 'package:hr_test/utils/screen/screen_utils.dart';
 
 import 'service/language_service.dart';
+import 'ui/pages/for_company_img_button_pages/mass_recruitment.dart';
 
 void main() {
   runApp(MyApp());
@@ -40,6 +41,6 @@ class _MyAppChildState extends State<MyAppChild> {
     // instantiating ScreenUtil singleton instance, as this will be used throughout
     // the app to get screen size and other stuff
     ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
-    return HomePage(context);
+    return MassRecruitmentPage(context); //todo return home page
   }
 }

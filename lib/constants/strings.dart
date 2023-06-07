@@ -5,15 +5,50 @@ class Strings {
 
   static String employee_agency = 'КАДРОВОЕ АГЕНТСТВО';
   static String send_message_form = 'Отправить';
+  static String send_message_form_call = 'Заказать звонок';
   static final String HR_AGENCY_WITH_ENTER = ' \n HR-LIBRARY';
   static final String HR_AGENCY = ' HR-LIBRARY';
   static String recruiting_for_best = 'Рекрутинговая компания для лучших';
+
+  //Strings mass recruitment page
+
+  static String mass_recruitment = 'МАССОВЫЙ ПОДБОР ПЕРСОНАЛА';
+  static String with_us = 'С нами вы сможете';
+  static List<String> with_us_more = [
+    'Быстро и легко закрывать однотипные вакансии',
+    'Планировать бюджет на длительный период',
+    'Наслаждаться оптимальной ценой на массовый подбор персонала'
+  ];
+  static String how_mach = 'Узнайте стоимость';
+  static String why_hr_lib = 'Почему HR LIBRARY?';
+  static List<String> why_hr_lib_more = [
+    'Наши технологии массового подбора персонала проверены на сотнях проектов',
+    'Всегда большое число подходящих кандидатур',
+    'Гибкое управление процессом поиска сотрудников',
+    'Беспрерывный и объемный поток соискателей – снимается проблема «текучки»',
+    'Оперативная коррекция вакансий в зависимости от потребностей',
+    'Экономия времени благодаря передаче задания профессионалам'
+  ];
+  static String mass_recruitment_text = 'МАССОВЫЙ ПОДБОР ЛИНЕЙНОГО ПЕРСОНАЛА –';
+  static String mass_recruitment_text_more = 'это отбор сотрудников среднего звена и рабочих специальностей с формальными требованиями'
+      ' к соискателям. Это крупный проект, имеющий несколько этапов: предварительная подготовка, '
+      'первичный отбор и сопровождение штатного персонала.'
+      'Подобные мероприятия требуют больших временных и кадровых затрат. '
+      'Рекрутинговое агентство HR LIBRARY знает все о том, что такое массовый подбор персонала. '
+      'Мы найдем и отберем сотрудников по формальным требованиям с целью закрытия большого числа однотипных линейных вакансий '
+      'в короткое время.';
+
+  static String price_validate = 'Цена массового подбора персонала зависит от:';
+  static List<String> price_validate_more = [
+    'Продолжительности кампании',
+    'Количества вакансий',
+    'Количества требований к соискателям'
+  ];
 
   //Strings home page
 
   static String offer_our_title = 'УСЛУГИ';
   static String employee_agency_title = ' КАДРОВОГО АГЕНТСТВА';
-
 
   static String opinion_personal = 'Опыт подбора\n   персонала';
   static String success_work = 'Успешные кейсы';
@@ -96,8 +131,8 @@ class Strings {
   static String set_cv_to_database = 'в нашу базу данных';
   static String no_file_selected = 'No file selected';
   static String select_file = 'Selected File';
-  static String find_work ='ПОИСК РАБОТЫ:';
-  static String send_cv_to_hr_library ='Отправьте резюме в HR-Library';
+  static String find_work = 'ПОИСК РАБОТЫ:';
+  static String send_cv_to_hr_library = 'Отправьте резюме в HR-Library';
 
   static List<String> about_cv = [
     'Наше рекрутинговое агентство не гарантирует вам трудоустройства, но мы добавим ваше резюме в свою базу.',

@@ -5,6 +5,7 @@ import 'package:hr_test/constants/strings.dart';
 import 'package:hr_test/constants/text_styles.dart';
 import 'package:hr_test/service/language_service.dart';
 import 'package:hr_test/ui/contact.dart';
+import 'package:hr_test/ui/home.dart';
 import 'package:hr_test/ui/pages/for_company.dart';
 import 'package:hr_test/ui/pages/for_employee.dart';
 import 'package:hr_test/ui/privacy.dart';
@@ -12,16 +13,16 @@ import 'package:hr_test/utils/screen/screen_utils.dart';
 import 'package:hr_test/widgets/responsive_widget.dart';
 import 'dart:html' as html;
 
-class HomePage extends StatefulWidget {
+class MassRecruitmentPage extends StatefulWidget {
   final BuildContext context;
 
-  HomePage(this.context);
+  MassRecruitmentPage(this.context);
 
   @override
-  _HomePage createState() => _HomePage();
+  _MassRecruitmentPage createState() => _MassRecruitmentPage();
 }
 
-class _HomePage extends State<HomePage> {
+class _MassRecruitmentPage extends State<MassRecruitmentPage> {
   var isHoveredTextButtonButFirst =
       List<bool>.filled(Strings.why_we_offer.length, false);
   var isHoveredTextButtonButSecond =
@@ -29,8 +30,6 @@ class _HomePage extends State<HomePage> {
   var isHoveredTextButtonButThird =
       List<bool>.filled(Strings.why_we_offer.length, false);
   var isHoveredCall = false;
-  var isHoveredForCompany = false;
-  var isHoveredForEmployee = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _formKey_2 = GlobalKey<FormState>();
 
@@ -103,7 +102,7 @@ class _HomePage extends State<HomePage> {
         child: Text(
           Strings.menu_home,
           style: TextStyles.menu_item.copyWith(
-            color: Colors.deepOrange,
+            color: Colors.black,
           ),
         ),
         onPressed: () {
@@ -215,7 +214,7 @@ class _HomePage extends State<HomePage> {
       // height: 200,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(Assets.background_home_img),
+          image: AssetImage(Assets.background_mass_page_img),
           fit: BoxFit.cover,
         ),
       ),
@@ -260,24 +259,56 @@ class _HomePage extends State<HomePage> {
               color: Colors.white,
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildImageOutlineText(Strings.opinion_personal),
-              SizedBox(width: 24),
-              _buildImageOutlineText(Strings.success_work),
-              SizedBox(width: 24),
-              _buildImageOutlineText(Strings.personal_save),
-            ],
+          SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 24 : 34),
+          Text(
+            Strings.mass_recruitment,
+            style: TextStyles.heading.copyWith(
+              fontSize: ResponsiveWidget.isSmallScreen(context) ? 26 : 36.0,
+              color: Colors.white,
+            ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildSimpleButton(isHoveredForCompany, Strings.button_for_company_home),
-              SizedBox(width: 24),
-              _buildSimpleButton(isHoveredForEmployee, Strings.button_for_hr_home),
-            ],
-          ),
+          _buildUnderlineOrange(Strings.mass_recruitment.length),
+          SizedBox(height: 24),
+          !ResponsiveWidget.isSmallScreen(context)
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _buildFormCallMe(400, 500, _formKey),
+                    SizedBox(width: 50),
+                    Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Text(
+                            Strings.with_us,
+                            style: TextStyles.heading.copyWith(
+                              fontSize: ResponsiveWidget.isSmallScreen(context)
+                                  ? 26
+                                  : 36.0,
+                              color: Colors.white,
+                            ),
+                          ),
+                          _buildUnderlineOrange(Strings.with_us.length),
+                          _buildColumnTextFromList(Strings.with_us_more),
+                        ]),
+                  ],
+                )
+              : Column(
+                  children: [
+                    _buildFormCallMe(350, 500, _formKey),
+                    SizedBox(height: 24),
+                    Text(
+                      Strings.with_us,
+                      style: TextStyles.heading.copyWith(
+                        fontSize:
+                            ResponsiveWidget.isSmallScreen(context) ? 26 : 36.0,
+                        color: Colors.white,
+                      ),
+                    ),
+                    _buildUnderlineOrange(Strings.with_us.length),
+                    _buildColumnTextFromList(Strings.with_us_more),
+                  ],
+                )
         ],
       ),
     );
@@ -437,7 +468,7 @@ class _HomePage extends State<HomePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[],
                     ),
-                    _buildOfferWithFrom(),
+                    _buildWhyHrLibrary(),
                     SizedBox(height: 24.0),
                     _buildWhyUs(),
                     SizedBox(height: 24.0),
@@ -450,7 +481,7 @@ class _HomePage extends State<HomePage> {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    _buildOfferWithFrom(),
+                    _buildWhyHrLibrary(),
                     SizedBox(height: 24),
                     _buildWhyUs(),
                     SizedBox(height: 24),
@@ -467,7 +498,7 @@ class _HomePage extends State<HomePage> {
     );
   }
 
-  Widget _buildOfferWithFrom() {
+  Widget _buildWhyHrLibrary() {
     return Container(
       // height: 200,
       decoration: BoxDecoration(
@@ -484,7 +515,7 @@ class _HomePage extends State<HomePage> {
                   child: Column(
                     children: [
                       Text(
-                        Strings.offer_home_page_text,
+                        Strings.why_hr_lib,
                         style: TextStyles.logo.copyWith(
                           fontSize: ResponsiveWidget.isSmallScreen(context)
                               ? 20
@@ -496,28 +527,47 @@ class _HomePage extends State<HomePage> {
                           Strings.offer_home_page_text.length),
                       Padding(
                         padding: EdgeInsets.only(left: 100.0, top: 20.0),
+                        child:
+                            _buildColumnTextFromList(Strings.why_hr_lib_more),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Column(
+                    children: [
+                      Text(
+                        Strings.mass_recruitment_text,
+                        style: TextStyles.logo.copyWith(
+                          fontSize: ResponsiveWidget.isSmallScreen(context)
+                              ? 15
+                              : 20.0,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 20.0, right: 30.0),
                         child: Text(
-                          Strings.offer_home_page_more_text,
+                          Strings.mass_recruitment_text_more,
                           style: TextStyles.menu_item.copyWith(
-                            color: Colors.white,
                             fontSize: ResponsiveWidget.isSmallScreen(context)
-                                ? 10
+                                ? 13
                                 : 15.0,
+                            color: Colors.white,
                           ),
                         ),
                       ),
                     ],
                   ),
                 ),
-                Expanded(
-                  child: _buildFormCallMe(500, 400, _formKey),
-                ),
               ],
             )
           : Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  Strings.offer_home_page_text,
+                  Strings.why_hr_lib,
                   style: TextStyles.logo.copyWith(
                     fontSize:
                         ResponsiveWidget.isSmallScreen(context) ? 20 : 30.0,
@@ -526,17 +576,29 @@ class _HomePage extends State<HomePage> {
                 ),
                 _buildUnderlineOrange(Strings.offer_home_page_text.length),
                 Padding(
-                  padding: EdgeInsets.only(left: 20.0, top: 20.0, bottom: 20),
+                  padding: EdgeInsets.only(left: 50.0, top: 20.0, right: 50.0),
+                  child: _buildColumnTextFromList(Strings.why_hr_lib_more),
+                ),
+                SizedBox(height: 24),
+                Text(
+                  Strings.mass_recruitment_text,
+                  style: TextStyles.logo.copyWith(
+                    fontSize:
+                        ResponsiveWidget.isSmallScreen(context) ? 15 : 20.0,
+                    color: Colors.white,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 5.0, right: 50.0, left: 50.0),
                   child: Text(
-                    Strings.offer_home_page_more_text,
+                    Strings.mass_recruitment_text_more,
                     style: TextStyles.menu_item.copyWith(
-                      color: Colors.white,
                       fontSize:
-                          ResponsiveWidget.isSmallScreen(context) ? 10 : 15.0,
+                          ResponsiveWidget.isSmallScreen(context) ? 13 : 15.0,
+                      color: Colors.white,
                     ),
                   ),
                 ),
-                _buildFormCallMe(350, 400, _formKey),
               ],
             ),
     );
@@ -625,7 +687,7 @@ class _HomePage extends State<HomePage> {
                   child: Column(
                     children: [
                       Text(
-                        Strings.free_monitoring_learn_head,
+                        Strings.price_validate,
                         style: TextStyles.logo.copyWith(
                           fontSize: ResponsiveWidget.isSmallScreen(context)
                               ? 20
@@ -635,20 +697,8 @@ class _HomePage extends State<HomePage> {
                       ),
                       _buildUnderlineOrange(
                           Strings.free_monitoring_learn_head.length),
-                      Padding(
-                        padding: EdgeInsets.only(top: 20.0, right: 50.0),
-                        child: Text(
-                          Strings.free_monitoring_learn_more,
-                          style: TextStyles.menu_item.copyWith(
-                            color: Colors.white,
-                            fontSize: ResponsiveWidget.isSmallScreen(context)
-                                ? 20
-                                : 25.0,
-                          ),
-                        ),
-                      ),
                       _buildColumnTextFromList(
-                          Strings.free_monitoring_learn_more_list),
+                          Strings.price_validate_more),
                     ],
                   ),
                 ),
@@ -657,7 +707,7 @@ class _HomePage extends State<HomePage> {
           : Column(
               children: [
                 Text(
-                  Strings.free_monitoring_learn_head,
+                  Strings.price_validate,
                   style: TextStyles.logo.copyWith(
                     fontSize:
                         ResponsiveWidget.isSmallScreen(context) ? 20 : 30.0,
@@ -666,19 +716,8 @@ class _HomePage extends State<HomePage> {
                 ),
                 _buildUnderlineOrange(
                     Strings.free_monitoring_learn_head.length),
-                Padding(
-                  padding: EdgeInsets.only(top: 20.0, right: 50.0),
-                  child: Text(
-                    Strings.free_monitoring_learn_more,
-                    style: TextStyles.menu_item.copyWith(
-                      color: Colors.white,
-                      fontSize:
-                          ResponsiveWidget.isSmallScreen(context) ? 20 : 25.0,
-                    ),
-                  ),
-                ),
                 _buildColumnTextFromList(
-                    Strings.free_monitoring_learn_more_list),
+                    Strings.price_validate_more),
                 Padding(
                   padding: EdgeInsets.only(top: 20.0),
                   child: _buildFormCallMe(350, 400, _formKey_2),
@@ -757,17 +796,9 @@ class _HomePage extends State<HomePage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text(
-                        Strings.set_offer,
+                      Strings.how_mach,
                       style: TextStyles.logo
                           .copyWith(color: Colors.black, fontSize: 14.0),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: Text(
-                      Strings.set_offer_free_consultation,
-                      style: Theme.of(context).textTheme.caption,
-                      textAlign: TextAlign.center,
                     ),
                   ),
                   SizedBox(height: 16),
@@ -824,7 +855,8 @@ class _HomePage extends State<HomePage> {
                         ),
                       ),
                       onPressed: () {
-                        if (_formKey.currentState?.validate()) {
+                        if (keyForm.currentState?.validate()) {
+                          //TODO success message
                           Navigator.push(
                             context,
                             MaterialPageRoute(

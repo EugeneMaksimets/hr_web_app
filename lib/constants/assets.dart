@@ -11,7 +11,7 @@ class Assets {
   //background
   static const String background_home_img = 'images/home/businessman_background_1_main.jpg';
   static const String background_home_img_2 = 'images/home/business_background_home_page_2.jpg';
-  static const String img_problem = 'images/home/problem.jpg';
+  static const String background_mass_page_img = 'images/mass_page/background_mass_page.jpg';
 
   // png
   static const String outline_png = 'assets/images/png/landscape_outline_icon.png';
