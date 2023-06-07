@@ -214,7 +214,7 @@ class _ExecutiveSearchPage extends State<ExecutiveSearchPage> {
       // height: 200,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(Assets.background_mass_page_img),
+          image: AssetImage(Assets.background_back_page_img_meetup),
           fit: BoxFit.cover,
         ),
       ),

@@ -12,6 +12,10 @@ class Assets {
   static const String background_home_img = 'images/home/businessman_background_1_main.jpg';
   static const String background_home_img_2 = 'images/home/business_background_home_page_2.jpg';
   static const String background_mass_page_img = 'images/mass_page/background_mass_page.jpg';
+  static const String background_back_page_img_woman = 'images/background_img/business_woman_back_img.jpg';
+  static const String background_back_page_img_office = 'images/background_img/people_in_office_back_img.jpg';
+  static const String background_back_page_img_meetup = 'images/background_img/meetup_background_img.jpg';
+  static const String background_back_page_img_meetup_2 = 'images/background_img/meetup_background_img_2.jpg';
 
   // png
   static const String outline_png = 'assets/images/png/landscape_outline_icon.png';

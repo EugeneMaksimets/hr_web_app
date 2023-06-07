@@ -214,7 +214,7 @@ class _HeadHuntingPage extends State<HeadHuntingPage> {
       // height: 200,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(Assets.background_mass_page_img),
+          image: AssetImage(Assets.background_back_page_img_meetup_2),
           fit: BoxFit.cover,
         ),
       ),

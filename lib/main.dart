@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hr_test/ui/home.dart';
 import 'package:hr_test/ui/pages/for_company_img_button_pages/executive_search.dart';
 import 'package:hr_test/ui/pages/for_company_img_button_pages/head_hunting.dart';
+import 'package:hr_test/ui/pages/for_company_img_button_pages/recruitment.dart';
 import 'package:hr_test/ui/pages/for_company_img_button_pages/staff_outsoursing.dart';
 
 import 'package:hr_test/utils/screen/screen_utils.dart';
@@ -44,6 +45,6 @@ class _MyAppChildState extends State<MyAppChild> {
     // instantiating ScreenUtil singleton instance, as this will be used throughout
     // the app to get screen size and other stuff
     ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
-    return StaffOutsourcingPage(context); //todo return home page
+    return HomePage(context); //todo return home page
   }
 }
