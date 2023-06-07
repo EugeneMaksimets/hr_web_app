@@ -6,6 +6,11 @@ import 'package:hr_test/constants/text_styles.dart';
 import 'package:hr_test/service/language_service.dart';
 import 'package:hr_test/ui/company.dart';
 import 'package:hr_test/ui/contact.dart';
+import 'package:hr_test/ui/pages/for_company_img_button_pages/executive_search.dart';
+import 'package:hr_test/ui/pages/for_company_img_button_pages/head_hunting.dart';
+import 'package:hr_test/ui/pages/for_company_img_button_pages/mass_recruitment.dart';
+import 'package:hr_test/ui/pages/for_company_img_button_pages/recruitment.dart';
+import 'package:hr_test/ui/pages/for_company_img_button_pages/staff_outsoursing.dart';
 import 'package:hr_test/ui/pages/for_employee.dart';
 import 'package:hr_test/ui/privacy.dart';
 import 'package:hr_test/utils/screen/screen_utils.dart';
@@ -443,10 +448,11 @@ class _ForCompanyPage extends State<ForCompanyPage> {
             ),
             child: InkWell(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ContactPage(context)),
-                );
+                _validatorImagePage(i);
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (context) => ContactPage(context)),
+                // );
               },
               onHighlightChanged: (isPressed) {
                 setState(() {
@@ -1248,5 +1254,40 @@ class _ForCompanyPage extends State<ForCompanyPage> {
         ),
       ],
     );
+  }
+
+  void _validatorImagePage(int i) {
+    switch (i) {
+      case 0:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => RecruitmentPage(context)),
+        );
+        break;
+      case 1:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => MassRecruitmentPage(context)),
+        );
+        break;
+      case 2:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ExecutiveSearchPage(context)),
+        );
+        break;
+      case 3:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => HeadHuntingPage(context)),
+        );
+        break;
+      case 4:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => StaffOutsourcingPage(context)),
+        );
+        break;
+    }
   }
 }
