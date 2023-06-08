@@ -128,7 +128,7 @@ class _HrRegistrationPage extends State<HrRegistrationPage> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => HrPage(context)),
+            MaterialPageRoute(builder: (context) => HrPageOld(context)),
           );
         },
       ),

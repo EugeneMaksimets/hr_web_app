@@ -130,7 +130,7 @@ class _CompanyRegistrationPageState extends State<CompanyRegistrationPage> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => HrPage(context)),
+            MaterialPageRoute(builder: (context) => HrPageOld(context)),
           );
         },
       ),

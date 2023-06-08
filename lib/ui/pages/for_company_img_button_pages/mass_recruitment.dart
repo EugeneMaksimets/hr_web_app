@@ -326,31 +326,6 @@ class _MassRecruitmentPage extends State<MassRecruitmentPage> {
     );
   }
 
-  Widget _buildImageOutlineText(String text) {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        Image.network(
-          Assets.outline_png,
-          height: ScreenUtil.getInstance()
-              .setWidth(ResponsiveWidget.isSmallScreen(context) ? 300 : 150),
-        ),
-        Positioned.fill(
-          child: Align(
-            alignment: Alignment.center,
-            child: Text(
-              text,
-              style: TextStyles.menu_item.copyWith(
-                color: Colors.white,
-                fontSize: ResponsiveWidget.isSmallScreen(context) ? 10 : 15,
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
   Widget _buildLargeScreen(BuildContext context) {
     return IntrinsicHeight(
       child: Column(
@@ -411,15 +386,6 @@ class _MassRecruitmentPage extends State<MassRecruitmentPage> {
     );
   }
 
-  // Body Methods:--------------------------------------------------------------
-
-  // Widget _buildIllustration() {
-  //   return Image.network(
-  //     Assets.programmer3,
-  //     height: ScreenUtil.getInstance().setWidth(345), //480.0
-  //   );
-  // }
-
   Widget _buildContent(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -431,11 +397,6 @@ class _MassRecruitmentPage extends State<MassRecruitmentPage> {
           child: !ResponsiveWidget.isSmallScreen(context)
               ? Column(
                   children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[],
-                    ),
                     _buildWhyHrLibrary(),
                     SizedBox(height: 24.0),
                     _buildWhyUs(),

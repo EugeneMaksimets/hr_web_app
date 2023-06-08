@@ -394,11 +394,6 @@ class _ExecutiveSearchPage extends State<ExecutiveSearchPage> {
           child: !ResponsiveWidget.isSmallScreen(context)
               ? Column(
                   children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[],
-                    ),
                     _buildWhyExecutive(),
                     SizedBox(height: 24.0),
                     _buildWhyUs(),

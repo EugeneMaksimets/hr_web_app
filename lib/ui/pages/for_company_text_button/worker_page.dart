@@ -17,21 +17,22 @@ import 'dart:html' as html;
 import '../article_pages/cv_starter_page.dart';
 import '../article_pages/preparing_for_interview_page.dart';
 import '../article_pages/successful_interview_page.dart';
+import '../bottom_buttons_pages/about_hr_library_page.dart';
 import '../for_company_img_button_pages/executive_search.dart';
 import '../for_company_img_button_pages/head_hunting.dart';
 import '../for_company_img_button_pages/recruitment.dart';
 import '../for_company_img_button_pages/staff_outsoursing.dart';
 
-class AboutsUsPage extends StatefulWidget {
+class WorkerPage extends StatefulWidget {
   final BuildContext context;
 
-  AboutsUsPage(this.context);
+  WorkerPage(this.context);
 
   @override
-  _AboutsUsPage createState() => _AboutsUsPage();
+  _WorkerPage createState() => _WorkerPage();
 }
 
-class _AboutsUsPage extends State<AboutsUsPage> {
+class _WorkerPage extends State<WorkerPage> {
   var isHoveredTextButtonButFirst =
   List<bool>.filled(Strings.why_we_offer.length, false);
   var isHoveredTextButtonButSecond =
@@ -155,7 +156,7 @@ class _AboutsUsPage extends State<AboutsUsPage> {
         child: Text(
           Strings.menu_about_us,
           style: TextStyles.menu_item.copyWith(
-            color: Colors.deepOrange,
+            color: Colors.black,
           ),
         ),
         onPressed: () {
@@ -225,7 +226,7 @@ class _AboutsUsPage extends State<AboutsUsPage> {
       // height: 200,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(Assets.background_about_us_page_img),
+          image: AssetImage(Assets.background_worker_page_img),
           fit: BoxFit.cover,
         ),
       ),
@@ -272,20 +273,39 @@ class _AboutsUsPage extends State<AboutsUsPage> {
           ),
           SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 24 : 34),
           Text(
-            Strings.about_us_text,
+            Strings.worker_page_text,
             style: TextStyles.heading.copyWith(
               fontSize: ResponsiveWidget.isSmallScreen(context) ? 26 : 36.0,
               color: Colors.white,
             ),
           ),
-          _buildUnderlineOrange(Strings.about_us_text.length),
+          _buildUnderlineOrange(Strings.worker_page_text.length),
           SizedBox(height: 24),
-                Padding(
-                  padding: EdgeInsets.only(
-                      left: ResponsiveWidget.isSmallScreen(context) ? 50.0 : 150.0,
-                    right: ResponsiveWidget.isSmallScreen(context) ? 50.0 : 150.0,),
-                  child: _buildColumnTextFromList(Strings.about_us_text_more),
-                ),
+          Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                !ResponsiveWidget.isSmallScreen(context)
+                    ? Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _buildColumnTextFromList(
+                        Strings.worker_page_offer_1),
+                    SizedBox(width: 50),
+                    _buildColumnTextFromList(
+                        Strings.worker_page_offer_2),
+                  ],
+                )
+                    : Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _buildColumnTextFromList(
+                        Strings.worker_page_offer_1),
+                    _buildColumnTextFromList(
+                        Strings.worker_page_offer_2),
+                  ],
+                )
+              ]),
         ],
       ),
     );
@@ -362,7 +382,7 @@ class _AboutsUsPage extends State<AboutsUsPage> {
           child: !ResponsiveWidget.isSmallScreen(context)
               ? Column(
             children: [
-              _buildFormFirst(),
+              _buildFirstOffer(),
               SizedBox(height: 24.0),
               _buildWhyUs(),
               SizedBox(height: 24.0),
@@ -375,7 +395,7 @@ class _AboutsUsPage extends State<AboutsUsPage> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              _buildFormFirst(),
+              _buildFirstOffer(),
               SizedBox(height: 24),
               _buildWhyUs(),
               SizedBox(height: 24),
@@ -392,7 +412,7 @@ class _AboutsUsPage extends State<AboutsUsPage> {
     );
   }
 
-  Widget _buildFormFirst() {
+  Widget _buildFirstOffer() {
     return Container(
       // height: 200,
       decoration: BoxDecoration(
@@ -409,23 +429,23 @@ class _AboutsUsPage extends State<AboutsUsPage> {
             child: Column(
               children: [
                 Text(
-                  Strings.about_us_for_people,
+                  Strings.worker_page_finder_1,
                   style: TextStyles.logo.copyWith(
                     fontSize: 30.0,
                     color: Colors.white,
                   ),
                 ),
-                _buildUnderlineOrange(Strings.about_us_for_people.length),
+                _buildUnderlineOrange(Strings.worker_page_finder_1.length),
                 Padding(
-                  padding: EdgeInsets.only(left: 100.0, top: 20.0),
+                  padding: EdgeInsets.only(left: 50.0),
                   child: _buildColumnTextFromList(
-                      Strings.about_us_for_people_more),
+                      Strings.worker_page_finder_more_1),
                 ),
               ],
             ),
           ),
           Expanded(
-            child: _buildFormCallMe(400, 500, _formKey),
+            child: _buildFormCallMe(500, 400, _formKey),
           ),
         ],
       )
@@ -434,19 +454,20 @@ class _AboutsUsPage extends State<AboutsUsPage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            Strings.about_us_for_people,
+            Strings.worker_page_finder_1,
             style: TextStyles.logo.copyWith(
               fontSize: 20,
               color: Colors.white,
             ),
           ),
-          _buildUnderlineOrange(Strings.about_us_for_people.length),
+          _buildUnderlineOrange(Strings.worker_page_finder_1.length),
           Padding(
             padding: EdgeInsets.only(left: 50.0, top: 20.0, right: 50.0),
-            child: _buildColumnTextFromList(Strings.about_us_for_people_more),
+            child:
+            _buildColumnTextFromList(Strings.worker_page_finder_more_1),
           ),
           SizedBox(height: 24),
-          _buildFormCallMe(350, 500, _formKey),
+          _buildFormCallMe(350, 400, _formKey)
         ],
       ),
     );
@@ -535,17 +556,17 @@ class _AboutsUsPage extends State<AboutsUsPage> {
             child: Column(
               children: [
                 Text(
-                  Strings.about_us_five,
+                  Strings.staff_out_what,
                   style: TextStyles.logo.copyWith(
                     fontSize: 30.0,
                     color: Colors.white,
                   ),
                 ),
-                _buildUnderlineOrange(Strings.about_us_five.length),
+                _buildUnderlineOrange(Strings.staff_out_what.length),
                 Padding(
                   padding: EdgeInsets.only(right: 50.0),
                   child: _buildColumnTextFromList(
-                      Strings.about_us_five_more),
+                      Strings.worker_page_finder_more_2),
                 ),
               ],
             ),
@@ -555,16 +576,17 @@ class _AboutsUsPage extends State<AboutsUsPage> {
           : Column(
         children: [
           Text(
-            Strings.about_us_five,
+            Strings.staff_out_what,
             style: TextStyles.logo.copyWith(
               fontSize: 20,
               color: Colors.white,
             ),
           ),
-          _buildUnderlineOrange(Strings.about_us_five.length),
+          _buildUnderlineOrange(Strings.staff_out_what.length),
           Padding(
             padding: EdgeInsets.only(right: 20.0, left: 20),
-            child: _buildColumnTextFromList(Strings.about_us_five_more),
+            child:
+            _buildColumnTextFromList(Strings.worker_page_finder_more_2),
           ),
           Padding(
             padding: EdgeInsets.only(top: 20.0),
@@ -727,11 +749,17 @@ class _AboutsUsPage extends State<AboutsUsPage> {
                             builder: (context) {
                               return AlertDialog(
                                 content: Container(
-                                  height: ResponsiveWidget.isSmallScreen(context) ? 100 : 200,
-                                  width: ResponsiveWidget.isSmallScreen(context) ? 250 : 500,
+                                  height:
+                                  ResponsiveWidget.isSmallScreen(context)
+                                      ? 100
+                                      : 200,
+                                  width: ResponsiveWidget.isSmallScreen(context)
+                                      ? 250
+                                      : 500,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.center,
                                     children: [
                                       Text(
                                         Strings.success_message_start,
@@ -1204,7 +1232,7 @@ class _AboutsUsPage extends State<AboutsUsPage> {
 
   // --------------------------------- VALIDATOR -------------------------------
   void _validatorBottomTextButton(List<bool> isHovered, int i) {
-    if(isHovered == isHoveredTextButtonButFirst) {
+    if (isHovered == isHoveredTextButtonButFirst) {
       switch (i) {
         case 0:
           Navigator.push(

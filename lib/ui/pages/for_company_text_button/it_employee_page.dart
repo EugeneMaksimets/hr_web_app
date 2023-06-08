@@ -292,14 +292,26 @@ class _ItEmployeePage extends State<ItEmployeePage> {
                     color: Colors.white,
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _buildColumnTextFromList(Strings.it_employee_offer_more_1),
-                    SizedBox(width: 20),
-                    _buildColumnTextFromList(Strings.it_employee_offer_more_2),
-                  ],
-                ),
+                !ResponsiveWidget.isSmallScreen(context)
+                    ? Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          _buildColumnTextFromList(
+                              Strings.it_employee_offer_more_1),
+                          SizedBox(width: 20),
+                          _buildColumnTextFromList(
+                              Strings.it_employee_offer_more_2),
+                        ],
+                      )
+                    : Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          _buildColumnTextFromList(
+                              Strings.it_employee_offer_more_1),
+                          _buildColumnTextFromList(
+                              Strings.it_employee_offer_more_2),
+                        ],
+                      )
               ]),
         ],
       ),
@@ -377,11 +389,6 @@ class _ItEmployeePage extends State<ItEmployeePage> {
           child: !ResponsiveWidget.isSmallScreen(context)
               ? Column(
                   children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[],
-                    ),
                     _buildFirstOffer(),
                     SizedBox(height: 24.0),
                     _buildWhyUs(),
@@ -749,11 +756,17 @@ class _ItEmployeePage extends State<ItEmployeePage> {
                             builder: (context) {
                               return AlertDialog(
                                 content: Container(
-                                  height: ResponsiveWidget.isSmallScreen(context) ? 100 : 200,
-                                  width: ResponsiveWidget.isSmallScreen(context) ? 250 : 500,
+                                  height:
+                                      ResponsiveWidget.isSmallScreen(context)
+                                          ? 100
+                                          : 200,
+                                  width: ResponsiveWidget.isSmallScreen(context)
+                                      ? 250
+                                      : 500,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Text(
                                         Strings.success_message_start,
@@ -1226,7 +1239,7 @@ class _ItEmployeePage extends State<ItEmployeePage> {
 
   // --------------------------------- VALIDATOR -------------------------------
   void _validatorBottomTextButton(List<bool> isHovered, int i) {
-    if(isHovered == isHoveredTextButtonButFirst) {
+    if (isHovered == isHoveredTextButtonButFirst) {
       switch (i) {
         case 0:
           Navigator.push(

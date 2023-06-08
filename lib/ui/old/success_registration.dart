@@ -109,7 +109,7 @@ class SuccessRegistrationPage extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => HrPage(context)),
+            MaterialPageRoute(builder: (context) => HrPageOld(context)),
           );
         },
       ),

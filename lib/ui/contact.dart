@@ -128,7 +128,7 @@ class _ContactPage extends State<ContactPage> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => HrPage(context)),
+            MaterialPageRoute(builder: (context) => HrPageOld(context)),
           );
         },
       ),

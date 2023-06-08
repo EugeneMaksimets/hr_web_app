@@ -401,11 +401,6 @@ class _HeadHuntingPage extends State<HeadHuntingPage> {
           child: !ResponsiveWidget.isSmallScreen(context)
               ? Column(
                   children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[],
-                    ),
                     _buildWhyHeadHunting(),
                     SizedBox(height: 24.0),
                     _buildWhyUs(),

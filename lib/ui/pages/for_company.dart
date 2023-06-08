@@ -4,13 +4,21 @@ import 'package:hr_test/constants/fonts.dart';
 import 'package:hr_test/constants/strings.dart';
 import 'package:hr_test/constants/text_styles.dart';
 import 'package:hr_test/service/language_service.dart';
-import 'package:hr_test/ui/old/company.dart';
 import 'package:hr_test/ui/contact.dart';
 import 'package:hr_test/ui/pages/for_company_img_button_pages/executive_search.dart';
 import 'package:hr_test/ui/pages/for_company_img_button_pages/head_hunting.dart';
 import 'package:hr_test/ui/pages/for_company_img_button_pages/mass_recruitment.dart';
 import 'package:hr_test/ui/pages/for_company_img_button_pages/recruitment.dart';
 import 'package:hr_test/ui/pages/for_company_img_button_pages/staff_outsoursing.dart';
+import 'package:hr_test/ui/pages/for_company_text_button/administration_page.dart';
+import 'package:hr_test/ui/pages/for_company_text_button/advertising_page.dart';
+import 'package:hr_test/ui/pages/for_company_text_button/building_manager_page.dart';
+import 'package:hr_test/ui/pages/for_company_text_button/engineer_page.dart';
+import 'package:hr_test/ui/pages/for_company_text_button/financier_page.dart';
+import 'package:hr_test/ui/pages/for_company_text_button/hr_page.dart';
+import 'package:hr_test/ui/pages/for_company_text_button/it_employee_page.dart';
+import 'package:hr_test/ui/pages/for_company_text_button/logistics_page.dart';
+import 'package:hr_test/ui/pages/for_company_text_button/top_manager_page.dart';
 import 'package:hr_test/ui/pages/for_employee.dart';
 import 'package:hr_test/ui/privacy.dart';
 import 'package:hr_test/utils/screen/screen_utils.dart';
@@ -18,11 +26,12 @@ import 'package:hr_test/widgets/responsive_widget.dart';
 import 'dart:html' as html;
 
 import '../home.dart';
-import '../old/hr.dart';
 import 'article_pages/cv_starter_page.dart';
 import 'article_pages/preparing_for_interview_page.dart';
 import 'article_pages/successful_interview_page.dart';
 import 'bottom_buttons_pages/about_hr_library_page.dart';
+import 'for_company_text_button/sales_manager.dart';
+import 'for_company_text_button/worker_page.dart';
 
 class ForCompanyPage extends StatefulWidget {
   final BuildContext context;
@@ -1358,6 +1367,97 @@ class _ForCompanyPage extends State<ForCompanyPage> {
             context,
             MaterialPageRoute(
               builder: (context) => CvStarterInterview(context),
+            ),
+          );
+          break;
+      }
+    } else if(isHovered == isHoveredTextButton) {
+      switch(i) {
+        case 0:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ItEmployeePage(context),
+            ),
+          );
+          break;
+        case 1:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SalesMangerPage(context),
+            ),
+          );
+          break;
+        case 2:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AdvertisingPage(context),
+            ),
+          );
+          break;
+        case 3:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => TopManagerPage(context),
+            ),
+          );
+          break;
+        case 4:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AdministrationPage(context),
+            ),
+          );
+          break;
+        case 5:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => FinancierPage(context),
+            ),
+          );
+          break;
+        case 6:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HrPage(context),
+            ),
+          );
+          break;
+        case 7:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => EngineerPage(context),
+            ),
+          );
+          break;
+        case 8:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => BuildingPage(context),
+            ),
+          );
+          break;
+        case 9:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => LogisticsPage(context),
+            ),
+          );
+          break;
+        case 10:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => WorkerPage(context),
             ),
           );
           break;

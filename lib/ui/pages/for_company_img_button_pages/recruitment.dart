@@ -400,11 +400,6 @@ class _RecruitmentPage extends State<RecruitmentPage> {
           child: !ResponsiveWidget.isSmallScreen(context)
               ? Column(
             children: [
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[],
-              ),
               _buildWhyRecruitment(),
               SizedBox(height: 24.0),
               _buildWhyUs(),

@@ -8,7 +8,17 @@ import 'package:hr_test/ui/pages/for_company_img_button_pages/executive_search.d
 import 'package:hr_test/ui/pages/for_company_img_button_pages/head_hunting.dart';
 import 'package:hr_test/ui/pages/for_company_img_button_pages/recruitment.dart';
 import 'package:hr_test/ui/pages/for_company_img_button_pages/staff_outsoursing.dart';
+import 'package:hr_test/ui/pages/for_company_text_button/administration_page.dart';
+import 'package:hr_test/ui/pages/for_company_text_button/advertising_page.dart';
+import 'package:hr_test/ui/pages/for_company_text_button/building_manager_page.dart';
+import 'package:hr_test/ui/pages/for_company_text_button/engineer_page.dart';
+import 'package:hr_test/ui/pages/for_company_text_button/financier_page.dart';
+import 'package:hr_test/ui/pages/for_company_text_button/hr_page.dart';
 import 'package:hr_test/ui/pages/for_company_text_button/it_employee_page.dart';
+import 'package:hr_test/ui/pages/for_company_text_button/logistics_page.dart';
+import 'package:hr_test/ui/pages/for_company_text_button/sales_manager.dart';
+import 'package:hr_test/ui/pages/for_company_text_button/top_manager_page.dart';
+import 'package:hr_test/ui/pages/for_company_text_button/worker_page.dart';
 
 import 'package:hr_test/utils/screen/screen_utils.dart';
 
@@ -50,6 +60,6 @@ class _MyAppChildState extends State<MyAppChild> {
     // instantiating ScreenUtil singleton instance, as this will be used throughout
     // the app to get screen size and other stuff
     ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
-    return CvStarterInterview(context); //todo return home page
+    return HomePage(context); //todo return home page
   }
 }

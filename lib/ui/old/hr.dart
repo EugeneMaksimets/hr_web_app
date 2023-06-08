@@ -16,16 +16,16 @@ import '../home.dart';
 import 'hr_profile_page.dart';
 import '../privacy.dart';
 
-class HrPage extends StatefulWidget {
+class HrPageOld extends StatefulWidget {
   final BuildContext context;
 
-  HrPage(this.context);
+  HrPageOld(this.context);
 
   @override
-  _HrPageState createState() => _HrPageState();
+  _HrPageOldState createState() => _HrPageOldState();
 }
 
-class _HrPageState extends State<HrPage> {
+class _HrPageOldState extends State<HrPageOld> {
   bool _isPasswordVisible = false;
   bool _rememberMe = false;
   String _email = '';
@@ -126,7 +126,7 @@ class _HrPageState extends State<HrPage> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => HrPage(context)),
+            MaterialPageRoute(builder: (context) => HrPageOld(context)),
           );
         },
       ),
@@ -165,7 +165,7 @@ class _HrPageState extends State<HrPage> {
             LanguageService.changeLanguage();
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => HrPage(context)),
+              MaterialPageRoute(builder: (context) => HrPageOld(context)),
             );
           })
     ];

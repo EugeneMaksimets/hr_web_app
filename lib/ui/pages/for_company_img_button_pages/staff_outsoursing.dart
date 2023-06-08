@@ -400,11 +400,6 @@ class _StaffOutsourcingPage extends State<StaffOutsourcingPage> {
           child: !ResponsiveWidget.isSmallScreen(context)
               ? Column(
                   children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[],
-                    ),
                     _buildWhyStaffOut(),
                     SizedBox(height: 24.0),
                     _buildWhyUs(),
