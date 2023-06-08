@@ -10,16 +10,16 @@ class LanguageService {
   static void changeLanguage() {
     switch (number) {
       case 0:
-        _changeToEng();
+        _changeToRu();
         break;
       case 1:
-        _changeToRu();
+        _changeToEng();
         break;
       case 2:
         _changeToUa();
         break;
       default:
-        _changeToEng();
+        _changeToRu();
         break;
     }
   }

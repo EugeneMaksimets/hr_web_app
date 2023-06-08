@@ -4,7 +4,7 @@ import 'package:hr_test/constants/fonts.dart';
 import 'package:hr_test/constants/strings.dart';
 import 'package:hr_test/constants/text_styles.dart';
 import 'package:hr_test/service/language_service.dart';
-import 'package:hr_test/ui/company.dart';
+import 'package:hr_test/ui/old/company.dart';
 import 'package:hr_test/ui/contact.dart';
 import 'package:hr_test/ui/home.dart';
 import 'package:hr_test/ui/privacy.dart';
@@ -353,7 +353,7 @@ class SuccessRegistrationPage extends StatelessWidget {
         SizedBox(width: 16.0),
         GestureDetector(
           onTap: () {
-            html.window.open(Strings.link_github, "Github");
+            html.window.open(Strings.link_gmail, "Github");
           },
           child: Image.network(
             Assets.google,

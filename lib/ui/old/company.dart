@@ -3,18 +3,18 @@ import 'package:hr_test/constants/assets.dart';
 import 'package:hr_test/constants/fonts.dart';
 import 'package:hr_test/constants/strings.dart';
 import 'package:hr_test/constants/text_styles.dart';
-import 'package:hr_test/ui/company_registration.dart';
+import 'package:hr_test/ui/old/company_registration.dart';
 import 'package:hr_test/utils/screen/screen_utils.dart';
 import 'package:hr_test/widgets/responsive_widget.dart';
 import 'dart:html' as html;
 
-import '../service/data.dart';
-import '../service/language_service.dart';
+import '../../service/data.dart';
+import '../../service/language_service.dart';
 import 'company_profile_page.dart';
-import 'contact.dart';
-import 'home.dart';
+import '../contact.dart';
+import '../home.dart';
 import 'hr.dart';
-import 'privacy.dart';
+import '../privacy.dart';
 
 class CompanyPage extends StatefulWidget {
   final BuildContext context;
@@ -427,7 +427,7 @@ class _CompanyPageState extends State<CompanyPage> {
         SizedBox(width: 16.0),
         GestureDetector(
           onTap: () {
-            html.window.open(Strings.link_github, "Github");
+            html.window.open(Strings.link_gmail, "Github");
           },
           child: Image.network(
             Assets.google,

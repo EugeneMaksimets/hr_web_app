@@ -4,17 +4,17 @@ import 'package:hr_test/constants/fonts.dart';
 import 'package:hr_test/constants/strings.dart';
 import 'package:hr_test/constants/text_styles.dart';
 import 'package:hr_test/service/language_service.dart';
-import 'package:hr_test/ui/hr_registration.dart';
+import 'package:hr_test/ui/old/hr_registration.dart';
 import 'package:hr_test/utils/screen/screen_utils.dart';
 import 'package:hr_test/widgets/responsive_widget.dart';
 import 'dart:html' as html;
 
-import '../service/data.dart';
+import '../../service/data.dart';
 import 'company.dart';
-import 'contact.dart';
-import 'home.dart';
+import '../contact.dart';
+import '../home.dart';
 import 'hr_profile_page.dart';
-import 'privacy.dart';
+import '../privacy.dart';
 
 class HrPage extends StatefulWidget {
   final BuildContext context;
@@ -427,7 +427,7 @@ class _HrPageState extends State<HrPage> {
         SizedBox(width: 16.0),
         GestureDetector(
           onTap: () {
-            html.window.open(Strings.link_github, "Github");
+            html.window.open(Strings.link_gmail, "Github");
           },
           child: Image.network(
             Assets.google,

@@ -4,8 +4,17 @@ import 'package:hr_test/constants/fonts.dart';
 import 'package:hr_test/constants/strings.dart';
 import 'package:hr_test/constants/text_styles.dart';
 import 'package:hr_test/service/language_service.dart';
+import 'package:hr_test/service/mail_send_service.dart';
 import 'package:hr_test/ui/contact.dart';
+import 'package:hr_test/ui/pages/article_pages/cv_starter_page.dart';
+import 'package:hr_test/ui/pages/article_pages/preparing_for_interview_page.dart';
+import 'package:hr_test/ui/pages/article_pages/successful_interview_page.dart';
+import 'package:hr_test/ui/pages/bottom_buttons_pages/about_hr_library_page.dart';
 import 'package:hr_test/ui/pages/for_company.dart';
+import 'package:hr_test/ui/pages/for_company_img_button_pages/executive_search.dart';
+import 'package:hr_test/ui/pages/for_company_img_button_pages/head_hunting.dart';
+import 'package:hr_test/ui/pages/for_company_img_button_pages/recruitment.dart';
+import 'package:hr_test/ui/pages/for_company_img_button_pages/staff_outsoursing.dart';
 import 'package:hr_test/ui/pages/for_employee.dart';
 import 'package:hr_test/ui/privacy.dart';
 import 'package:hr_test/utils/screen/screen_utils.dart';
@@ -33,6 +42,8 @@ class _HomePage extends State<HomePage> {
   var isHoveredForEmployee = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _formKey_2 = GlobalKey<FormState>();
+  var name = '';
+  var number = '';
 
   @override
   Widget build(BuildContext context) {
@@ -327,7 +338,7 @@ class _HomePage extends State<HomePage> {
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => ContactPage(context)), //TODO VALIDATOR
+              builder: (context) => ContactPage(context)), //TODO VALIDATOR up button
         );
       },
       child: MouseRegion(
@@ -757,7 +768,7 @@ class _HomePage extends State<HomePage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text(
-                        Strings.set_offer,
+                      Strings.set_offer,
                       style: TextStyles.logo
                           .copyWith(color: Colors.black, fontSize: 14.0),
                     ),
@@ -772,40 +783,44 @@ class _HomePage extends State<HomePage> {
                   ),
                   SizedBox(height: 16),
                   TextFormField(
-                    validator: (value) {
-                      // add email validation
-                      if (value == null || value.isEmpty) {
-                        return Strings.empty_text;
-                      }
-                      return null;
-                    },
-                    decoration: InputDecoration(
-                      labelText: Strings.name,
-                      hintText: Strings.enter_name,
-                      prefixIcon: Icon(Icons.abc),
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
+                      validator: (value) {
+                        // add email validation
+                        if (value == null || value.isEmpty) {
+                          return Strings.empty_text;
+                        }
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                        labelText: Strings.name,
+                        hintText: Strings.enter_name,
+                        prefixIcon: Icon(Icons.abc),
+                        border: OutlineInputBorder(),
+                      ),
+                      onChanged: (value) {
+                        name = value;
+                      }),
                   SizedBox(height: 16),
                   TextFormField(
-                    validator: (value) {
-                      var numberValid = RegExp(r'^\+?\d+$').hasMatch(value);
-                      if (!numberValid ||
-                          value.length < 6 ||
-                          value == null ||
-                          value.isEmpty) {
-                        return Strings.invalid_number;
-                      }
+                      validator: (value) {
+                        var numberValid = RegExp(r'^\+?\d+$').hasMatch(value);
+                        if (!numberValid ||
+                            value.length < 6 ||
+                            value == null ||
+                            value.isEmpty) {
+                          return Strings.invalid_number;
+                        }
 
-                      return null;
-                    },
-                    decoration: InputDecoration(
-                      labelText: Strings.number,
-                      hintText: Strings.enter_number,
-                      prefixIcon: const Icon(Icons.phone),
-                      border: const OutlineInputBorder(),
-                    ),
-                  ),
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                        labelText: Strings.number,
+                        hintText: Strings.enter_number,
+                        prefixIcon: const Icon(Icons.phone),
+                        border: const OutlineInputBorder(),
+                      ),
+                      onChanged: (value) {
+                        number = value;
+                      }),
                   SizedBox(height: 16),
                   SizedBox(
                     width: double.infinity,
@@ -818,17 +833,41 @@ class _HomePage extends State<HomePage> {
                       child: Padding(
                         padding: EdgeInsets.all(10.0),
                         child: Text(
-                          Strings.send_message_form_call,
+                          Strings.send_message_form,
                           style:
-                              TextStyles.company.copyWith(color: Colors.white),
+                          TextStyles.company.copyWith(color: Colors.white),
                         ),
                       ),
                       onPressed: () {
-                        if (_formKey.currentState?.validate()) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ForCompanyPage(context)),
+                        if (keyForm.currentState?.validate()) {
+                          MailSendService(name, number);
+                          showDialog(
+                            context: context,
+                            barrierColor: Colors.white24,
+                            builder: (context) {
+                              return AlertDialog(
+                                content: Container(
+                                  height: ResponsiveWidget.isSmallScreen(context) ? 100 : 200,
+                                  width: ResponsiveWidget.isSmallScreen(context) ? 250 : 500,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        Strings.success_message_start,
+                                        style: TextStyles.company
+                                            .copyWith(color: Colors.deepOrange),
+                                      ),
+                                      Text(
+                                        Strings.success_message_end,
+                                        style: TextStyles.company
+                                            .copyWith(color: Colors.black),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
                           );
                         }
                       },
@@ -883,12 +922,7 @@ class _HomePage extends State<HomePage> {
                   hoverColor: Colors.transparent,
                   // hoverColor: Colors.deepOrange.withAlpha(50),
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ContactPage(context),
-                      ), //TODO create validation PAGE
-                    );
+                    _validatorBottomTextButton(hoveredValidation, i);
                   },
                   onHighlightChanged: (isPressed) {
                     setState(() {
@@ -1275,7 +1309,7 @@ class _HomePage extends State<HomePage> {
         SizedBox(width: 16.0),
         GestureDetector(
           onTap: () {
-            html.window.open(Strings.link_github, "Github");
+            html.window.open(Strings.link_gmail, "Github");
           },
           child: Image.network(
             Assets.google,
@@ -1298,5 +1332,115 @@ class _HomePage extends State<HomePage> {
         ),
       ],
     );
+  }
+
+  // --------------------------------- VALIDATOR -------------------------------
+  void _validatorBottomTextButton(List<bool> isHovered, int i) {
+    if(isHovered == isHoveredTextButtonButFirst) {
+      switch (i) {
+        case 0:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HomePage(context),
+            ),
+          );
+          break;
+        case 1:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AboutsUsPage(context),
+            ),
+          );
+          break;
+        case 2:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => PrivacyPage(context),
+            ),
+          );
+          break;
+        case 3:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ContactPage(context),
+            ),
+          );
+          break;
+      }
+    } else if (isHovered == isHoveredTextButtonButSecond) {
+      switch (i) {
+        case 0:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => RecruitmentPage(context),
+            ),
+          );
+          break;
+        case 1:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ExecutiveSearchPage(context),
+            ),
+          );
+          break;
+        case 2:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HeadHuntingPage(context),
+            ),
+          );
+          break;
+        case 3:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => StaffOutsourcingPage(context),
+            ),
+          );
+          break;
+      }
+    } else if (isHovered == isHoveredTextButtonButThird) {
+      switch (i) {
+        case 0:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ForEmployee(context),
+            ),
+          );
+          break;
+        case 1:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SuccessInterview(context),
+            ),
+          );
+          break;
+        case 2:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => PreparingInterview(context),
+            ),
+          );
+          break;
+        case 3:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CvStarterInterview(context),
+            ),
+          );
+          break;
+      }
+    }
   }
 }

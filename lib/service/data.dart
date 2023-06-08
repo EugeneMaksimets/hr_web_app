@@ -1,5 +1,5 @@
-import 'package:hr_test/ui/company_registration.dart';
-import 'package:hr_test/ui/hr_registration.dart';
+import 'package:hr_test/ui/old/company_registration.dart';
+import 'package:hr_test/ui/old/hr_registration.dart';
 
 import '../constants/strings.dart';
 

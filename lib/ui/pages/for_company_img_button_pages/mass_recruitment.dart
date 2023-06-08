@@ -4,14 +4,24 @@ import 'package:hr_test/constants/fonts.dart';
 import 'package:hr_test/constants/strings.dart';
 import 'package:hr_test/constants/text_styles.dart';
 import 'package:hr_test/service/language_service.dart';
+import 'package:hr_test/service/mail_send_service.dart';
 import 'package:hr_test/ui/contact.dart';
 import 'package:hr_test/ui/home.dart';
 import 'package:hr_test/ui/pages/for_company.dart';
+import 'package:hr_test/ui/pages/for_company_img_button_pages/recruitment.dart';
+import 'package:hr_test/ui/pages/for_company_img_button_pages/staff_outsoursing.dart';
 import 'package:hr_test/ui/pages/for_employee.dart';
 import 'package:hr_test/ui/privacy.dart';
 import 'package:hr_test/utils/screen/screen_utils.dart';
 import 'package:hr_test/widgets/responsive_widget.dart';
 import 'dart:html' as html;
+
+import '../article_pages/cv_starter_page.dart';
+import '../article_pages/preparing_for_interview_page.dart';
+import '../article_pages/successful_interview_page.dart';
+import '../bottom_buttons_pages/about_hr_library_page.dart';
+import 'executive_search.dart';
+import 'head_hunting.dart';
 
 class MassRecruitmentPage extends StatefulWidget {
   final BuildContext context;
@@ -32,6 +42,8 @@ class _MassRecruitmentPage extends State<MassRecruitmentPage> {
   var isHoveredCall = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _formKey_2 = GlobalKey<FormState>();
+  var name = '';
+  var number = '';
 
   @override
   Widget build(BuildContext context) {
@@ -336,50 +348,6 @@ class _MassRecruitmentPage extends State<MassRecruitmentPage> {
           ),
         ),
       ],
-    );
-  }
-
-  Widget _buildSimpleButton(bool isHoveredButton, String text) {
-    return ElevatedButton(
-      style: ButtonStyle(
-        side: MaterialStateProperty.all(
-          BorderSide(color: Colors.deepOrange, width: 2.0),
-        ),
-        minimumSize: MaterialStateProperty.all(
-            ResponsiveWidget.isSmallScreen(context)
-                ? Size(140, 50)
-                : Size(200, 75)),
-        padding: MaterialStateProperty.all(EdgeInsets.all(10)),
-        backgroundColor: isHoveredButton
-            ? MaterialStateProperty.all<Color>(Color(0xFFFA4812))
-            : MaterialStateProperty.all<Color>(Colors.deepOrange),
-      ),
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => ContactPage(context)), //TODO VALIDATOR
-        );
-      },
-      child: MouseRegion(
-        onHover: (event) {
-          setState(() {
-            isHoveredButton = true;
-          });
-        },
-        onExit: (event) {
-          setState(() {
-            isHoveredButton = false;
-          });
-        },
-        child: Text(
-          text,
-          style: TextStyles.menu_item.copyWith(
-            fontSize: ResponsiveWidget.isSmallScreen(context) ? 10 : 20.0,
-            color: Colors.white,
-          ),
-        ),
-      ),
     );
   }
 
@@ -819,6 +787,9 @@ class _MassRecruitmentPage extends State<MassRecruitmentPage> {
                       prefixIcon: Icon(Icons.abc),
                       border: OutlineInputBorder(),
                     ),
+                    onChanged: (value) {
+                      name = value;
+                    },
                   ),
                   SizedBox(height: 16),
                   TextFormField(
@@ -839,6 +810,9 @@ class _MassRecruitmentPage extends State<MassRecruitmentPage> {
                       prefixIcon: const Icon(Icons.phone),
                       border: const OutlineInputBorder(),
                     ),
+                    onChanged: (value) {
+                      number = value;
+                    },
                   ),
                   SizedBox(height: 16),
                   SizedBox(
@@ -854,16 +828,39 @@ class _MassRecruitmentPage extends State<MassRecruitmentPage> {
                         child: Text(
                           Strings.send_message_form_call,
                           style:
-                              TextStyles.company.copyWith(color: Colors.white),
+                          TextStyles.company.copyWith(color: Colors.white),
                         ),
                       ),
                       onPressed: () {
                         if (keyForm.currentState?.validate()) {
-                          //TODO success message
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ForCompanyPage(context)),
+                          MailSendService(name, number);
+                          showDialog(
+                            context: context,
+                            barrierColor: Colors.white24,
+                            builder: (context) {
+                              return AlertDialog(
+                                content: Container(
+                                  height: ResponsiveWidget.isSmallScreen(context) ? 100 : 200,
+                                  width: ResponsiveWidget.isSmallScreen(context) ? 250 : 500,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        Strings.success_message_start,
+                                        style: TextStyles.company
+                                            .copyWith(color: Colors.deepOrange),
+                                      ),
+                                      Text(
+                                        Strings.success_message_end,
+                                        style: TextStyles.company
+                                            .copyWith(color: Colors.black),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
                           );
                         }
                       },
@@ -918,12 +915,7 @@ class _MassRecruitmentPage extends State<MassRecruitmentPage> {
                   hoverColor: Colors.transparent,
                   // hoverColor: Colors.deepOrange.withAlpha(50),
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ContactPage(context),
-                      ), //TODO create validation PAGE
-                    );
+                    _validatorBottomTextButton(hoveredValidation, i);
                   },
                   onHighlightChanged: (isPressed) {
                     setState(() {
@@ -1298,7 +1290,7 @@ class _MassRecruitmentPage extends State<MassRecruitmentPage> {
         SizedBox(width: 16.0),
         GestureDetector(
           onTap: () {
-            html.window.open(Strings.link_github, "Github");
+            html.window.open(Strings.link_gmail, "Github");
           },
           child: Image.network(
             Assets.google,
@@ -1321,5 +1313,115 @@ class _MassRecruitmentPage extends State<MassRecruitmentPage> {
         ),
       ],
     );
+  }
+
+  // --------------------------------- VALIDATOR -------------------------------
+  void _validatorBottomTextButton(List<bool> isHovered, int i) {
+    if(isHovered == isHoveredTextButtonButFirst) {
+      switch (i) {
+        case 0:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HomePage(context),
+            ),
+          );
+          break;
+        case 1:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AboutsUsPage(context),
+            ),
+          );
+          break;
+        case 2:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => PrivacyPage(context),
+            ),
+          );
+          break;
+        case 3:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ContactPage(context),
+            ),
+          );
+          break;
+      }
+    } else if (isHovered == isHoveredTextButtonButSecond) {
+      switch (i) {
+        case 0:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => RecruitmentPage(context),
+            ),
+          );
+          break;
+        case 1:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ExecutiveSearchPage(context),
+            ),
+          );
+          break;
+        case 2:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HeadHuntingPage(context),
+            ),
+          );
+          break;
+        case 3:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => StaffOutsourcingPage(context),
+            ),
+          );
+          break;
+      }
+    } else if (isHovered == isHoveredTextButtonButThird) {
+      switch (i) {
+        case 0:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ForEmployee(context),
+            ),
+          );
+          break;
+        case 1:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SuccessInterview(context),
+            ),
+          );
+          break;
+        case 2:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => PreparingInterview(context),
+            ),
+          );
+          break;
+        case 3:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CvStarterInterview(context),
+            ),
+          );
+          break;
+      }
+    }
   }
 }

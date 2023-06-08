@@ -8,9 +8,9 @@ import 'package:hr_test/utils/screen/screen_utils.dart';
 import 'package:hr_test/widgets/responsive_widget.dart';
 import 'dart:html' as html;
 
-import 'company.dart';
+import 'old/company.dart';
 import 'home.dart';
-import 'hr.dart';
+import 'old/hr.dart';
 import 'privacy.dart';
 
 class ContactPage extends StatefulWidget {
@@ -486,7 +486,7 @@ class _ContactPage extends State<ContactPage> {
         SizedBox(width: 16.0),
         GestureDetector(
           onTap: () {
-            html.window.open(Strings.link_github, "Github");
+            html.window.open(Strings.link_gmail, "Github");
           },
           child: Image.network(
             Assets.google,

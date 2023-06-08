@@ -4,34 +4,35 @@ import 'package:hr_test/constants/fonts.dart';
 import 'package:hr_test/constants/strings.dart';
 import 'package:hr_test/constants/text_styles.dart';
 import 'package:hr_test/service/language_service.dart';
+import 'package:hr_test/service/mail_send_service.dart';
 import 'package:hr_test/ui/contact.dart';
 import 'package:hr_test/ui/home.dart';
 import 'package:hr_test/ui/pages/for_company.dart';
+import 'package:hr_test/ui/pages/for_employee.dart';
 import 'package:hr_test/ui/privacy.dart';
 import 'package:hr_test/utils/screen/screen_utils.dart';
 import 'package:hr_test/widgets/responsive_widget.dart';
-import 'package:file_picker/file_picker.dart';
 import 'dart:html' as html;
 
-import 'article_pages/cv_starter_page.dart';
-import 'article_pages/preparing_for_interview_page.dart';
-import 'article_pages/successful_interview_page.dart';
-import 'bottom_buttons_pages/about_hr_library_page.dart';
-import 'for_company_img_button_pages/executive_search.dart';
-import 'for_company_img_button_pages/head_hunting.dart';
-import 'for_company_img_button_pages/recruitment.dart';
-import 'for_company_img_button_pages/staff_outsoursing.dart';
+import '../article_pages/cv_starter_page.dart';
+import '../article_pages/preparing_for_interview_page.dart';
+import '../article_pages/successful_interview_page.dart';
+import '../bottom_buttons_pages/about_hr_library_page.dart';
+import '../for_company_img_button_pages/executive_search.dart';
+import '../for_company_img_button_pages/head_hunting.dart';
+import '../for_company_img_button_pages/recruitment.dart';
+import '../for_company_img_button_pages/staff_outsoursing.dart';
 
-class ForEmployee extends StatefulWidget {
+class ItEmployeePage extends StatefulWidget {
   final BuildContext context;
 
-  ForEmployee(this.context);
+  ItEmployeePage(this.context);
 
   @override
-  _ForEmployee createState() => _ForEmployee();
+  _ItEmployeePage createState() => _ItEmployeePage();
 }
 
-class _ForEmployee extends State<ForEmployee> {
+class _ItEmployeePage extends State<ItEmployeePage> {
   var isHoveredTextButtonButFirst =
       List<bool>.filled(Strings.why_we_offer.length, false);
   var isHoveredTextButtonButSecond =
@@ -39,12 +40,10 @@ class _ForEmployee extends State<ForEmployee> {
   var isHoveredTextButtonButThird =
       List<bool>.filled(Strings.why_we_offer.length, false);
   var isHoveredCall = false;
-  var isHoveredForCompany = false;
-  var isHoveredForEmployee = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _formKey_2 = GlobalKey<FormState>();
-
-  final TextEditingController _fileController = TextEditingController();
+  var name = '';
+  var number = '';
 
   @override
   Widget build(BuildContext context) {
@@ -143,7 +142,7 @@ class _ForEmployee extends State<ForEmployee> {
         child: Text(
           Strings.menu_for_hr,
           style: TextStyles.menu_item.copyWith(
-            color: Colors.deepOrange,
+            color: Colors.black,
           ),
         ),
         onPressed: () {
@@ -227,7 +226,7 @@ class _ForEmployee extends State<ForEmployee> {
       // height: 200,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(Assets.background_home_img_2),
+          image: AssetImage(Assets.background_it_page_img),
           fit: BoxFit.cover,
         ),
       ),
@@ -272,60 +271,36 @@ class _ForEmployee extends State<ForEmployee> {
               color: Colors.white,
             ),
           ),
-          SizedBox(height: 24),
+          SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 24 : 34),
           Text(
-            Strings.find_work,
+            Strings.it_employee_text,
             style: TextStyles.heading.copyWith(
-                color: Colors.white,
-                fontSize: ResponsiveWidget.isSmallScreen(context) ? 36 : 45.0),
+              fontSize: ResponsiveWidget.isSmallScreen(context) ? 26 : 36.0,
+              color: Colors.white,
+            ),
           ),
-          _buildUnderlineOrange(Strings.find_work.length),
+          _buildUnderlineOrange(Strings.it_employee_text.length),
           SizedBox(height: 24),
-          !ResponsiveWidget.isSmallScreen(context)
-              ? Row(
+          Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Text(
+                  Strings.it_employee_offer_work,
+                  style: TextStyles.heading.copyWith(
+                    fontSize: 36.0,
+                    color: Colors.white,
+                  ),
+                ),
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Column(
-                      children: [
-                        Text(
-                          Strings.send_cv_to_hr_library,
-                          style: TextStyles.logo.copyWith(
-                              color: Colors.white,
-                              fontSize: ResponsiveWidget.isSmallScreen(context)
-                                  ? 26
-                                  : 30.0),
-                        ),
-                        _buildUnderlineOrange(
-                            Strings.send_cv_to_hr_library.length),
-                        Padding(
-                          padding: EdgeInsets.only(left: 100.0),
-                          child: _buildColumnTextFromList(Strings.about_cv),
-                        ),
-                      ],
-                    ),
-                    Expanded(
-                      child: _buildFormAddCv(500, 500, _formKey),
-                    ),
+                    _buildColumnTextFromList(Strings.it_employee_offer_more_1),
+                    SizedBox(width: 20),
+                    _buildColumnTextFromList(Strings.it_employee_offer_more_2),
                   ],
-                )
-              : Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      Strings.send_cv_to_hr_library,
-                      style: TextStyles.logo.copyWith(
-                          color: Colors.white,
-                          fontSize: ResponsiveWidget.isSmallScreen(context)
-                              ? 26
-                              : 30.0),
-                    ),
-                    _buildUnderlineOrange(
-                        Strings.send_cv_to_hr_library.length),
-                    _buildColumnTextFromList(Strings.about_cv),
-                    SizedBox(height: 24),
-                    _buildFormAddCv(350, 500, _formKey),
-                  ],
-                )
+                ),
+              ]),
         ],
       ),
     );
@@ -402,8 +377,16 @@ class _ForEmployee extends State<ForEmployee> {
           child: !ResponsiveWidget.isSmallScreen(context)
               ? Column(
                   children: [
-                    SizedBox(height: 40),
-                    _buildColumnTextBodyFirst(),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[],
+                    ),
+                    _buildFirstOffer(),
+                    SizedBox(height: 24.0),
+                    _buildWhyUs(),
+                    SizedBox(height: 24.0),
+                    _buildOfferWithFromSecond(),
                     SizedBox(height: 40),
                     _buildContactUs(),
                   ],
@@ -412,7 +395,11 @@ class _ForEmployee extends State<ForEmployee> {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    _buildColumnTextBodyFirst(),
+                    _buildFirstOffer(),
+                    SizedBox(height: 24),
+                    _buildWhyUs(),
+                    SizedBox(height: 24),
+                    _buildOfferWithFromSecond(),
                     SizedBox(height: 30),
                     _buildContactUs(),
                     SizedBox(height: 24),
@@ -425,46 +412,188 @@ class _ForEmployee extends State<ForEmployee> {
     );
   }
 
-  Widget _buildColumnTextBodyFirst() {
-    return Column(
-      children: [
-        Text(Strings.how_do_cv,
-            style: TextStyles.heading.copyWith(
-                color: Colors.black,
-                fontSize: ResponsiveWidget.isSmallScreen(context) ? 25 : 35.0)),
-        _buildUnderHeadColumnTextBody(Strings.local_cv),
-        _buildContainerUnderHeadColumnTextBody(Strings.local_cv_more),
-        _buildUnderHeadColumnTextBody(Strings.presentable_cv),
-        _buildContainerUnderHeadColumnTextBody(Strings.presentable_cv_more),
-        _buildUnderHeadColumnTextBody(Strings.health_full_cv),
-        _buildContainerUnderHeadColumnTextBody(Strings.health_full_cv_more),
-        _buildUnderHeadColumnTextBody(Strings.comfortable_cv),
-        _buildContainerUnderHeadColumnTextBody(Strings.comfortable_cv_more),
-        _buildUnderlineOrange(Strings.how_do_cv.length),
-      ],
-    );
-  }
-
-  Widget _buildUnderHeadColumnTextBody(String text) {
-    return Column(
-      children: [
-        _buildUnderlineOrange(Strings.how_do_cv.length),
-        SizedBox(height: 24),
-        Text(text,
-            style: TextStyles.logo.copyWith(
-                color: Colors.deepOrange,
-                fontSize: ResponsiveWidget.isSmallScreen(context) ? 16 : 25.0)),
-      ],
-    );
-  }
-
-  Widget _buildContainerUnderHeadColumnTextBody(String text) {
+  Widget _buildFirstOffer() {
     return Container(
-      width: 1400,
-      child: Text(text,
-          style: TextStyles.menu_item.copyWith(
-              color: Colors.black,
-              fontSize: ResponsiveWidget.isSmallScreen(context) ? 10 : 15.0)),
+      // height: 200,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(Assets.background_home_img_2),
+          fit: BoxFit.cover,
+        ),
+      ),
+      padding: EdgeInsets.only(bottom: 50, top: 50),
+      child: !ResponsiveWidget.isSmallScreen(context)
+          ? Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    children: [
+                      Text(
+                        Strings.it_employee_finder,
+                        style: TextStyles.logo.copyWith(
+                          fontSize: 30.0,
+                          color: Colors.white,
+                        ),
+                      ),
+                      _buildUnderlineOrange(Strings.it_employee_finder.length),
+                      Padding(
+                        padding: EdgeInsets.only(left: 50.0),
+                        child: _buildColumnTextFromList(
+                            Strings.it_employee_finder_more),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: _buildFormCallMe(500, 400, _formKey),
+                ),
+              ],
+            )
+          : Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  Strings.it_employee_finder,
+                  style: TextStyles.logo.copyWith(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+                _buildUnderlineOrange(Strings.it_employee_finder.length),
+                Padding(
+                  padding: EdgeInsets.only(left: 50.0, top: 20.0, right: 50.0),
+                  child:
+                      _buildColumnTextFromList(Strings.it_employee_finder_more),
+                ),
+                SizedBox(height: 24),
+                _buildFormCallMe(350, 400, _formKey)
+              ],
+            ),
+    );
+  }
+
+  Widget _buildWhyUs() {
+    return Column(
+      children: [
+        Column(
+          children: [
+            Text(
+              Strings.why_we_best,
+              style: TextStyles.logo.copyWith(
+                fontSize: ResponsiveWidget.isSmallScreen(context) ? 20 : 30.0,
+                color: Colors.black,
+              ),
+            ),
+            _buildUnderlineOrange(Strings.why_we_best.length),
+          ],
+        ),
+        SizedBox(height: 24),
+        !ResponsiveWidget.isSmallScreen(context)
+            ? Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      children: [
+                        _buildContainerText(Strings.why_we_title_1,
+                            Strings.why_we_about_1, 300),
+                        _buildContainerText(Strings.why_we_title_2,
+                            Strings.why_we_about_2, 250),
+                        _buildContainerText(Strings.why_we_title_3,
+                            Strings.why_we_about_3, 200),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                      child: Column(
+                    children: [
+                      _buildContainerText(
+                          Strings.why_we_title_4, Strings.why_we_about_4, 300),
+                      _buildContainerText(
+                          Strings.why_we_title_5, Strings.why_we_about_5, 250),
+                      _buildContainerText(
+                          Strings.why_we_title_6, Strings.why_we_about_6, 200),
+                    ],
+                  )),
+                ],
+              )
+            : Column(
+                children: [
+                  _buildContainerText(
+                      Strings.why_we_title_1, Strings.why_we_about_1, 130),
+                  _buildContainerText(
+                      Strings.why_we_title_2, Strings.why_we_about_2, 130),
+                  _buildContainerText(
+                      Strings.why_we_title_3, Strings.why_we_about_3, 130),
+                  _buildContainerText(
+                      Strings.why_we_title_4, Strings.why_we_about_4, 170),
+                  _buildContainerText(
+                      Strings.why_we_title_5, Strings.why_we_about_5, 130),
+                  _buildContainerText(
+                      Strings.why_we_title_6, Strings.why_we_about_6, 130),
+                ],
+              ),
+      ],
+    );
+  }
+
+  Widget _buildOfferWithFromSecond() {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          colors: [Colors.black87, Colors.black],
+        ),
+      ),
+      padding: EdgeInsets.only(bottom: 50, top: 50),
+      child: !ResponsiveWidget.isSmallScreen(context)
+          ? Row(
+              children: [
+                Expanded(
+                  child: _buildFormCallMe(500, 400, _formKey_2),
+                ),
+                Expanded(
+                  child: Column(
+                    children: [
+                      Text(
+                        Strings.staff_out_what,
+                        style: TextStyles.logo.copyWith(
+                          fontSize: 30.0,
+                          color: Colors.white,
+                        ),
+                      ),
+                      _buildUnderlineOrange(Strings.staff_out_what.length),
+                      Padding(
+                        padding: EdgeInsets.only(right: 50.0),
+                        child: _buildColumnTextFromList(
+                            Strings.it_employee_what_more),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            )
+          : Column(
+              children: [
+                Text(
+                  Strings.staff_out_what,
+                  style: TextStyles.logo.copyWith(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+                _buildUnderlineOrange(Strings.staff_out_what.length),
+                Padding(
+                  padding: EdgeInsets.only(right: 20.0, left: 20),
+                  child:
+                      _buildColumnTextFromList(Strings.it_employee_what_more),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 20.0),
+                  child: _buildFormCallMe(350, 400, _formKey_2),
+                ),
+              ],
+            ),
     );
   }
 
@@ -488,7 +617,38 @@ class _ForEmployee extends State<ForEmployee> {
     );
   }
 
-  Widget _buildFormAddCv(
+  Widget _buildContainerText(
+      String firstText, String secondText, double heightContainer) {
+    return Container(
+      height: heightContainer,
+      width: 450,
+      child: Column(
+        children: [
+          _textBuilder(firstText, TextStyles.logo, 15, 20, Colors.deepOrange),
+          SizedBox(height: 15),
+          Padding(
+            padding: EdgeInsets.only(left: 20.0),
+            child: _textBuilder(
+                secondText, TextStyles.menu_item, 10, 15, Colors.black),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _textBuilder(String text, TextStyle textStyle, double minFontSize,
+      double maxFontSize, Color color) {
+    return Text(
+      text,
+      style: textStyle.copyWith(
+        fontSize:
+            ResponsiveWidget.isSmallScreen(context) ? minFontSize : maxFontSize,
+        color: color,
+      ),
+    );
+  }
+
+  Widget _buildFormCallMe(
       double maxW, double maxH, GlobalKey<FormState> keyForm) {
     return Form(
       // key: _formKey,
@@ -504,12 +664,13 @@ class _ForEmployee extends State<ForEmployee> {
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  // const FlutterLogo(size: 100),
                   _buildTitle(),
                   SizedBox(height: 16),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text(
-                      Strings.set_cv,
+                      Strings.set_offer,
                       style: TextStyles.logo
                           .copyWith(color: Colors.black, fontSize: 14.0),
                     ),
@@ -517,74 +678,51 @@ class _ForEmployee extends State<ForEmployee> {
                   Padding(
                     padding: const EdgeInsets.only(top: 8.0),
                     child: Text(
-                      Strings.set_cv_to_database,
+                      Strings.set_offer_free_consultation,
                       style: Theme.of(context).textTheme.caption,
                       textAlign: TextAlign.center,
                     ),
                   ),
                   SizedBox(height: 16),
                   TextFormField(
-                    validator: (value) {
-                      // add email validation
-                      if (value == null || value.isEmpty) {
-                        return Strings.empty_text;
-                      }
-                      return null;
-                    },
-                    decoration: InputDecoration(
-                      labelText: Strings.name,
-                      hintText: Strings.enter_name,
-                      prefixIcon: Icon(Icons.abc),
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
+                      validator: (value) {
+                        // add email validation
+                        if (value == null || value.isEmpty) {
+                          return Strings.empty_text;
+                        }
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                        labelText: Strings.name,
+                        hintText: Strings.enter_name,
+                        prefixIcon: Icon(Icons.abc),
+                        border: OutlineInputBorder(),
+                      ),
+                      onChanged: (value) {
+                        name = value;
+                      }),
                   SizedBox(height: 16),
                   TextFormField(
-                    validator: (value) {
-                      var numberValid = RegExp(r'^\+?\d+$').hasMatch(value);
-                      if (!numberValid ||
-                          value.length < 6 ||
-                          value == null ||
-                          value.isEmpty) {
-                        return Strings.invalid_number;
-                      }
+                      validator: (value) {
+                        var numberValid = RegExp(r'^\+?\d+$').hasMatch(value);
+                        if (!numberValid ||
+                            value.length < 6 ||
+                            value == null ||
+                            value.isEmpty) {
+                          return Strings.invalid_number;
+                        }
 
-                      return null;
-                    },
-                    decoration: InputDecoration(
-                      labelText: Strings.number,
-                      hintText: Strings.enter_number,
-                      prefixIcon: const Icon(Icons.phone),
-                      border: const OutlineInputBorder(),
-                    ),
-                  ),
-                  SizedBox(height: 16),
-                  TextFormField(
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return Strings.no_file_selected;
-                      }
-                      return null;
-                    },
-                    onTap: () async {
-                      var result = await FilePicker.platform.pickFiles();
-
-                      if (result != null) {
-                        var file = result.files.first;
-
-                        // Обновите контроллер файла выбранным путем файла
-                        _fileController.text = file.name;
-                      }
-                    },
-                    controller: _fileController,
-                    readOnly: true,
-                    decoration: InputDecoration(
-                      labelText: Strings.select_file,
-                      hintText: Strings.no_file_selected,
-                      prefixIcon: Icon(Icons.attach_file),
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                        labelText: Strings.number,
+                        hintText: Strings.enter_number,
+                        prefixIcon: const Icon(Icons.phone),
+                        border: const OutlineInputBorder(),
+                      ),
+                      onChanged: (value) {
+                        number = value;
+                      }),
                   SizedBox(height: 16),
                   SizedBox(
                     width: double.infinity,
@@ -603,12 +741,35 @@ class _ForEmployee extends State<ForEmployee> {
                         ),
                       ),
                       onPressed: () {
-                        //todo send to mail
-                        if (_formKey.currentState?.validate()) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ForCompanyPage(context)),
+                        if (keyForm.currentState?.validate()) {
+                          MailSendService(name, number);
+                          showDialog(
+                            context: context,
+                            barrierColor: Colors.white24,
+                            builder: (context) {
+                              return AlertDialog(
+                                content: Container(
+                                  height: ResponsiveWidget.isSmallScreen(context) ? 100 : 200,
+                                  width: ResponsiveWidget.isSmallScreen(context) ? 250 : 500,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        Strings.success_message_start,
+                                        style: TextStyles.company
+                                            .copyWith(color: Colors.deepOrange),
+                                      ),
+                                      Text(
+                                        Strings.success_message_end,
+                                        style: TextStyles.company
+                                            .copyWith(color: Colors.black),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
                           );
                         }
                       },
@@ -719,8 +880,7 @@ class _ForEmployee extends State<ForEmployee> {
                   Text(
                     Strings.contact_us_offer,
                     style: TextStyles.menu_item.copyWith(
-                      fontSize:
-                          ResponsiveWidget.isSmallScreen(context) ? 11 : 20.0,
+                      fontSize: 20.0,
                       color: Colors.black,
                     ),
                   ),
@@ -730,10 +890,7 @@ class _ForEmployee extends State<ForEmployee> {
                       side: MaterialStateProperty.all(
                         BorderSide(color: Colors.deepOrange, width: 2.0),
                       ),
-                      minimumSize: MaterialStateProperty.all(
-                          ResponsiveWidget.isSmallScreen(context)
-                              ? Size(140, 50)
-                              : Size(200, 50)),
+                      minimumSize: MaterialStateProperty.all(Size(200, 50)),
                       padding: MaterialStateProperty.all(EdgeInsets.all(10)),
                       backgroundColor: isHoveredCall
                           ? MaterialStateProperty.all<Color>(Color(0xFFFA4812))
@@ -760,9 +917,7 @@ class _ForEmployee extends State<ForEmployee> {
                       child: Text(
                         Strings.call,
                         style: TextStyles.menu_item.copyWith(
-                          fontSize: ResponsiveWidget.isSmallScreen(context)
-                              ? 10
-                              : 20.0,
+                          fontSize: 20.0,
                           color: Colors.white,
                         ),
                       ),
@@ -780,8 +935,7 @@ class _ForEmployee extends State<ForEmployee> {
                   Text(
                     Strings.contact_us_offer,
                     style: TextStyles.menu_item.copyWith(
-                      fontSize:
-                          ResponsiveWidget.isSmallScreen(context) ? 11 : 20.0,
+                      fontSize: 11,
                       color: Colors.black,
                     ),
                   ),
@@ -795,10 +949,7 @@ class _ForEmployee extends State<ForEmployee> {
                       side: MaterialStateProperty.all(
                         BorderSide(color: Colors.deepOrange, width: 2.0),
                       ),
-                      minimumSize: MaterialStateProperty.all(
-                          ResponsiveWidget.isSmallScreen(context)
-                              ? Size(140, 50)
-                              : Size(200, 50)),
+                      minimumSize: MaterialStateProperty.all(Size(140, 50)),
                       padding: MaterialStateProperty.all(EdgeInsets.all(10)),
                       backgroundColor: isHoveredCall
                           ? MaterialStateProperty.all<Color>(Color(0xFFFA4812))
@@ -825,9 +976,7 @@ class _ForEmployee extends State<ForEmployee> {
                       child: Text(
                         Strings.call,
                         style: TextStyles.menu_item.copyWith(
-                          fontSize: ResponsiveWidget.isSmallScreen(context)
-                              ? 10
-                              : 20.0,
+                          fontSize: 10,
                           color: Colors.white,
                         ),
                       ),

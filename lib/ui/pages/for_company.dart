@@ -4,7 +4,7 @@ import 'package:hr_test/constants/fonts.dart';
 import 'package:hr_test/constants/strings.dart';
 import 'package:hr_test/constants/text_styles.dart';
 import 'package:hr_test/service/language_service.dart';
-import 'package:hr_test/ui/company.dart';
+import 'package:hr_test/ui/old/company.dart';
 import 'package:hr_test/ui/contact.dart';
 import 'package:hr_test/ui/pages/for_company_img_button_pages/executive_search.dart';
 import 'package:hr_test/ui/pages/for_company_img_button_pages/head_hunting.dart';
@@ -18,7 +18,11 @@ import 'package:hr_test/widgets/responsive_widget.dart';
 import 'dart:html' as html;
 
 import '../home.dart';
-import '../hr.dart';
+import '../old/hr.dart';
+import 'article_pages/cv_starter_page.dart';
+import 'article_pages/preparing_for_interview_page.dart';
+import 'article_pages/successful_interview_page.dart';
+import 'bottom_buttons_pages/about_hr_library_page.dart';
 
 class ForCompanyPage extends StatefulWidget {
   final BuildContext context;
@@ -528,12 +532,7 @@ class _ForCompanyPage extends State<ForCompanyPage> {
                   hoverColor: Colors.transparent,
                   // hoverColor: Colors.deepOrange.withAlpha(50),
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ContactPage(context),
-                      ), //TODO create validation PAGE
-                    );
+                    _validatorBottomTextButton(hoveredValidation, i);
                   },
                   onHighlightChanged: (isPressed) {
                     setState(() {
@@ -592,7 +591,7 @@ class _ForCompanyPage extends State<ForCompanyPage> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            ContactPage(context), // TODO create validator page
+                            ContactPage(context), // TODO create validator page top button
                       ),
                     );
                   },
@@ -1231,7 +1230,7 @@ class _ForCompanyPage extends State<ForCompanyPage> {
         SizedBox(width: 16.0),
         GestureDetector(
           onTap: () {
-            html.window.open(Strings.link_github, "Github");
+            html.window.open(Strings.link_gmail, "Github");
           },
           child: Image.network(
             Assets.google,
@@ -1254,6 +1253,116 @@ class _ForCompanyPage extends State<ForCompanyPage> {
         ),
       ],
     );
+  }
+
+  // --------------------------------- VALIDATOR -------------------------------
+  void _validatorBottomTextButton(List<bool> isHovered, int i) {
+    if(isHovered == isHoveredTextButtonButFirst) {
+      switch (i) {
+        case 0:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HomePage(context),
+            ),
+          );
+          break;
+        case 1:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AboutsUsPage(context),
+            ),
+          );
+          break;
+        case 2:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => PrivacyPage(context),
+            ),
+          );
+          break;
+        case 3:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ContactPage(context),
+            ),
+          );
+          break;
+      }
+    } else if (isHovered == isHoveredTextButtonButSecond) {
+      switch (i) {
+        case 0:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => RecruitmentPage(context),
+            ),
+          );
+          break;
+        case 1:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ExecutiveSearchPage(context),
+            ),
+          );
+          break;
+        case 2:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HeadHuntingPage(context),
+            ),
+          );
+          break;
+        case 3:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => StaffOutsourcingPage(context),
+            ),
+          );
+          break;
+      }
+    } else if (isHovered == isHoveredTextButtonButThird) {
+      switch (i) {
+        case 0:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ForEmployee(context),
+            ),
+          );
+          break;
+        case 1:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SuccessInterview(context),
+            ),
+          );
+          break;
+        case 2:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => PreparingInterview(context),
+            ),
+          );
+          break;
+        case 3:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CvStarterInterview(context),
+            ),
+          );
+          break;
+      }
+    }
   }
 
   void _validatorImagePage(int i) {

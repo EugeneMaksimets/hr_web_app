@@ -16,6 +16,8 @@ class Assets {
   static const String background_back_page_img_office = 'images/background_img/people_in_office_back_img.jpg';
   static const String background_back_page_img_meetup = 'images/background_img/meetup_background_img.jpg';
   static const String background_back_page_img_meetup_2 = 'images/background_img/meetup_background_img_2.jpg';
+  static const String background_it_page_img = 'images/background_img/it_page_background_img.jpg';
+  static const String background_about_us_page_img = 'images/background_img/about_us_background_img.jpg';
 
   // png
   static const String outline_png = 'assets/images/png/landscape_outline_icon.png';

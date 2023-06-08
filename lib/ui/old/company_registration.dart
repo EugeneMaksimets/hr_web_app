@@ -3,43 +3,45 @@ import 'package:hr_test/constants/assets.dart';
 import 'package:hr_test/constants/strings.dart';
 import 'package:hr_test/constants/text_styles.dart';
 import 'package:hr_test/service/language_service.dart';
-import 'package:hr_test/ui/success_registration.dart';
+import 'package:hr_test/ui/old/success_registration.dart';
 import 'package:hr_test/utils/screen/screen_utils.dart';
 import 'package:hr_test/widgets/responsive_widget.dart';
 import 'dart:html' as html;
 
-import '../service/data.dart';
+import '../../service/data.dart';
 import 'company.dart';
-import 'contact.dart';
-import 'home.dart';
+import '../contact.dart';
+import '../home.dart';
 import 'hr.dart';
-import 'privacy.dart';
+import '../privacy.dart';
 
-class HrRegistrationPage extends StatefulWidget {
+class CompanyRegistrationPage extends StatefulWidget {
   static String error = '';
   final BuildContext context;
 
-  HrRegistrationPage(this.context);
+  CompanyRegistrationPage(this.context);
 
   @override
-  _HrRegistrationPage createState() => _HrRegistrationPage();
+  _CompanyRegistrationPageState createState() =>
+      _CompanyRegistrationPageState();
 }
 
-class _HrRegistrationPage extends State<HrRegistrationPage> {
+class _CompanyRegistrationPageState extends State<CompanyRegistrationPage> {
   final TextEditingController _textEditingController = TextEditingController();
   double _textFieldHeight = 56.0; // Initial height of the text field
 
   bool _isPasswordVisible = false;
 
-  String _email;
-  String _password;
+  String _email = '';
+  String _password = '';
+  String _description = '';
   String _name = '';
-  String _lastName;
-  String _country;
-  String _about;
+  String _country = '';
+  String _site = '';
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  String _selectedItem;
+  String
+      _selectedItem;
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +91,7 @@ class _HrRegistrationPage extends State<HrRegistrationPage> {
           TextSpan(
             text: Strings.y,
             style: TextStyles.logo.copyWith(
-              color: Color(0xFF50AFC0),
+              color: Colors.deepOrange,
             ),
           ),
         ],
@@ -165,10 +167,10 @@ class _HrRegistrationPage extends State<HrRegistrationPage> {
             LanguageService.number = ++LanguageService.number;
             LanguageService.validateLanguage();
             LanguageService.changeLanguage();
-            HrRegistrationPage.error = Strings.email_not_founded;
+            CompanyRegistrationPage.error = Strings.email_not_founded;
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => HrRegistrationPage(context)),
+              MaterialPageRoute(builder: (context) => CompanyRegistrationPage(context)),
             );
           })
     ];
@@ -322,7 +324,7 @@ class _HrRegistrationPage extends State<HrRegistrationPage> {
         SizedBox(width: 16.0),
         GestureDetector(
           onTap: () {
-            html.window.open(Strings.link_github, "Github");
+            html.window.open(Strings.link_gmail, "Github");
           },
           child: Image.network(
             Assets.google,
@@ -366,7 +368,7 @@ class _HrRegistrationPage extends State<HrRegistrationPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text(
-                      HrRegistrationPage.error,
+                      CompanyRegistrationPage.error,
                       style: TextStyles.logo.copyWith(
                           color: Colors.redAccent,
                           fontSize: 14.0),
@@ -375,7 +377,11 @@ class _HrRegistrationPage extends State<HrRegistrationPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text(
-                      Strings.tell_about_yourself,
+                      Strings.tell_about +
+                          ' ' +
+                          Strings.the +
+                          ' ' +
+                          Strings.company,
                       style: TextStyles.logo.copyWith(
                           color: Colors.black,
                           fontSize: 14.0),
@@ -400,30 +406,10 @@ class _HrRegistrationPage extends State<HrRegistrationPage> {
                     },
                     onSaved: (value) {
                       _name = value ?? '';
-                      print(_name);
                     },
                     decoration: InputDecoration(
-                      labelText: Strings.name,
-                      hintText: Strings.enter_name,
-                      prefixIcon: Icon(Icons.abc),
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                  _gap(),
-                  TextFormField(
-                    validator: (value) {
-                      // add email validation
-                      if (value == null || value.isEmpty) {
-                        return Strings.empty_text;
-                      }
-                      return null;
-                    },
-                    onSaved: (value) {
-                      _lastName = value ?? '';
-                    },
-                    decoration: InputDecoration(
-                      labelText: Strings.last_name,
-                      hintText: Strings.enter_last_name,
+                      labelText: Strings.registration_company_name,
+                      hintText: Strings.enter_company_name,
                       prefixIcon: Icon(Icons.abc),
                       border: OutlineInputBorder(),
                     ),
@@ -438,12 +424,18 @@ class _HrRegistrationPage extends State<HrRegistrationPage> {
                         _textFieldHeight = calculateTextFieldHeight(value);
                       });
                     },
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return Strings.empty_text;
+                      }
+                      return null;
+                    },
                     onSaved: (value) {
-                      _about = value ?? '';
+                      _description = value ?? '';
                     },
                     decoration: InputDecoration(
-                      labelText: Strings.tell_about_yourself,
-                      hintText: Strings.tell_about_yourself,
+                      labelText: Strings.description,
+                      hintText: Strings.enter_description,
                       prefixIcon: Icon(Icons.abc),
                       border: OutlineInputBorder(),
                     ),
@@ -481,10 +473,37 @@ class _HrRegistrationPage extends State<HrRegistrationPage> {
                   _gap(),
                   TextFormField(
                     validator: (value) {
+                      // add site validation
+                      if (value == null || value.isEmpty) {
+                        return Strings.empty_text;
+                      }
+
+                      var siteValid = RegExp(r'^[\w\-]+(\.[\w\-]+)+[/#?]?.*$')
+                          .hasMatch(value);
+                      if (!siteValid) {
+                        return Strings.invalid_site;
+                      }
+
+                      return null;
+                    },
+                    onSaved: (value) {
+                      _site = value ?? '';
+                    },
+                    decoration: InputDecoration(
+                      labelText: Strings.site,
+                      hintText: Strings.enter_site,
+                      prefixIcon: Icon(Icons.web),
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                  _gap(),
+                  TextFormField(
+                    validator: (value) {
                       // add email validation
                       if (value == null || value.isEmpty) {
                         return Strings.empty_text;
                       }
+
                       var emailValid = RegExp(
                               r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                           .hasMatch(value);
@@ -548,7 +567,7 @@ class _HrRegistrationPage extends State<HrRegistrationPage> {
                       child: Padding(
                         padding: EdgeInsets.all(10.0),
                         child: Text(
-                          Strings.registration + ' ' + Strings.like_hr,
+                          Strings.registration + ' ' + Strings.like_company,
                           style:
                               TextStyles.company.copyWith(color: Colors.white),
                         ),
