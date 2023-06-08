@@ -131,7 +131,7 @@ class _CompanyPageState extends State<CompanyPage> {
       ),
       MaterialButton(
         child: Text(
-          Strings.menu_privacy,
+          Strings.menu_about_us,
           style: TextStyles.menu_item,
         ),
         onPressed: () {

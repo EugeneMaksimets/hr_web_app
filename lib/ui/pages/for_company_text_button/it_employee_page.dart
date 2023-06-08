@@ -154,7 +154,7 @@ class _ItEmployeePage extends State<ItEmployeePage> {
       ),
       MaterialButton(
         child: Text(
-          Strings.menu_privacy,
+          Strings.menu_about_us,
           style: TextStyles.menu_item.copyWith(
             color: Colors.black,
           ),
@@ -162,7 +162,7 @@ class _ItEmployeePage extends State<ItEmployeePage> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => PrivacyPage(context)),
+            MaterialPageRoute(builder: (context) => AboutsUsPage(context)),
           );
         },
       ),

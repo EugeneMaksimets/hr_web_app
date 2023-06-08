@@ -4,6 +4,7 @@ import 'package:hr_test/constants/fonts.dart';
 import 'package:hr_test/constants/strings.dart';
 import 'package:hr_test/constants/text_styles.dart';
 import 'package:hr_test/service/language_service.dart';
+import 'package:hr_test/ui/pages/bottom_buttons_pages/about_hr_library_page.dart';
 import 'package:hr_test/utils/screen/screen_utils.dart';
 import 'package:hr_test/widgets/responsive_widget.dart';
 import 'dart:html' as html;
@@ -114,15 +115,15 @@ class PrivacyPage extends StatelessWidget {
       ),
       MaterialButton(
         child: Text(
-          Strings.menu_privacy,
+          Strings.menu_about_us,
           style: TextStyles.menu_item.copyWith(
-            color: Colors.deepOrange,
+            color: Colors.black,
           ),
         ),
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => PrivacyPage(context)),
+            MaterialPageRoute(builder: (context) => AboutsUsPage(context)),
           );
         },
       ),

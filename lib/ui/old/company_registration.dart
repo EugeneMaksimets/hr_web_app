@@ -136,7 +136,7 @@ class _CompanyRegistrationPageState extends State<CompanyRegistrationPage> {
       ),
       MaterialButton(
         child: Text(
-          Strings.menu_privacy,
+          Strings.menu_about_us,
           style: TextStyles.menu_item,
         ),
         onPressed: () {

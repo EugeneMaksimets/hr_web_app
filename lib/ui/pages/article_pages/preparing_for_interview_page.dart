@@ -149,7 +149,7 @@ class _PreparingInterview extends State<PreparingInterview> {
       ),
       MaterialButton(
         child: Text(
-          Strings.menu_privacy,
+          Strings.menu_about_us,
           style: TextStyles.menu_item.copyWith(
             color: Colors.black,
           ),
@@ -157,7 +157,7 @@ class _PreparingInterview extends State<PreparingInterview> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => PrivacyPage(context)),
+            MaterialPageRoute(builder: (context) => AboutsUsPage(context)),
           );
         },
       ),

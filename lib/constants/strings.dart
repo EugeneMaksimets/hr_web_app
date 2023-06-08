@@ -460,7 +460,7 @@ class Strings {
   static const String menu_for_company = 'For Company';
   static const String menu_for_hr = 'For HR';
   static const String menu_contact = 'Contact Us';
-  static const String menu_privacy = 'Privacy';
+  static const String menu_about_us = 'About Us';
   static const List<String> language = ['RU', 'ENG', 'UA'];
 
   static List<String> offers;
