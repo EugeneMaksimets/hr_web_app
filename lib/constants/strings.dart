@@ -25,6 +25,20 @@ class Strings {
   static String cv_starter_interview_text =
       'КАК НЕ ИСПОРТИТЬ РЕЗЮМЕ? ШЕСТЬ ОШИБОК СОИСКАТЕЛЯ';
 
+
+  //call us Page --------------------------------------------------------------------
+  static String call = 'Позвонить';
+  static String contact_page_text = 'СВЯЗАТЬСЯ С НАМИ';
+  static String contact_page_finder_1 = 'C нами вы сможете:';
+  static List<String> contact_page_finder_1_more = [
+    'определить потенциал сотрудников;',
+  'определить уровень компетенции действующих сотрудников;',
+  'оценить достижения специалистов и размер их вознаграждений;',
+  'повысить качество управления персоналом;',
+  'создать кадровый резерв для руководящих должностей;',
+  'развить корпоративную культуру.'
+  ];
+
   //Strings Double Text Button -------------------------------------------------
   static String hr_consulting_page_text = 'КАДРОВЫЙ HR-КОНСАЛТИНГ';
   static String hr_consulting_page_offer = 'Мы поможем вам:';
@@ -1055,8 +1069,8 @@ class Strings {
 
   static String set_cv = 'ДОБАВИТЬ РЕЗЮМЕ';
   static String set_cv_to_database = 'в нашу базу данных';
-  static String no_file_selected = 'No file selected';
-  static String select_file = 'Selected File';
+  static String no_file_selected = 'Файл не выбран';
+  static String select_file = 'Выбрать файл резюме';
   static String find_work = 'ПОИСК РАБОТЫ:';
   static String send_cv_to_hr_library = 'Отправьте резюме в HR-Library';
 
@@ -1148,18 +1162,12 @@ class Strings {
   static String success_wait_for_email;
 
   // contact
-  static String if_have;
-  static String question;
   static String number;
   static String enter_number;
-  static String call_me;
-  static String call = 'Позвонить';
-  static String call_to;
-  static const String ok = 'OK';
   static String invalid_number;
 
   // error message
-  static String email_not_founded;
+  // static String email_not_founded;
 
   // urls
   static const String link_linkedin = "https://www.linkedin.com/";

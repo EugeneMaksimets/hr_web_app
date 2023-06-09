@@ -73,12 +73,8 @@ class StringsRu {
   static const String success_wait_for_email = 'подождите пока наш менеджер не свяжется с вами';
 
   // contact
-  static const String if_have = 'Если есть ';
-  static const String question = 'вопросы';
   static const String number = 'Номер телефона';
   static const String enter_number = 'Введите номер телефона';
-  static const String call_me = 'Позвонить мне';
-  static const String call_to = 'Вызов на номер ';
   static const String invalid_number = 'Введите корректный номер';
 
   // error message

@@ -1,8 +1,6 @@
 class Assets {
   Assets._();
 
-  static const String programmer3 = 'assets/images/programmer-3.gif';
-  static const String success = 'assets/images/success.gif';
   static const String arrow_right = 'assets/icons/arrow-dropright.png';
 
   // button

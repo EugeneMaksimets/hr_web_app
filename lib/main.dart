@@ -65,6 +65,6 @@ class _MyAppChildState extends State<MyAppChild> {
     // instantiating ScreenUtil singleton instance, as this will be used throughout
     // the app to get screen size and other stuff
     ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
-    return HomePage(context); //todo return home page
+    return HomePage(context);
   }
 }

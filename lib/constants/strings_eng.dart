@@ -75,12 +75,8 @@ class StringsEng {
   static const String success_wait_for_email = 'wait for our manager to email you';
 
   // contact
-  static const String if_have = 'If you have ';
-  static const String question = 'questions';
   static const String number = 'Number';
   static const String enter_number = 'Enter number';
-  static const String call_me = 'Call me';
-  static const String call_to = 'Call to ';
   static const String invalid_number = 'Invalid number';
 
   // error message

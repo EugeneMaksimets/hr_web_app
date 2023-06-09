@@ -75,16 +75,11 @@ class LanguageService {
     Strings.success_wait_for_email = StringsEng.success_wait_for_email;
 
     // contact
-    Strings.if_have = StringsEng.if_have;
-    Strings.question = StringsEng.question;
     Strings.number = StringsEng.number;
     Strings.enter_number = StringsEng.enter_number;
-    Strings.call_me = StringsEng.call_me;
-    Strings.call_to = StringsEng.call_to;
     Strings.invalid_number = StringsEng.invalid_number;
 
     // error message
-    Strings.email_not_founded = StringsEng.email_not_founded;
 
     // privacy politic
     Strings.privacy_sting = StringsEng.privacy_sting;
@@ -137,16 +132,9 @@ class LanguageService {
     Strings.success_wait_for_email = StringsRu.success_wait_for_email;
 
     // contact
-    Strings.if_have = StringsRu.if_have;
-    Strings.question = StringsRu.question;
     Strings.number = StringsRu.number;
     Strings.enter_number = StringsRu.enter_number;
-    Strings.call_me = StringsRu.call_me;
-    Strings.call_to = StringsRu.call_to;
     Strings.invalid_number = StringsRu.invalid_number;
-
-    // error message
-    Strings.email_not_founded = StringsRu.email_not_founded;
 
     // privacy politic
     Strings.privacy_sting = StringsRu.privacy_sting;
@@ -199,16 +187,11 @@ class LanguageService {
     Strings.success_wait_for_email = StringsUa.success_wait_for_email;
 
     // contact
-    Strings.if_have = StringsUa.if_have;
-    Strings.question = StringsUa.question;
     Strings.number = StringsUa.number;
     Strings.enter_number = StringsUa.enter_number;
-    Strings.call_me = StringsUa.call_me;
-    Strings.call_to = StringsUa.call_to;
     Strings.invalid_number = StringsUa.invalid_number;
 
     // error message
-    Strings.email_not_founded = StringsUa.email_not_founded;
 
     // privacy politic
     Strings.privacy_sting = StringsUa.privacy_sting;

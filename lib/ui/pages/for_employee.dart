@@ -1,9 +1,11 @@
+
 import 'package:flutter/material.dart';
 import 'package:hr_test/constants/assets.dart';
 import 'package:hr_test/constants/fonts.dart';
 import 'package:hr_test/constants/strings.dart';
 import 'package:hr_test/constants/text_styles.dart';
 import 'package:hr_test/service/language_service.dart';
+import 'package:hr_test/service/mail_send_service.dart';
 import 'package:hr_test/ui/contact.dart';
 import 'package:hr_test/ui/home.dart';
 import 'package:hr_test/ui/pages/for_company.dart';
@@ -42,7 +44,11 @@ class _ForEmployee extends State<ForEmployee> {
   var isHoveredForCompany = false;
   var isHoveredForEmployee = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final GlobalKey<FormState> _formKey_2 = GlobalKey<FormState>();
+
+  var name = '';
+  var number = '';
+
+  PlatformFile selectedFile;
 
   final TextEditingController _fileController = TextEditingController();
 
@@ -536,6 +542,9 @@ class _ForEmployee extends State<ForEmployee> {
                       prefixIcon: Icon(Icons.abc),
                       border: OutlineInputBorder(),
                     ),
+                    onChanged: (value) {
+                      name = value;
+                    },
                   ),
                   SizedBox(height: 16),
                   TextFormField(
@@ -556,6 +565,9 @@ class _ForEmployee extends State<ForEmployee> {
                       prefixIcon: const Icon(Icons.phone),
                       border: const OutlineInputBorder(),
                     ),
+                    onChanged: (value) {
+                      number = value;
+                    },
                   ),
                   SizedBox(height: 16),
                   TextFormField(
@@ -573,6 +585,9 @@ class _ForEmployee extends State<ForEmployee> {
 
                         // Обновите контроллер файла выбранным путем файла
                         _fileController.text = file.name;
+                        setState(() {
+                          selectedFile = result.files.first;
+                        });
                       }
                     },
                     controller: _fileController,
@@ -602,12 +617,41 @@ class _ForEmployee extends State<ForEmployee> {
                         ),
                       ),
                       onPressed: () {
-                        //todo send to mail
-                        if (_formKey.currentState?.validate()) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ForCompanyPage(context)),
+                        if (keyForm.currentState?.validate()) {
+                          MailSendService(name, number, file: selectedFile);
+                          showDialog(
+                            context: context,
+                            barrierColor: Colors.white24,
+                            builder: (context) {
+                              return AlertDialog(
+                                content: Container(
+                                  height:
+                                  ResponsiveWidget.isSmallScreen(context)
+                                      ? 100
+                                      : 200,
+                                  width: ResponsiveWidget.isSmallScreen(context)
+                                      ? 250
+                                      : 500,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        Strings.success_message_start,
+                                        style: TextStyles.company
+                                            .copyWith(color: Colors.deepOrange),
+                                      ),
+                                      Text(
+                                        Strings.success_message_end,
+                                        style: TextStyles.company
+                                            .copyWith(color: Colors.black),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
                           );
                         }
                       },
