@@ -319,8 +319,7 @@ class _ForEmployee extends State<ForEmployee> {
                               ? 26
                               : 30.0),
                     ),
-                    _buildUnderlineOrange(
-                        Strings.send_cv_to_hr_library.length),
+                    _buildUnderlineOrange(Strings.send_cv_to_hr_library.length),
                     _buildColumnTextFromList(Strings.about_cv),
                     SizedBox(height: 24),
                     _buildFormAddCv(350, 500, _formKey),
@@ -1077,7 +1076,7 @@ class _ForEmployee extends State<ForEmployee> {
 
   // --------------------------------- VALIDATOR -------------------------------
   void _validatorBottomTextButton(List<bool> isHovered, int i) {
-    if(isHovered == isHoveredTextButtonButFirst) {
+    if (isHovered == isHoveredTextButtonButFirst) {
       switch (i) {
         case 0:
           Navigator.push(

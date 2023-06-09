@@ -789,7 +789,7 @@ class _HeadHuntingPage extends State<HeadHuntingPage> {
                         child: Text(
                           Strings.send_message_form_call,
                           style:
-                          TextStyles.company.copyWith(color: Colors.white),
+                              TextStyles.company.copyWith(color: Colors.white),
                         ),
                       ),
                       onPressed: () {
@@ -801,11 +801,17 @@ class _HeadHuntingPage extends State<HeadHuntingPage> {
                             builder: (context) {
                               return AlertDialog(
                                 content: Container(
-                                  height: ResponsiveWidget.isSmallScreen(context) ? 100 : 200,
-                                  width: ResponsiveWidget.isSmallScreen(context) ? 250 : 500,
+                                  height:
+                                      ResponsiveWidget.isSmallScreen(context)
+                                          ? 100
+                                          : 200,
+                                  width: ResponsiveWidget.isSmallScreen(context)
+                                      ? 250
+                                      : 500,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Text(
                                         Strings.success_message_start,
@@ -1278,7 +1284,7 @@ class _HeadHuntingPage extends State<HeadHuntingPage> {
 
   // --------------------------------- VALIDATOR -------------------------------
   void _validatorBottomTextButton(List<bool> isHovered, int i) {
-    if(isHovered == isHoveredTextButtonButFirst) {
+    if (isHovered == isHoveredTextButtonButFirst) {
       switch (i) {
         case 0:
           Navigator.push(

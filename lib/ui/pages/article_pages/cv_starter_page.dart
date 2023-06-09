@@ -33,11 +33,11 @@ class CvStarterInterview extends StatefulWidget {
 
 class _CvStarterInterview extends State<CvStarterInterview> {
   var isHoveredTextButtonButFirst =
-  List<bool>.filled(Strings.why_we_offer.length, false);
+      List<bool>.filled(Strings.why_we_offer.length, false);
   var isHoveredTextButtonButSecond =
-  List<bool>.filled(Strings.why_we_offer.length, false);
+      List<bool>.filled(Strings.why_we_offer.length, false);
   var isHoveredTextButtonButThird =
-  List<bool>.filled(Strings.why_we_offer.length, false);
+      List<bool>.filled(Strings.why_we_offer.length, false);
   var isHoveredCall = false;
 
   @override
@@ -72,7 +72,7 @@ class _CvStarterInterview extends State<CvStarterInterview> {
       backgroundColor: Colors.transparent,
       elevation: 0.0,
       actions:
-      !ResponsiveWidget.isSmallScreen(context) ? _buildActions() : null,
+          !ResponsiveWidget.isSmallScreen(context) ? _buildActions() : null,
     );
   }
 
@@ -195,11 +195,11 @@ class _CvStarterInterview extends State<CvStarterInterview> {
   Widget _buildDrawer(BuildContext context) {
     return ResponsiveWidget.isSmallScreen(context)
         ? Drawer(
-      child: ListView(
-        padding: const EdgeInsets.all(20),
-        children: _buildActions(),
-      ),
-    )
+            child: ListView(
+              padding: const EdgeInsets.all(20),
+              children: _buildActions(),
+            ),
+          )
         : null;
   }
 
@@ -239,7 +239,7 @@ class _CvStarterInterview extends State<CvStarterInterview> {
                     style: TextStyles.heading.copyWith(
                       fontFamily: Fonts.nexa_light,
                       fontSize:
-                      ResponsiveWidget.isSmallScreen(context) ? 36 : 45.0,
+                          ResponsiveWidget.isSmallScreen(context) ? 36 : 45.0,
                       color: Colors.white,
                     ),
                   ),
@@ -250,7 +250,7 @@ class _CvStarterInterview extends State<CvStarterInterview> {
                     style: TextStyles.heading.copyWith(
                       color: Colors.deepOrange,
                       fontSize:
-                      ResponsiveWidget.isSmallScreen(context) ? 36 : 45.0,
+                          ResponsiveWidget.isSmallScreen(context) ? 36 : 45.0,
                     ),
                   ),
                 ],
@@ -350,13 +350,12 @@ class _CvStarterInterview extends State<CvStarterInterview> {
         SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 4.0 : 4.0),
         Expanded(
             child: Column(
-              children: [
-                _buildInterview(),
-                SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 30 : 40),
-                _buildContactUs(),
-              ],
-            )
-        ),
+          children: [
+            _buildInterview(),
+            SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 30 : 40),
+            _buildContactUs(),
+          ],
+        )),
         SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 24.0 : 48.0),
         _buildBottomInfo(),
       ],
@@ -414,7 +413,7 @@ class _CvStarterInterview extends State<CvStarterInterview> {
       text,
       style: textStyle.copyWith(
         fontSize:
-        ResponsiveWidget.isSmallScreen(context) ? minFontSize : maxFontSize,
+            ResponsiveWidget.isSmallScreen(context) ? minFontSize : maxFontSize,
         color: color,
       ),
     );
@@ -508,118 +507,118 @@ class _CvStarterInterview extends State<CvStarterInterview> {
       child: Center(
         child: !ResponsiveWidget.isSmallScreen(context)
             ? Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          // Центрирование по горизонтали
-          children: [
-            Icon(Icons.call),
-            SizedBox(width: 10), // Пространство между иконкой и текстом
-            Text(
-              Strings.contact_us_offer,
-              style: TextStyles.menu_item.copyWith(
-                fontSize: 20.0,
-                color: Colors.black,
-              ),
-            ),
-            SizedBox(width: 15), // Пространство между текстом и кнопкой
-            ElevatedButton(
-              style: ButtonStyle(
-                side: MaterialStateProperty.all(
-                  BorderSide(color: Colors.deepOrange, width: 2.0),
-                ),
-                minimumSize: MaterialStateProperty.all(Size(200, 50)),
-                padding: MaterialStateProperty.all(EdgeInsets.all(10)),
-                backgroundColor: isHoveredCall
-                    ? MaterialStateProperty.all<Color>(Color(0xFFFA4812))
-                    : MaterialStateProperty.all<Color>(Colors.deepOrange),
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ContactPage(context)),
-                );
-              },
-              child: MouseRegion(
-                onHover: (event) {
-                  setState(() {
-                    isHoveredCall = true;
-                  });
-                },
-                onExit: (event) {
-                  setState(() {
-                    isHoveredCall = false;
-                  });
-                },
-                child: Text(
-                  Strings.call,
-                  style: TextStyles.menu_item.copyWith(
-                    fontSize: 20.0,
-                    color: Colors.white,
+                mainAxisAlignment: MainAxisAlignment.center,
+                // Центрирование по горизонтали
+                children: [
+                  Icon(Icons.call),
+                  SizedBox(width: 10), // Пространство между иконкой и текстом
+                  Text(
+                    Strings.contact_us_offer,
+                    style: TextStyles.menu_item.copyWith(
+                      fontSize: 20.0,
+                      color: Colors.black,
+                    ),
                   ),
-                ),
-              ),
-            ),
-          ],
-        )
+                  SizedBox(width: 15), // Пространство между текстом и кнопкой
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      side: MaterialStateProperty.all(
+                        BorderSide(color: Colors.deepOrange, width: 2.0),
+                      ),
+                      minimumSize: MaterialStateProperty.all(Size(200, 50)),
+                      padding: MaterialStateProperty.all(EdgeInsets.all(10)),
+                      backgroundColor: isHoveredCall
+                          ? MaterialStateProperty.all<Color>(Color(0xFFFA4812))
+                          : MaterialStateProperty.all<Color>(Colors.deepOrange),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ContactPage(context)),
+                      );
+                    },
+                    child: MouseRegion(
+                      onHover: (event) {
+                        setState(() {
+                          isHoveredCall = true;
+                        });
+                      },
+                      onExit: (event) {
+                        setState(() {
+                          isHoveredCall = false;
+                        });
+                      },
+                      child: Text(
+                        Strings.call,
+                        style: TextStyles.menu_item.copyWith(
+                          fontSize: 20.0,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              )
             : Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          // Центрирование по горизонтали
-          children: [
-            Icon(Icons.call),
-            SizedBox(width: 10),
-            // Пространство между иконкой и текстом
-            Text(
-              Strings.contact_us_offer,
-              style: TextStyles.menu_item.copyWith(
-                fontSize: 11,
-                color: Colors.black,
-              ),
-            ),
-            SizedBox(
-              width: 15,
-              height: 15,
-            ),
-            // Пространство между текстом и кнопкой
-            ElevatedButton(
-              style: ButtonStyle(
-                side: MaterialStateProperty.all(
-                  BorderSide(color: Colors.deepOrange, width: 2.0),
-                ),
-                minimumSize: MaterialStateProperty.all(Size(140, 50)),
-                padding: MaterialStateProperty.all(EdgeInsets.all(10)),
-                backgroundColor: isHoveredCall
-                    ? MaterialStateProperty.all<Color>(Color(0xFFFA4812))
-                    : MaterialStateProperty.all<Color>(Colors.deepOrange),
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ContactPage(context)),
-                );
-              },
-              child: MouseRegion(
-                onHover: (event) {
-                  setState(() {
-                    isHoveredCall = true;
-                  });
-                },
-                onExit: (event) {
-                  setState(() {
-                    isHoveredCall = false;
-                  });
-                },
-                child: Text(
-                  Strings.call,
-                  style: TextStyles.menu_item.copyWith(
-                    fontSize: 10,
-                    color: Colors.white,
+                mainAxisAlignment: MainAxisAlignment.center,
+                // Центрирование по горизонтали
+                children: [
+                  Icon(Icons.call),
+                  SizedBox(width: 10),
+                  // Пространство между иконкой и текстом
+                  Text(
+                    Strings.contact_us_offer,
+                    style: TextStyles.menu_item.copyWith(
+                      fontSize: 11,
+                      color: Colors.black,
+                    ),
                   ),
-                ),
+                  SizedBox(
+                    width: 15,
+                    height: 15,
+                  ),
+                  // Пространство между текстом и кнопкой
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      side: MaterialStateProperty.all(
+                        BorderSide(color: Colors.deepOrange, width: 2.0),
+                      ),
+                      minimumSize: MaterialStateProperty.all(Size(140, 50)),
+                      padding: MaterialStateProperty.all(EdgeInsets.all(10)),
+                      backgroundColor: isHoveredCall
+                          ? MaterialStateProperty.all<Color>(Color(0xFFFA4812))
+                          : MaterialStateProperty.all<Color>(Colors.deepOrange),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ContactPage(context)),
+                      );
+                    },
+                    child: MouseRegion(
+                      onHover: (event) {
+                        setState(() {
+                          isHoveredCall = true;
+                        });
+                      },
+                      onExit: (event) {
+                        setState(() {
+                          isHoveredCall = false;
+                        });
+                      },
+                      child: Text(
+                        Strings.call,
+                        style: TextStyles.menu_item.copyWith(
+                          fontSize: 10,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
-        ),
       ),
     );
   }
@@ -637,65 +636,65 @@ class _CvStarterInterview extends State<CvStarterInterview> {
         children: [
           !ResponsiveWidget.isSmallScreen(context)
               ? Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(height: 200, width: 200),
-              Expanded(
-                child: _buildColumnBottomText(
-                  Strings.why_we,
-                  Strings.why_we_offer,
-                  isHoveredTextButtonButFirst,
-                ),
-              ),
-              Expanded(
-                child: _buildColumnBottomText(
-                  Strings.who_give_work,
-                  Strings.who_give_work_list,
-                  isHoveredTextButtonButSecond,
-                ),
-              ),
-              Expanded(
-                child: _buildColumnBottomText(
-                  Strings.who_worker,
-                  Strings.who_worker_list,
-                  isHoveredTextButtonButThird,
-                ),
-              ),
-            ],
-          )
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(height: 200, width: 200),
+                    Expanded(
+                      child: _buildColumnBottomText(
+                        Strings.why_we,
+                        Strings.why_we_offer,
+                        isHoveredTextButtonButFirst,
+                      ),
+                    ),
+                    Expanded(
+                      child: _buildColumnBottomText(
+                        Strings.who_give_work,
+                        Strings.who_give_work_list,
+                        isHoveredTextButtonButSecond,
+                      ),
+                    ),
+                    Expanded(
+                      child: _buildColumnBottomText(
+                        Strings.who_worker,
+                        Strings.who_worker_list,
+                        isHoveredTextButtonButThird,
+                      ),
+                    ),
+                  ],
+                )
               : Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(height: 20),
-              Padding(
-                padding: EdgeInsets.only(left: 20),
-                child: _buildColumnBottomText(
-                  Strings.why_we,
-                  Strings.why_we_offer,
-                  isHoveredTextButtonButFirst,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(height: 20),
+                    Padding(
+                      padding: EdgeInsets.only(left: 20),
+                      child: _buildColumnBottomText(
+                        Strings.why_we,
+                        Strings.why_we_offer,
+                        isHoveredTextButtonButFirst,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    Padding(
+                      padding: EdgeInsets.only(left: 20),
+                      child: _buildColumnBottomText(
+                        Strings.who_give_work,
+                        Strings.who_give_work_list,
+                        isHoveredTextButtonButSecond,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    Padding(
+                      padding: EdgeInsets.only(left: 20),
+                      child: _buildColumnBottomText(
+                        Strings.who_worker,
+                        Strings.who_worker_list,
+                        isHoveredTextButtonButThird,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                  ],
                 ),
-              ),
-              SizedBox(height: 20),
-              Padding(
-                padding: EdgeInsets.only(left: 20),
-                child: _buildColumnBottomText(
-                  Strings.who_give_work,
-                  Strings.who_give_work_list,
-                  isHoveredTextButtonButSecond,
-                ),
-              ),
-              SizedBox(height: 20),
-              Padding(
-                padding: EdgeInsets.only(left: 20),
-                child: _buildColumnBottomText(
-                  Strings.who_worker,
-                  Strings.who_worker_list,
-                  isHoveredTextButtonButThird,
-                ),
-              ),
-              SizedBox(height: 20),
-            ],
-          ),
         ],
       ),
     );
@@ -862,7 +861,7 @@ class _CvStarterInterview extends State<CvStarterInterview> {
 
   // --------------------------------- VALIDATOR -------------------------------
   void _validatorBottomTextButton(List<bool> isHovered, int i) {
-    if(isHovered == isHoveredTextButtonButFirst) {
+    if (isHovered == isHoveredTextButtonButFirst) {
       switch (i) {
         case 0:
           Navigator.push(

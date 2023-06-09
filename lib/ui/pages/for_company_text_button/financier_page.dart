@@ -34,11 +34,11 @@ class FinancierPage extends StatefulWidget {
 
 class _FinancierPage extends State<FinancierPage> {
   var isHoveredTextButtonButFirst =
-  List<bool>.filled(Strings.why_we_offer.length, false);
+      List<bool>.filled(Strings.why_we_offer.length, false);
   var isHoveredTextButtonButSecond =
-  List<bool>.filled(Strings.why_we_offer.length, false);
+      List<bool>.filled(Strings.why_we_offer.length, false);
   var isHoveredTextButtonButThird =
-  List<bool>.filled(Strings.why_we_offer.length, false);
+      List<bool>.filled(Strings.why_we_offer.length, false);
   var isHoveredCall = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _formKey_2 = GlobalKey<FormState>();
@@ -77,7 +77,7 @@ class _FinancierPage extends State<FinancierPage> {
       backgroundColor: Colors.transparent,
       elevation: 0.0,
       actions:
-      !ResponsiveWidget.isSmallScreen(context) ? _buildActions() : null,
+          !ResponsiveWidget.isSmallScreen(context) ? _buildActions() : null,
     );
   }
 
@@ -200,11 +200,11 @@ class _FinancierPage extends State<FinancierPage> {
   Widget _buildDrawer(BuildContext context) {
     return ResponsiveWidget.isSmallScreen(context)
         ? Drawer(
-      child: ListView(
-        padding: const EdgeInsets.all(20),
-        children: _buildActions(),
-      ),
-    )
+            child: ListView(
+              padding: const EdgeInsets.all(20),
+              children: _buildActions(),
+            ),
+          )
         : null;
   }
 
@@ -244,7 +244,7 @@ class _FinancierPage extends State<FinancierPage> {
                     style: TextStyles.heading.copyWith(
                       fontFamily: Fonts.nexa_light,
                       fontSize:
-                      ResponsiveWidget.isSmallScreen(context) ? 36 : 45.0,
+                          ResponsiveWidget.isSmallScreen(context) ? 36 : 45.0,
                       color: Colors.white,
                     ),
                   ),
@@ -255,7 +255,7 @@ class _FinancierPage extends State<FinancierPage> {
                     style: TextStyles.heading.copyWith(
                       color: Colors.deepOrange,
                       fontSize:
-                      ResponsiveWidget.isSmallScreen(context) ? 36 : 45.0,
+                          ResponsiveWidget.isSmallScreen(context) ? 36 : 45.0,
                     ),
                   ),
                 ],
@@ -294,24 +294,24 @@ class _FinancierPage extends State<FinancierPage> {
                 ),
                 !ResponsiveWidget.isSmallScreen(context)
                     ? Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _buildColumnTextFromList(
-                        Strings.financier_offer_1_more),
-                    SizedBox(width: 50),
-                    _buildColumnTextFromList(
-                        Strings.financier_offer_2_more),
-                  ],
-                )
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          _buildColumnTextFromList(
+                              Strings.financier_offer_1_more),
+                          SizedBox(width: 50),
+                          _buildColumnTextFromList(
+                              Strings.financier_offer_2_more),
+                        ],
+                      )
                     : Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _buildColumnTextFromList(
-                        Strings.financier_offer_1_more),
-                    _buildColumnTextFromList(
-                        Strings.financier_offer_2_more),
-                  ],
-                )
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          _buildColumnTextFromList(
+                              Strings.financier_offer_1_more),
+                          _buildColumnTextFromList(
+                              Strings.financier_offer_2_more),
+                        ],
+                      )
               ]),
         ],
       ),
@@ -388,30 +388,30 @@ class _FinancierPage extends State<FinancierPage> {
         Expanded(
           child: !ResponsiveWidget.isSmallScreen(context)
               ? Column(
-            children: [
-              _buildFirstOffer(),
-              SizedBox(height: 24.0),
-              _buildWhyUs(),
-              SizedBox(height: 24.0),
-              _buildOfferWithFromSecond(),
-              SizedBox(height: 40),
-              _buildContactUs(),
-            ],
-          )
+                  children: [
+                    _buildFirstOffer(),
+                    SizedBox(height: 24.0),
+                    _buildWhyUs(),
+                    SizedBox(height: 24.0),
+                    _buildOfferWithFromSecond(),
+                    SizedBox(height: 40),
+                    _buildContactUs(),
+                  ],
+                )
               : Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              _buildFirstOffer(),
-              SizedBox(height: 24),
-              _buildWhyUs(),
-              SizedBox(height: 24),
-              _buildOfferWithFromSecond(),
-              SizedBox(height: 30),
-              _buildContactUs(),
-              SizedBox(height: 24),
-            ],
-          ),
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    _buildFirstOffer(),
+                    SizedBox(height: 24),
+                    _buildWhyUs(),
+                    SizedBox(height: 24),
+                    _buildOfferWithFromSecond(),
+                    SizedBox(height: 30),
+                    _buildContactUs(),
+                    SizedBox(height: 24),
+                  ],
+                ),
         ),
         SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 24.0 : 48.0),
         _buildBottomInfo(),
@@ -431,52 +431,52 @@ class _FinancierPage extends State<FinancierPage> {
       padding: EdgeInsets.only(bottom: 50, top: 50),
       child: !ResponsiveWidget.isSmallScreen(context)
           ? Row(
-        children: [
-          Expanded(
-            child: Column(
+              children: [
+                Expanded(
+                  child: Column(
+                    children: [
+                      Text(
+                        Strings.financier_finder_1,
+                        style: TextStyles.logo.copyWith(
+                          fontSize: 30.0,
+                          color: Colors.white,
+                        ),
+                      ),
+                      _buildUnderlineOrange(Strings.financier_finder_1.length),
+                      Padding(
+                        padding: EdgeInsets.only(left: 50.0),
+                        child: _buildColumnTextFromList(
+                            Strings.financier_finder_1_more),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: _buildFormCallMe(500, 400, _formKey),
+                ),
+              ],
+            )
+          : Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   Strings.financier_finder_1,
                   style: TextStyles.logo.copyWith(
-                    fontSize: 30.0,
+                    fontSize: 20,
                     color: Colors.white,
                   ),
                 ),
                 _buildUnderlineOrange(Strings.financier_finder_1.length),
                 Padding(
-                  padding: EdgeInsets.only(left: 50.0),
-                  child: _buildColumnTextFromList(
-                      Strings.financier_finder_1_more),
+                  padding: EdgeInsets.only(left: 50.0, top: 20.0, right: 50.0),
+                  child:
+                      _buildColumnTextFromList(Strings.financier_finder_1_more),
                 ),
+                SizedBox(height: 24),
+                _buildFormCallMe(350, 400, _formKey)
               ],
             ),
-          ),
-          Expanded(
-            child: _buildFormCallMe(500, 400, _formKey),
-          ),
-        ],
-      )
-          : Column(
-        mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(
-            Strings.financier_finder_1,
-            style: TextStyles.logo.copyWith(
-              fontSize: 20,
-              color: Colors.white,
-            ),
-          ),
-          _buildUnderlineOrange(Strings.financier_finder_1.length),
-          Padding(
-            padding: EdgeInsets.only(left: 50.0, top: 20.0, right: 50.0),
-            child:
-            _buildColumnTextFromList(Strings.financier_finder_1_more),
-          ),
-          SizedBox(height: 24),
-          _buildFormCallMe(350, 400, _formKey)
-        ],
-      ),
     );
   }
 
@@ -498,48 +498,48 @@ class _FinancierPage extends State<FinancierPage> {
         SizedBox(height: 24),
         !ResponsiveWidget.isSmallScreen(context)
             ? Row(
-          children: [
-            Expanded(
-              child: Column(
                 children: [
-                  _buildContainerText(Strings.why_we_title_1,
-                      Strings.why_we_about_1, 300),
-                  _buildContainerText(Strings.why_we_title_2,
-                      Strings.why_we_about_2, 250),
-                  _buildContainerText(Strings.why_we_title_3,
-                      Strings.why_we_about_3, 200),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        _buildContainerText(Strings.why_we_title_1,
+                            Strings.why_we_about_1, 300),
+                        _buildContainerText(Strings.why_we_title_2,
+                            Strings.why_we_about_2, 250),
+                        _buildContainerText(Strings.why_we_title_3,
+                            Strings.why_we_about_3, 200),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                      child: Column(
+                    children: [
+                      _buildContainerText(
+                          Strings.why_we_title_4, Strings.why_we_about_4, 300),
+                      _buildContainerText(
+                          Strings.why_we_title_5, Strings.why_we_about_5, 250),
+                      _buildContainerText(
+                          Strings.why_we_title_6, Strings.why_we_about_6, 200),
+                    ],
+                  )),
+                ],
+              )
+            : Column(
+                children: [
+                  _buildContainerText(
+                      Strings.why_we_title_1, Strings.why_we_about_1, 130),
+                  _buildContainerText(
+                      Strings.why_we_title_2, Strings.why_we_about_2, 130),
+                  _buildContainerText(
+                      Strings.why_we_title_3, Strings.why_we_about_3, 130),
+                  _buildContainerText(
+                      Strings.why_we_title_4, Strings.why_we_about_4, 170),
+                  _buildContainerText(
+                      Strings.why_we_title_5, Strings.why_we_about_5, 130),
+                  _buildContainerText(
+                      Strings.why_we_title_6, Strings.why_we_about_6, 130),
                 ],
               ),
-            ),
-            Expanded(
-                child: Column(
-                  children: [
-                    _buildContainerText(
-                        Strings.why_we_title_4, Strings.why_we_about_4, 300),
-                    _buildContainerText(
-                        Strings.why_we_title_5, Strings.why_we_about_5, 250),
-                    _buildContainerText(
-                        Strings.why_we_title_6, Strings.why_we_about_6, 200),
-                  ],
-                )),
-          ],
-        )
-            : Column(
-          children: [
-            _buildContainerText(
-                Strings.why_we_title_1, Strings.why_we_about_1, 130),
-            _buildContainerText(
-                Strings.why_we_title_2, Strings.why_we_about_2, 130),
-            _buildContainerText(
-                Strings.why_we_title_3, Strings.why_we_about_3, 130),
-            _buildContainerText(
-                Strings.why_we_title_4, Strings.why_we_about_4, 170),
-            _buildContainerText(
-                Strings.why_we_title_5, Strings.why_we_about_5, 130),
-            _buildContainerText(
-                Strings.why_we_title_6, Strings.why_we_about_6, 130),
-          ],
-        ),
       ],
     );
   }
@@ -555,52 +555,52 @@ class _FinancierPage extends State<FinancierPage> {
       padding: EdgeInsets.only(bottom: 50, top: 50),
       child: !ResponsiveWidget.isSmallScreen(context)
           ? Row(
-        children: [
-          Expanded(
-            child: _buildFormCallMe(500, 400, _formKey_2),
-          ),
-          Expanded(
-            child: Column(
+              children: [
+                Expanded(
+                  child: _buildFormCallMe(500, 400, _formKey_2),
+                ),
+                Expanded(
+                  child: Column(
+                    children: [
+                      Text(
+                        Strings.staff_out_what,
+                        style: TextStyles.logo.copyWith(
+                          fontSize: 30.0,
+                          color: Colors.white,
+                        ),
+                      ),
+                      _buildUnderlineOrange(Strings.staff_out_what.length),
+                      Padding(
+                        padding: EdgeInsets.only(right: 50.0),
+                        child: _buildColumnTextFromList(
+                            Strings.financier_finder_2_more),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            )
+          : Column(
               children: [
                 Text(
                   Strings.staff_out_what,
                   style: TextStyles.logo.copyWith(
-                    fontSize: 30.0,
+                    fontSize: 20,
                     color: Colors.white,
                   ),
                 ),
                 _buildUnderlineOrange(Strings.staff_out_what.length),
                 Padding(
-                  padding: EdgeInsets.only(right: 50.0),
-                  child: _buildColumnTextFromList(
-                      Strings.financier_finder_2_more),
+                  padding: EdgeInsets.only(right: 20.0, left: 20),
+                  child:
+                      _buildColumnTextFromList(Strings.it_employee_what_more),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 20.0),
+                  child: _buildFormCallMe(350, 400, _formKey_2),
                 ),
               ],
             ),
-          ),
-        ],
-      )
-          : Column(
-        children: [
-          Text(
-            Strings.staff_out_what,
-            style: TextStyles.logo.copyWith(
-              fontSize: 20,
-              color: Colors.white,
-            ),
-          ),
-          _buildUnderlineOrange(Strings.staff_out_what.length),
-          Padding(
-            padding: EdgeInsets.only(right: 20.0, left: 20),
-            child:
-            _buildColumnTextFromList(Strings.it_employee_what_more),
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: 20.0),
-            child: _buildFormCallMe(350, 400, _formKey_2),
-          ),
-        ],
-      ),
     );
   }
 
@@ -649,7 +649,7 @@ class _FinancierPage extends State<FinancierPage> {
       text,
       style: textStyle.copyWith(
         fontSize:
-        ResponsiveWidget.isSmallScreen(context) ? minFontSize : maxFontSize,
+            ResponsiveWidget.isSmallScreen(context) ? minFontSize : maxFontSize,
         color: color,
       ),
     );
@@ -744,7 +744,7 @@ class _FinancierPage extends State<FinancierPage> {
                         child: Text(
                           Strings.send_message_form,
                           style:
-                          TextStyles.company.copyWith(color: Colors.white),
+                              TextStyles.company.copyWith(color: Colors.white),
                         ),
                       ),
                       onPressed: () {
@@ -757,16 +757,16 @@ class _FinancierPage extends State<FinancierPage> {
                               return AlertDialog(
                                 content: Container(
                                   height:
-                                  ResponsiveWidget.isSmallScreen(context)
-                                      ? 100
-                                      : 200,
+                                      ResponsiveWidget.isSmallScreen(context)
+                                          ? 100
+                                          : 200,
                                   width: ResponsiveWidget.isSmallScreen(context)
                                       ? 250
                                       : 500,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
-                                    CrossAxisAlignment.center,
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Text(
                                         Strings.success_message_start,
@@ -885,118 +885,118 @@ class _FinancierPage extends State<FinancierPage> {
       child: Center(
         child: !ResponsiveWidget.isSmallScreen(context)
             ? Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          // Центрирование по горизонтали
-          children: [
-            Icon(Icons.call),
-            SizedBox(width: 10), // Пространство между иконкой и текстом
-            Text(
-              Strings.contact_us_offer,
-              style: TextStyles.menu_item.copyWith(
-                fontSize: 20.0,
-                color: Colors.black,
-              ),
-            ),
-            SizedBox(width: 15), // Пространство между текстом и кнопкой
-            ElevatedButton(
-              style: ButtonStyle(
-                side: MaterialStateProperty.all(
-                  BorderSide(color: Colors.deepOrange, width: 2.0),
-                ),
-                minimumSize: MaterialStateProperty.all(Size(200, 50)),
-                padding: MaterialStateProperty.all(EdgeInsets.all(10)),
-                backgroundColor: isHoveredCall
-                    ? MaterialStateProperty.all<Color>(Color(0xFFFA4812))
-                    : MaterialStateProperty.all<Color>(Colors.deepOrange),
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ContactPage(context)),
-                );
-              },
-              child: MouseRegion(
-                onHover: (event) {
-                  setState(() {
-                    isHoveredCall = true;
-                  });
-                },
-                onExit: (event) {
-                  setState(() {
-                    isHoveredCall = false;
-                  });
-                },
-                child: Text(
-                  Strings.call,
-                  style: TextStyles.menu_item.copyWith(
-                    fontSize: 20.0,
-                    color: Colors.white,
+                mainAxisAlignment: MainAxisAlignment.center,
+                // Центрирование по горизонтали
+                children: [
+                  Icon(Icons.call),
+                  SizedBox(width: 10), // Пространство между иконкой и текстом
+                  Text(
+                    Strings.contact_us_offer,
+                    style: TextStyles.menu_item.copyWith(
+                      fontSize: 20.0,
+                      color: Colors.black,
+                    ),
                   ),
-                ),
-              ),
-            ),
-          ],
-        )
+                  SizedBox(width: 15), // Пространство между текстом и кнопкой
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      side: MaterialStateProperty.all(
+                        BorderSide(color: Colors.deepOrange, width: 2.0),
+                      ),
+                      minimumSize: MaterialStateProperty.all(Size(200, 50)),
+                      padding: MaterialStateProperty.all(EdgeInsets.all(10)),
+                      backgroundColor: isHoveredCall
+                          ? MaterialStateProperty.all<Color>(Color(0xFFFA4812))
+                          : MaterialStateProperty.all<Color>(Colors.deepOrange),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ContactPage(context)),
+                      );
+                    },
+                    child: MouseRegion(
+                      onHover: (event) {
+                        setState(() {
+                          isHoveredCall = true;
+                        });
+                      },
+                      onExit: (event) {
+                        setState(() {
+                          isHoveredCall = false;
+                        });
+                      },
+                      child: Text(
+                        Strings.call,
+                        style: TextStyles.menu_item.copyWith(
+                          fontSize: 20.0,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              )
             : Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          // Центрирование по горизонтали
-          children: [
-            Icon(Icons.call),
-            SizedBox(width: 10),
-            // Пространство между иконкой и текстом
-            Text(
-              Strings.contact_us_offer,
-              style: TextStyles.menu_item.copyWith(
-                fontSize: 11,
-                color: Colors.black,
-              ),
-            ),
-            SizedBox(
-              width: 15,
-              height: 15,
-            ),
-            // Пространство между текстом и кнопкой
-            ElevatedButton(
-              style: ButtonStyle(
-                side: MaterialStateProperty.all(
-                  BorderSide(color: Colors.deepOrange, width: 2.0),
-                ),
-                minimumSize: MaterialStateProperty.all(Size(140, 50)),
-                padding: MaterialStateProperty.all(EdgeInsets.all(10)),
-                backgroundColor: isHoveredCall
-                    ? MaterialStateProperty.all<Color>(Color(0xFFFA4812))
-                    : MaterialStateProperty.all<Color>(Colors.deepOrange),
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ContactPage(context)),
-                );
-              },
-              child: MouseRegion(
-                onHover: (event) {
-                  setState(() {
-                    isHoveredCall = true;
-                  });
-                },
-                onExit: (event) {
-                  setState(() {
-                    isHoveredCall = false;
-                  });
-                },
-                child: Text(
-                  Strings.call,
-                  style: TextStyles.menu_item.copyWith(
-                    fontSize: 10,
-                    color: Colors.white,
+                mainAxisAlignment: MainAxisAlignment.center,
+                // Центрирование по горизонтали
+                children: [
+                  Icon(Icons.call),
+                  SizedBox(width: 10),
+                  // Пространство между иконкой и текстом
+                  Text(
+                    Strings.contact_us_offer,
+                    style: TextStyles.menu_item.copyWith(
+                      fontSize: 11,
+                      color: Colors.black,
+                    ),
                   ),
-                ),
+                  SizedBox(
+                    width: 15,
+                    height: 15,
+                  ),
+                  // Пространство между текстом и кнопкой
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      side: MaterialStateProperty.all(
+                        BorderSide(color: Colors.deepOrange, width: 2.0),
+                      ),
+                      minimumSize: MaterialStateProperty.all(Size(140, 50)),
+                      padding: MaterialStateProperty.all(EdgeInsets.all(10)),
+                      backgroundColor: isHoveredCall
+                          ? MaterialStateProperty.all<Color>(Color(0xFFFA4812))
+                          : MaterialStateProperty.all<Color>(Colors.deepOrange),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ContactPage(context)),
+                      );
+                    },
+                    child: MouseRegion(
+                      onHover: (event) {
+                        setState(() {
+                          isHoveredCall = true;
+                        });
+                      },
+                      onExit: (event) {
+                        setState(() {
+                          isHoveredCall = false;
+                        });
+                      },
+                      child: Text(
+                        Strings.call,
+                        style: TextStyles.menu_item.copyWith(
+                          fontSize: 10,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
-        ),
       ),
     );
   }
@@ -1014,65 +1014,65 @@ class _FinancierPage extends State<FinancierPage> {
         children: [
           !ResponsiveWidget.isSmallScreen(context)
               ? Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(height: 200, width: 200),
-              Expanded(
-                child: _buildColumnBottomText(
-                  Strings.why_we,
-                  Strings.why_we_offer,
-                  isHoveredTextButtonButFirst,
-                ),
-              ),
-              Expanded(
-                child: _buildColumnBottomText(
-                  Strings.who_give_work,
-                  Strings.who_give_work_list,
-                  isHoveredTextButtonButSecond,
-                ),
-              ),
-              Expanded(
-                child: _buildColumnBottomText(
-                  Strings.who_worker,
-                  Strings.who_worker_list,
-                  isHoveredTextButtonButThird,
-                ),
-              ),
-            ],
-          )
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(height: 200, width: 200),
+                    Expanded(
+                      child: _buildColumnBottomText(
+                        Strings.why_we,
+                        Strings.why_we_offer,
+                        isHoveredTextButtonButFirst,
+                      ),
+                    ),
+                    Expanded(
+                      child: _buildColumnBottomText(
+                        Strings.who_give_work,
+                        Strings.who_give_work_list,
+                        isHoveredTextButtonButSecond,
+                      ),
+                    ),
+                    Expanded(
+                      child: _buildColumnBottomText(
+                        Strings.who_worker,
+                        Strings.who_worker_list,
+                        isHoveredTextButtonButThird,
+                      ),
+                    ),
+                  ],
+                )
               : Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(height: 20),
-              Padding(
-                padding: EdgeInsets.only(left: 20),
-                child: _buildColumnBottomText(
-                  Strings.why_we,
-                  Strings.why_we_offer,
-                  isHoveredTextButtonButFirst,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(height: 20),
+                    Padding(
+                      padding: EdgeInsets.only(left: 20),
+                      child: _buildColumnBottomText(
+                        Strings.why_we,
+                        Strings.why_we_offer,
+                        isHoveredTextButtonButFirst,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    Padding(
+                      padding: EdgeInsets.only(left: 20),
+                      child: _buildColumnBottomText(
+                        Strings.who_give_work,
+                        Strings.who_give_work_list,
+                        isHoveredTextButtonButSecond,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    Padding(
+                      padding: EdgeInsets.only(left: 20),
+                      child: _buildColumnBottomText(
+                        Strings.who_worker,
+                        Strings.who_worker_list,
+                        isHoveredTextButtonButThird,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                  ],
                 ),
-              ),
-              SizedBox(height: 20),
-              Padding(
-                padding: EdgeInsets.only(left: 20),
-                child: _buildColumnBottomText(
-                  Strings.who_give_work,
-                  Strings.who_give_work_list,
-                  isHoveredTextButtonButSecond,
-                ),
-              ),
-              SizedBox(height: 20),
-              Padding(
-                padding: EdgeInsets.only(left: 20),
-                child: _buildColumnBottomText(
-                  Strings.who_worker,
-                  Strings.who_worker_list,
-                  isHoveredTextButtonButThird,
-                ),
-              ),
-              SizedBox(height: 20),
-            ],
-          ),
         ],
       ),
     );

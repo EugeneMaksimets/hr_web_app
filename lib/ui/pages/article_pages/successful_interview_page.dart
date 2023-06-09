@@ -350,14 +350,13 @@ class _SuccessInterview extends State<SuccessInterview> {
       children: <Widget>[
         SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 4.0 : 4.0),
         Expanded(
-          child: Column(
-                  children: [
-                    _buildInterview(),
-                    SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 30 : 40),
-                    _buildContactUs(),
-                  ],
-                )
-        ),
+            child: Column(
+          children: [
+            _buildInterview(),
+            SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 30 : 40),
+            _buildContactUs(),
+          ],
+        )),
         SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 24.0 : 48.0),
         _buildBottomInfo(),
       ],
@@ -863,7 +862,7 @@ class _SuccessInterview extends State<SuccessInterview> {
 
   // --------------------------------- VALIDATOR -------------------------------
   void _validatorBottomTextButton(List<bool> isHovered, int i) {
-    if(isHovered == isHoveredTextButtonButFirst) {
+    if (isHovered == isHoveredTextButtonButFirst) {
       switch (i) {
         case 0:
           Navigator.push(

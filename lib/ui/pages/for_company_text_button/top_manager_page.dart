@@ -292,14 +292,12 @@ class _TopManagerPage extends State<TopManagerPage> {
                     ])
               : Column(
                   children: [
-                    _buildColumnTextFromList(
-                        Strings.top_manager_work_1_more),
+                    _buildColumnTextFromList(Strings.top_manager_work_1_more),
                     SizedBox(height: 24),
                     _buildUnderlineOrange(
                         Strings.advertising_offer_work_1.length),
                     SizedBox(height: 24),
-                    _buildColumnTextFromList(
-                        Strings.top_manager_work_2_more),
+                    _buildColumnTextFromList(Strings.top_manager_work_2_more),
                   ],
                 )
         ],
@@ -431,8 +429,7 @@ class _TopManagerPage extends State<TopManagerPage> {
                           color: Colors.white,
                         ),
                       ),
-                      _buildUnderlineOrange(
-                          Strings.top_manager_finder.length),
+                      _buildUnderlineOrange(Strings.top_manager_finder.length),
                       Padding(
                         padding: EdgeInsets.only(left: 50.0),
                         child: _buildColumnTextFromList(

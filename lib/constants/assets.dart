@@ -28,6 +28,11 @@ class Assets {
   static const String background_building_page_img = 'images/background_img/building_background_img.jpg';
   static const String background_logistics_page_img = 'images/background_img/logistics_background_img.jpg';
   static const String background_worker_page_img = 'images/background_img/worker_background_img.jpg';
+  static const String background_hr_consulting_page_img = 'images/background_img/background_hr_consulting_img.jpg';
+  static const String background_out_staffing_page_img = 'images/background_img/outstaffing_background_img.jpg';
+  static const String background_employee_data_page_img = 'images/background_img/background_employee_data_page_img.jpg';
+  static const String background_scan_cv_page_img = 'images/background_img/background_scan_cv_page_img.jpg';
+  static const String background_research_page_img = 'images/background_img/background_research_page_img.jpg';
 
   // png
   static const String outline_png = 'assets/images/png/landscape_outline_icon.png';

@@ -23,16 +23,16 @@ import '../for_company_img_button_pages/head_hunting.dart';
 import '../for_company_img_button_pages/recruitment.dart';
 import '../for_company_img_button_pages/staff_outsoursing.dart';
 
-class AdvertisingPage extends StatefulWidget {
+class HrConsultingPage extends StatefulWidget {
   final BuildContext context;
 
-  AdvertisingPage(this.context);
+  HrConsultingPage(this.context);
 
   @override
-  _AdvertisingPage createState() => _AdvertisingPage();
+  _HrConsultingPage createState() => _HrConsultingPage();
 }
 
-class _AdvertisingPage extends State<AdvertisingPage> {
+class _HrConsultingPage extends State<HrConsultingPage> {
   var isHoveredTextButtonButFirst =
       List<bool>.filled(Strings.why_we_offer.length, false);
   var isHoveredTextButtonButSecond =
@@ -226,7 +226,7 @@ class _AdvertisingPage extends State<AdvertisingPage> {
       // height: 200,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(Assets.background_advertising_page_img),
+          image: AssetImage(Assets.background_hr_consulting_page_img),
           fit: BoxFit.cover,
         ),
       ),
@@ -273,75 +273,29 @@ class _AdvertisingPage extends State<AdvertisingPage> {
           ),
           SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 24 : 34),
           Text(
-            Strings.advertising_text,
+            Strings.hr_consulting_page_text,
             style: TextStyles.heading.copyWith(
               fontSize: ResponsiveWidget.isSmallScreen(context) ? 26 : 36.0,
               color: Colors.white,
             ),
           ),
-          _buildUnderlineOrange(Strings.advertising_text.length),
+          _buildUnderlineOrange(Strings.hr_consulting_page_text.length),
           SizedBox(height: 24),
-          !ResponsiveWidget.isSmallScreen(context)
-              ? Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            Strings.advertising_offer_work_1,
-                            style: TextStyles.heading.copyWith(
-                              fontSize: 20.0,
-                              color: Colors.white,
-                            ),
-                          ),
-                          _buildColumnTextFromList(
-                              Strings.advertising_offer_work_1_more),
-                        ],
-                      ),
-                      SizedBox(width: 100),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            Strings.advertising_offer_work_2,
-                            style: TextStyles.heading.copyWith(
-                              fontSize: 20.0,
-                              color: Colors.white,
-                            ),
-                          ),
-                          _buildColumnTextFromList(
-                              Strings.advertising_offer_work_2_more),
-                        ],
-                      ),
-                    ])
-              : Column(
-                  children: [
-                    Text(
-                      Strings.advertising_offer_work_1,
-                      style: TextStyles.heading.copyWith(
-                        fontSize: 13,
-                        color: Colors.white,
-                      ),
-                    ),
-                    _buildColumnTextFromList(
-                        Strings.advertising_offer_work_1_more),
-                    SizedBox(height: 24),
-                    _buildUnderlineOrange(
-                        Strings.advertising_offer_work_1.length),
-                    SizedBox(height: 24),
-                    Text(
-                      Strings.advertising_offer_work_2,
-                      style: TextStyles.heading.copyWith(
-                        fontSize: 13,
-                        color: Colors.white,
-                      ),
-                    ),
-                    _buildColumnTextFromList(
-                        Strings.advertising_offer_work_2_more),
-                  ],
-                )
+          Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Text(
+                  Strings.hr_consulting_page_offer,
+                  style: TextStyles.logo.copyWith(
+                    fontSize:
+                        ResponsiveWidget.isSmallScreen(context) ? 20 : 30.0,
+                    color: Colors.white,
+                  ),
+                ),
+                _buildUnderlineOrange(Strings.hr_consulting_page_offer.length),
+                _buildColumnTextFromList(Strings.hr_consulting_page_offer_more),
+              ]),
         ],
       ),
     );
@@ -465,18 +419,18 @@ class _AdvertisingPage extends State<AdvertisingPage> {
                   child: Column(
                     children: [
                       Text(
-                        Strings.advertising_finder_1,
+                        Strings.hr_consulting_page_finder_1,
                         style: TextStyles.logo.copyWith(
                           fontSize: 30.0,
                           color: Colors.white,
                         ),
                       ),
                       _buildUnderlineOrange(
-                          Strings.advertising_finder_1.length),
+                          Strings.hr_consulting_page_finder_1.length),
                       Padding(
                         padding: EdgeInsets.only(left: 50.0),
                         child: _buildColumnTextFromList(
-                            Strings.advertising_finder_1_more),
+                            Strings.hr_consulting_page_finder_1_more),
                       ),
                     ],
                   ),
@@ -491,17 +445,18 @@ class _AdvertisingPage extends State<AdvertisingPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  Strings.advertising_finder_1,
+                  Strings.hr_consulting_page_finder_1,
                   style: TextStyles.logo.copyWith(
                     fontSize: 20,
                     color: Colors.white,
                   ),
                 ),
-                _buildUnderlineOrange(Strings.advertising_finder_1.length),
+                _buildUnderlineOrange(
+                    Strings.hr_consulting_page_finder_1.length),
                 Padding(
                   padding: EdgeInsets.only(left: 50.0, top: 20.0, right: 50.0),
                   child: _buildColumnTextFromList(
-                      Strings.advertising_finder_1_more),
+                      Strings.hr_consulting_page_finder_1_more),
                 ),
                 SizedBox(height: 24),
                 _buildFormCallMe(350, 400, _formKey)
@@ -593,18 +548,18 @@ class _AdvertisingPage extends State<AdvertisingPage> {
                   child: Column(
                     children: [
                       Text(
-                        Strings.advertising_finder_2,
+                        Strings.hr_consulting_page_finder_2,
                         style: TextStyles.logo.copyWith(
                           fontSize: 30.0,
                           color: Colors.white,
                         ),
                       ),
                       _buildUnderlineOrange(
-                          Strings.advertising_finder_2.length),
+                          Strings.hr_consulting_page_finder_2.length),
                       Padding(
                         padding: EdgeInsets.only(right: 50.0),
                         child: _buildColumnTextFromList(
-                            Strings.advertising_finder_2_more),
+                            Strings.hr_consulting_page_finder_more_2),
                       ),
                     ],
                   ),
@@ -614,17 +569,18 @@ class _AdvertisingPage extends State<AdvertisingPage> {
           : Column(
               children: [
                 Text(
-                  Strings.advertising_finder_2,
+                  Strings.hr_consulting_page_finder_2,
                   style: TextStyles.logo.copyWith(
                     fontSize: 20,
                     color: Colors.white,
                   ),
                 ),
-                _buildUnderlineOrange(Strings.advertising_finder_2.length),
+                _buildUnderlineOrange(
+                    Strings.hr_consulting_page_finder_2.length),
                 Padding(
                   padding: EdgeInsets.only(right: 20.0, left: 20),
                   child: _buildColumnTextFromList(
-                      Strings.advertising_finder_2_more),
+                      Strings.hr_consulting_page_finder_more_2),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 20.0),

@@ -284,9 +284,11 @@ class _HomePage extends State<HomePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildSimpleButton(isHoveredForCompany, Strings.button_for_company_home),
+              _buildSimpleButton(
+                  isHoveredForCompany, Strings.button_for_company_home, 1),
               SizedBox(width: 24),
-              _buildSimpleButton(isHoveredForEmployee, Strings.button_for_hr_home),
+              _buildSimpleButton(
+                  isHoveredForEmployee, Strings.button_for_hr_home, 2),
             ],
           ),
         ],
@@ -319,7 +321,7 @@ class _HomePage extends State<HomePage> {
     );
   }
 
-  Widget _buildSimpleButton(bool isHoveredButton, String text) {
+  Widget _buildSimpleButton(bool isHoveredButton, String text, int i) {
     return ElevatedButton(
       style: ButtonStyle(
         side: MaterialStateProperty.all(
@@ -335,11 +337,17 @@ class _HomePage extends State<HomePage> {
             : MaterialStateProperty.all<Color>(Colors.deepOrange),
       ),
       onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => ContactPage(context)), //TODO VALIDATOR up button
-        );
+        if (i == 1) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ForCompanyPage(context)),
+          );
+        } else if (i == 2) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ForEmployee(context)),
+          );
+        }
       },
       child: MouseRegion(
         onHover: (event) {
@@ -835,7 +843,7 @@ class _HomePage extends State<HomePage> {
                         child: Text(
                           Strings.send_message_form,
                           style:
-                          TextStyles.company.copyWith(color: Colors.white),
+                              TextStyles.company.copyWith(color: Colors.white),
                         ),
                       ),
                       onPressed: () {
@@ -847,11 +855,17 @@ class _HomePage extends State<HomePage> {
                             builder: (context) {
                               return AlertDialog(
                                 content: Container(
-                                  height: ResponsiveWidget.isSmallScreen(context) ? 100 : 200,
-                                  width: ResponsiveWidget.isSmallScreen(context) ? 250 : 500,
+                                  height:
+                                      ResponsiveWidget.isSmallScreen(context)
+                                          ? 100
+                                          : 200,
+                                  width: ResponsiveWidget.isSmallScreen(context)
+                                      ? 250
+                                      : 500,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Text(
                                         Strings.success_message_start,
@@ -1336,7 +1350,7 @@ class _HomePage extends State<HomePage> {
 
   // --------------------------------- VALIDATOR -------------------------------
   void _validatorBottomTextButton(List<bool> isHovered, int i) {
-    if(isHovered == isHoveredTextButtonButFirst) {
+    if (isHovered == isHoveredTextButtonButFirst) {
       switch (i) {
         case 0:
           Navigator.push(

@@ -328,7 +328,8 @@ class _SalesMangerPage extends State<SalesMangerPage> {
                     _buildColumnTextFromList(
                         Strings.sales_manager_offer_work_1_more),
                     SizedBox(height: 24),
-                    _buildUnderlineOrange(Strings.sales_manager_offer_work_1.length),
+                    _buildUnderlineOrange(
+                        Strings.sales_manager_offer_work_1.length),
                     SizedBox(height: 24),
                     Text(
                       Strings.sales_manager_offer_work_2,
@@ -470,7 +471,8 @@ class _SalesMangerPage extends State<SalesMangerPage> {
                           color: Colors.white,
                         ),
                       ),
-                      _buildUnderlineOrange(Strings.sales_manager_finder.length),
+                      _buildUnderlineOrange(
+                          Strings.sales_manager_finder.length),
                       Padding(
                         padding: EdgeInsets.only(left: 50.0),
                         child: _buildColumnTextFromList(
@@ -498,8 +500,8 @@ class _SalesMangerPage extends State<SalesMangerPage> {
                 _buildUnderlineOrange(Strings.sales_manager_finder.length),
                 Padding(
                   padding: EdgeInsets.only(left: 50.0, top: 20.0, right: 50.0),
-                  child:
-                      _buildColumnTextFromList(Strings.sales_manager_finder_more),
+                  child: _buildColumnTextFromList(
+                      Strings.sales_manager_finder_more),
                 ),
                 SizedBox(height: 24),
                 _buildFormCallMe(350, 400, _formKey)
@@ -597,7 +599,8 @@ class _SalesMangerPage extends State<SalesMangerPage> {
                           color: Colors.white,
                         ),
                       ),
-                      _buildUnderlineOrange(Strings.sales_manager_finder_2.length),
+                      _buildUnderlineOrange(
+                          Strings.sales_manager_finder_2.length),
                       Padding(
                         padding: EdgeInsets.only(right: 50.0),
                         child: _buildColumnTextFromList(
@@ -620,8 +623,8 @@ class _SalesMangerPage extends State<SalesMangerPage> {
                 _buildUnderlineOrange(Strings.sales_manager_finder_2.length),
                 Padding(
                   padding: EdgeInsets.only(right: 20.0, left: 20),
-                  child:
-                      _buildColumnTextFromList(Strings.sales_manager_finder_2_more),
+                  child: _buildColumnTextFromList(
+                      Strings.sales_manager_finder_2_more),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 20.0),

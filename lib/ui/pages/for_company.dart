@@ -5,6 +5,11 @@ import 'package:hr_test/constants/strings.dart';
 import 'package:hr_test/constants/text_styles.dart';
 import 'package:hr_test/service/language_service.dart';
 import 'package:hr_test/ui/contact.dart';
+import 'package:hr_test/ui/pages/double_text_button_pages/employee_data_page.dart';
+import 'package:hr_test/ui/pages/double_text_button_pages/hr_consulting_pages.dart';
+import 'package:hr_test/ui/pages/double_text_button_pages/outstaffing_page.dart';
+import 'package:hr_test/ui/pages/double_text_button_pages/research_page.dart';
+import 'package:hr_test/ui/pages/double_text_button_pages/scan_cv_page.dart';
 import 'package:hr_test/ui/pages/for_company_img_button_pages/executive_search.dart';
 import 'package:hr_test/ui/pages/for_company_img_button_pages/head_hunting.dart';
 import 'package:hr_test/ui/pages/for_company_img_button_pages/mass_recruitment.dart';
@@ -462,14 +467,10 @@ class _ForCompanyPage extends State<ForCompanyPage> {
             child: InkWell(
               onTap: () {
                 _validatorImagePage(i);
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => ContactPage(context)),
-                // );
               },
               onHighlightChanged: (isPressed) {
                 setState(() {
-                  isHoveredImageButton[i] = true; // TODO TEST
+                  isHoveredImageButton[i] = true;
                 });
               },
               child: FittedBox(
@@ -596,17 +597,11 @@ class _ForCompanyPage extends State<ForCompanyPage> {
           child: ResponsiveWidget.isSmallScreen(context)
               ? InkWell(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            ContactPage(context), // TODO create validator page top button
-                      ),
-                    );
+                    _validatorDoubleTextButton(i);
                   },
                   onHighlightChanged: (isPressed) {
                     setState(() {
-                      isHoveredTextWithButton[i] = true; //TODO TEST
+                      isHoveredTextWithButton[i] = true;
                     });
                   },
                   child: Container(
@@ -637,13 +632,7 @@ class _ForCompanyPage extends State<ForCompanyPage> {
                         ),
                         InkWell(
                           onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ContactPage(
-                                    context), //TODO create validator page
-                              ),
-                            );
+                            _validatorDoubleTextButton(i);
                           },
                           child: isHoveredTextWithButton[i] &&
                                   !ResponsiveWidget.isSmallScreen(context)
@@ -691,6 +680,9 @@ class _ForCompanyPage extends State<ForCompanyPage> {
                                               : MaterialStateProperty.all<
                                                   Color>(Colors.black),
                                         ),
+                                        onPressed: () {
+                                          _validatorDoubleTextButton(i);
+                                        },
                                         child: Text(
                                           Strings.more,
                                           style: TextStyles.menu_item.copyWith(
@@ -751,12 +743,7 @@ class _ForCompanyPage extends State<ForCompanyPage> {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ContactPage(context),
-                            ),
-                          );
+                          _validatorDoubleTextButton(i);
                         },
                         child: isHoveredTextWithButton[i] &&
                                 !ResponsiveWidget.isSmallScreen(context)
@@ -803,6 +790,9 @@ class _ForCompanyPage extends State<ForCompanyPage> {
                                             : MaterialStateProperty.all<Color>(
                                                 Colors.black),
                                       ),
+                                      onPressed: () {
+                                        _validatorDoubleTextButton(i);
+                                      },
                                       child: Text(
                                         Strings.more,
                                         style: TextStyles.menu_item.copyWith(
@@ -1265,8 +1255,70 @@ class _ForCompanyPage extends State<ForCompanyPage> {
   }
 
   // --------------------------------- VALIDATOR -------------------------------
+
+  void _validatorDoubleTextButton(int i) {
+    switch (i) {
+      case 0:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HrConsultingPage(context),
+          ),
+        );
+        break;
+      case 1:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => OutStaffingPage(context),
+          ),
+        );
+        break;
+      case 2:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => RecruitmentPage(context),
+          ),
+        );
+        break;
+      case 3:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => EmployeeDataPage(context),
+          ),
+        );
+        break;
+      case 4:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => StaffOutsourcingPage(context),
+          ),
+        );
+        break;
+      case 5:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ResearchPage(context),
+          ),
+        );
+        break;
+      case 6:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ScanCvPage(context),
+          ),
+        );
+        break;
+    }
+  }
+
   void _validatorBottomTextButton(List<bool> isHovered, int i) {
-    if(isHovered == isHoveredTextButtonButFirst) {
+    if (isHovered == isHoveredTextButtonButFirst) {
       switch (i) {
         case 0:
           Navigator.push(
@@ -1371,8 +1423,8 @@ class _ForCompanyPage extends State<ForCompanyPage> {
           );
           break;
       }
-    } else if(isHovered == isHoveredTextButton) {
-      switch(i) {
+    } else if (isHovered == isHoveredTextButton) {
+      switch (i) {
         case 0:
           Navigator.push(
             context,
@@ -1494,7 +1546,8 @@ class _ForCompanyPage extends State<ForCompanyPage> {
       case 4:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => StaffOutsourcingPage(context)),
+          MaterialPageRoute(
+              builder: (context) => StaffOutsourcingPage(context)),
         );
         break;
     }
