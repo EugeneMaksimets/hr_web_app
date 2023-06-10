@@ -1,3 +1,5 @@
 [build]
 publish = "build/web"
 command = "flutter pub global activate webdev && flutter pub get && flutter pub global run webdev build --output=web:build"
+[build.environment]
+FLUTTER_VERSION = "2.2.0"
