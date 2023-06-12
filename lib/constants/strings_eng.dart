@@ -1098,8 +1098,7 @@ class StringsEng {
   ];
 
   static List<String> text_for_button_image = [
-    'SEARCH AND SELECTION OF QUALIFIED \n'
-        '                    SPECIALISTS',
+    'SEARCH AND SELECTION OF QUALIFIED SPECIALISTS',
     'MASS RECRUITMENT OF LINE STAFF',
     'EXECUTIVE SEARCH',
     'HEADHUNTING',

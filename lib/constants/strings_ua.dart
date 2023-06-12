@@ -991,7 +991,7 @@ class StringsUa {
   static String offer_our_title = 'ПОСЛУГИ';
   static String employee_agency_title = ' КАДРОВОГО АГЕНТСТВА';
 
-  static String opinion_personal = 'Досвід підбору\n     персоналу';
+  static String opinion_personal = 'Досвід підбору персоналу';
   static String success_work = 'Успішні кейси';
   static String personal_save = 'Гарантія на персонал';
   static String button_for_company_home = 'Підбір Персоналу';
@@ -1153,8 +1153,7 @@ class StringsUa {
   ];
 
   static List<String> text_for_button_image = [
-    'ПОШУК І ПІДБІР КВАЛІФІКОВАНИХ \n'
-        '                    СПЕЦІАЛІСТІВ',
+    'ПОШУК І ПІДБІР КВАЛІФІКОВАНИХ СПЕЦІАЛІСТІВ',
     'МАСОВИЙ ПІДБІР ЛІНІЙНОГО ПЕРСОНАЛУ',
     'EXECUTIVE SEARCH',
     'ХЕДХАНТИНГ',

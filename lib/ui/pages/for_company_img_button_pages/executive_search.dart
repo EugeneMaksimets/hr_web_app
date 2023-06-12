@@ -230,63 +230,66 @@ class _ExecutiveSearchPage extends State<ExecutiveSearchPage> {
         ),
       ),
       padding: EdgeInsets.only(bottom: 50),
-      child: Column(
-        children: [
-          SizedBox(height: 40),
-          Center(
-            child: RichText(
-              textAlign: TextAlign.center,
-              text: TextSpan(
-                children: <TextSpan>[
-                  TextSpan(
-                    text: Strings.employee_agency,
-                    style: TextStyles.heading.copyWith(
-                      fontFamily: Fonts.nexa_light,
-                      fontSize:
-                          ResponsiveWidget.isSmallScreen(context) ? 36 : 45.0,
-                      color: Colors.white,
-                    ),
+      child: Column(children: [
+        SizedBox(height: 40),
+        Center(
+          child: RichText(
+            textAlign: TextAlign.center,
+            text: TextSpan(
+              children: <TextSpan>[
+                TextSpan(
+                  text: Strings.employee_agency,
+                  style: TextStyles.heading.copyWith(
+                    fontFamily: Fonts.nexa_light,
+                    fontSize:
+                        ResponsiveWidget.isSmallScreen(context) ? 36 : 45.0,
+                    color: Colors.white,
                   ),
-                  TextSpan(
-                    text: ResponsiveWidget.isSmallScreen(context)
-                        ? Strings.HR_AGENCY_WITH_ENTER
-                        : Strings.HR_AGENCY,
-                    style: TextStyles.heading.copyWith(
-                      color: Colors.deepOrange,
-                      fontSize:
-                          ResponsiveWidget.isSmallScreen(context) ? 36 : 45.0,
-                    ),
+                ),
+                TextSpan(
+                  text: ResponsiveWidget.isSmallScreen(context)
+                      ? Strings.HR_AGENCY_WITH_ENTER
+                      : Strings.HR_AGENCY,
+                  style: TextStyles.heading.copyWith(
+                    color: Colors.deepOrange,
+                    fontSize:
+                        ResponsiveWidget.isSmallScreen(context) ? 36 : 45.0,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-          SizedBox(height: 24),
-          Text(
-            Strings.recruiting_for_best,
-            style: TextStyles.menu_item.copyWith(
-              fontFamily: Fonts.nexa_light,
-              fontSize: ResponsiveWidget.isSmallScreen(context) ? 20 : 30.0,
-              color: Colors.white,
-            ),
+        ),
+        SizedBox(height: 24),
+        Text(
+          Strings.recruiting_for_best,
+          style: TextStyles.menu_item.copyWith(
+            fontFamily: Fonts.nexa_light,
+            fontSize: ResponsiveWidget.isSmallScreen(context) ? 20 : 30.0,
+            color: Colors.white,
           ),
-          SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 24 : 34),
-          Text(
-            Strings.executive_search,
-            style: TextStyles.heading.copyWith(
-              fontSize: ResponsiveWidget.isSmallScreen(context) ? 26 : 36.0,
-              color: Colors.white,
-            ),
+        ),
+        SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 24 : 34),
+        Text(
+          Strings.executive_search,
+          style: TextStyles.heading.copyWith(
+            fontSize: ResponsiveWidget.isSmallScreen(context) ? 26 : 36.0,
+            color: Colors.white,
           ),
-          _buildUnderlineOrange(Strings.executive_search.length),
-          SizedBox(height: 24),
-          !ResponsiveWidget.isSmallScreen(context)
-              ? Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _buildFormCallMe(400, 500, _formKey),
-                    SizedBox(width: 50),
-                    Column(
+          textAlign: TextAlign.center,
+        ),
+        _buildUnderlineOrange(Strings.executive_search.length),
+        SizedBox(height: 24),
+        !ResponsiveWidget.isSmallScreen(context)
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: _buildFormCallMe(400, 500, _formKey),
+                  ),
+                  SizedBox(width: 50),
+                  Expanded(
+                    child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -296,30 +299,34 @@ class _ExecutiveSearchPage extends State<ExecutiveSearchPage> {
                               fontSize: 36.0,
                               color: Colors.white,
                             ),
+                            textAlign: TextAlign.center,
                           ),
                           _buildUnderlineOrange(Strings.why_this_method.length),
-                          _buildColumnTextFromList(
-                              Strings.why_executive_search_more),
+                          Padding(
+                            padding: EdgeInsets.only(right: 50),
+                            child: _buildColumnTextFromList(
+                                Strings.why_executive_search_more),
+                          ),
                         ]),
-                  ],
-                )
-              : Column(
-                  children: [
-                    _buildFormCallMe(350, 500, _formKey),
-                    SizedBox(height: 24),
-                    Text(
-                      Strings.why_this_method,
-                      style: TextStyles.heading.copyWith(
-                        fontSize: 26,
-                        color: Colors.white,
-                      ),
+                  ),
+                ],
+              )
+            : Column(
+                children: [
+                  _buildFormCallMe(350, 500, _formKey),
+                  SizedBox(height: 24),
+                  Text(
+                    Strings.why_this_method,
+                    style: TextStyles.heading.copyWith(
+                      fontSize: 26,
+                      color: Colors.white,
                     ),
-                    _buildUnderlineOrange(Strings.why_this_method.length),
-                    _buildColumnTextFromList(Strings.why_executive_search_more),
-                  ],
-                )
-        ],
-      ),
+                  ),
+                  _buildUnderlineOrange(Strings.why_this_method.length),
+                  _buildColumnTextFromList(Strings.why_executive_search_more),
+                ],
+              ),
+      ]),
     );
   }
 
@@ -611,11 +618,15 @@ class _ExecutiveSearchPage extends State<ExecutiveSearchPage> {
                           fontSize: 30,
                           color: Colors.white,
                         ),
+                        textAlign: TextAlign.center,
                       ),
                       _buildUnderlineOrange(
                           Strings.executive_search_price.length),
-                      _buildColumnTextFromList(
-                          Strings.executive_search_price_more),
+                      Padding(
+                        padding: EdgeInsets.only(left: 50, right: 50),
+                        child: _buildColumnTextFromList(
+                            Strings.executive_search_price_more),
+                      ),
                     ],
                   ),
                 ),

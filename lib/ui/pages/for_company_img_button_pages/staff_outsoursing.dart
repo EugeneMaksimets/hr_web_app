@@ -284,26 +284,32 @@ class _StaffOutsourcingPage extends State<StaffOutsourcingPage> {
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    _buildFormCallMe(400, 500, _formKey),
+                    Expanded(
+                      child: _buildFormCallMe(400, 500, _formKey),
+                    ),
                     SizedBox(width: 100),
-                    Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Text(
-                            Strings.why_this_method,
-                            style: TextStyles.heading.copyWith(
-                              fontSize: 36.0,
-                              color: Colors.white,
+                    Expanded(
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Text(
+                              Strings.why_this_method,
+                              style: TextStyles.heading.copyWith(
+                                fontSize: 36.0,
+                                color: Colors.white,
+                              ),
+                              textAlign: TextAlign.center,
                             ),
-                          ),
-                          _buildUnderlineOrange(Strings.why_this_method.length),
-                          Container(
-                            width: 600,
-                            child: _buildColumnTextFromList(
-                                Strings.staff_out_more),
-                          ),
-                        ]),
+                            _buildUnderlineOrange(
+                                Strings.why_this_method.length),
+                            Padding(
+                              padding: EdgeInsets.only(left: 50.0, right: 50),
+                              child: _buildColumnTextFromList(
+                                  Strings.staff_out_more),
+                            ),
+                          ]),
+                    ),
                   ],
                 )
               : Column(
@@ -432,7 +438,6 @@ class _StaffOutsourcingPage extends State<StaffOutsourcingPage> {
 
   Widget _buildWhyStaffOut() {
     return Container(
-      // height: 200,
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage(Assets.background_home_img_2),
@@ -452,6 +457,7 @@ class _StaffOutsourcingPage extends State<StaffOutsourcingPage> {
                           fontSize: 30.0,
                           color: Colors.white,
                         ),
+                        textAlign: TextAlign.center,
                       ),
                       _buildUnderlineOrange(Strings.staff_out_why.length),
                       Padding(
@@ -465,11 +471,15 @@ class _StaffOutsourcingPage extends State<StaffOutsourcingPage> {
                 Expanded(
                   child: Column(
                     children: [
-                      Text(
-                        Strings.staff_out_is,
-                        style: TextStyles.logo.copyWith(
-                          fontSize: 20,
-                          color: Colors.white,
+                      Padding(
+                        padding: EdgeInsets.only(left: 50.0, right: 50),
+                        child: Text(
+                          Strings.staff_out_is,
+                          style: TextStyles.logo.copyWith(
+                            fontSize: 20,
+                            color: Colors.white,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
                       ),
                       Padding(

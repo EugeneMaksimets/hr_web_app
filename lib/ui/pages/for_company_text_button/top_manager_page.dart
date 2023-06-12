@@ -555,6 +555,7 @@ class _TopManagerPage extends State<TopManagerPage> {
                           fontSize: 30.0,
                           color: Colors.white,
                         ),
+                        textAlign: TextAlign.center,
                       ),
                       _buildUnderlineOrange(
                           Strings.top_manager_finder_2.length),

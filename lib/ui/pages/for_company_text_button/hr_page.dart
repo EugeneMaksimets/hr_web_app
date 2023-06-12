@@ -278,6 +278,7 @@ class _HrPage extends State<HrPage> {
               fontSize: ResponsiveWidget.isSmallScreen(context) ? 26 : 36.0,
               color: Colors.white,
             ),
+            textAlign: TextAlign.center,
           ),
           _buildUnderlineOrange(Strings.hr_page_text.length),
           SizedBox(height: 24),
@@ -561,6 +562,7 @@ class _HrPage extends State<HrPage> {
                           fontSize: 30.0,
                           color: Colors.white,
                         ),
+                        textAlign: TextAlign.center,
                       ),
                       _buildUnderlineOrange(Strings.hr_page_finder_2.length),
                       Padding(

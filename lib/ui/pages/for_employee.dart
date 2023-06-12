@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:hr_test/constants/assets.dart';
 import 'package:hr_test/constants/fonts.dart';
@@ -291,25 +290,29 @@ class _ForEmployee extends State<ForEmployee> {
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Column(
-                      children: [
-                        Text(
-                          Strings.send_cv_to_hr_library,
-                          style: TextStyles.logo.copyWith(
-                              color: Colors.white,
-                              fontSize: ResponsiveWidget.isSmallScreen(context)
-                                  ? 26
-                                  : 30.0),
-                        ),
-                        _buildUnderlineOrange(
-                            Strings.send_cv_to_hr_library.length),
-                        Padding(
-                          padding: EdgeInsets.only(left: 100.0),
-                          child: _buildColumnTextFromList(Strings.about_cv),
-                        ),
-                      ],
-                    ),
                     Expanded(
+                      child: Column(
+                        children: [
+                          Text(
+                            Strings.send_cv_to_hr_library,
+                            style: TextStyles.logo.copyWith(
+                                color: Colors.white,
+                                fontSize:
+                                    ResponsiveWidget.isSmallScreen(context)
+                                        ? 26
+                                        : 30.0),
+                          ),
+                          _buildUnderlineOrange(
+                              Strings.send_cv_to_hr_library.length),
+                          Padding(
+                            padding: EdgeInsets.only(left: 50.0, right: 20),
+                            child: _buildColumnTextFromList(Strings.about_cv),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(right: 50.0),
                       child: _buildFormAddCv(500, 500, _formKey),
                     ),
                   ],
@@ -626,16 +629,16 @@ class _ForEmployee extends State<ForEmployee> {
                               return AlertDialog(
                                 content: Container(
                                   height:
-                                  ResponsiveWidget.isSmallScreen(context)
-                                      ? 100
-                                      : 200,
+                                      ResponsiveWidget.isSmallScreen(context)
+                                          ? 100
+                                          : 200,
                                   width: ResponsiveWidget.isSmallScreen(context)
                                       ? 250
                                       : 500,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
-                                    CrossAxisAlignment.center,
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Text(
                                         Strings.success_message_start,

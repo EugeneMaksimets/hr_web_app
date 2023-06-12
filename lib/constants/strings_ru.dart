@@ -993,7 +993,7 @@ class StringsRu {
   static String offer_our_title = 'УСЛУГИ';
   static String employee_agency_title = ' КАДРОВОГО АГЕНТСТВА';
 
-  static String opinion_personal = 'Опыт подбора\n   персонала';
+  static String opinion_personal = 'Опыт подбора персонала';
   static String success_work = 'Успешные кейсы';
   static String personal_save = 'Гарантия на персонал';
   static String button_for_company_home = 'Подбор Персонала';
@@ -1152,8 +1152,9 @@ class StringsRu {
   ];
 
   static List<String> text_for_button_image = [
-    'ПОИСК И ПОДБОР КВАЛИЦИФИРОВАНЫХ \n'
-        '                    СПЕЦИАЛИСТОВ',
+    // 'ПОИСК И ПОДБОР КВАЛИЦИФИРОВАНЫХ \n'
+    //     '                    СПЕЦИАЛИСТОВ',
+    'ПОИСК И ПОДБОР КВАЛИЦИФИРОВАНЫХ СПЕЦИАЛИСТОВ',
     'МАССОВЫЙ ПОДБОР ЛИНЕЙНОГО ПЕРСОНАЛА',
     'EXECUTIVE SEARCH',
     'ХЭДХАНТИНГ',

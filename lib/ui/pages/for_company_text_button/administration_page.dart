@@ -272,11 +272,15 @@ class _AdministrationPage extends State<AdministrationPage> {
             ),
           ),
           SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 24 : 34),
-          Text(
-            Strings.administration_text,
-            style: TextStyles.heading.copyWith(
-              fontSize: ResponsiveWidget.isSmallScreen(context) ? 26 : 36.0,
-              color: Colors.white,
+          Padding(
+            padding: EdgeInsets.only(left: 100.0, right: 100),
+            child: Text(
+              Strings.administration_text,
+              style: TextStyles.heading.copyWith(
+                fontSize: ResponsiveWidget.isSmallScreen(context) ? 26 : 36.0,
+                color: Colors.white,
+              ),
+              textAlign: TextAlign.center,
             ),
           ),
           _buildUnderlineOrange(Strings.administration_text.length),

@@ -615,13 +615,17 @@ class _MassRecruitmentPage extends State<MassRecruitmentPage> {
                 Expanded(
                   child: Column(
                     children: [
-                      Text(
-                        Strings.mass_rec_price_validate,
-                        style: TextStyles.logo.copyWith(
-                          fontSize: ResponsiveWidget.isSmallScreen(context)
-                              ? 20
-                              : 30.0,
-                          color: Colors.white,
+                      Padding(
+                        padding: EdgeInsets.only(left: 50, right: 50),
+                        child: Text(
+                          Strings.mass_rec_price_validate,
+                          style: TextStyles.logo.copyWith(
+                            fontSize: ResponsiveWidget.isSmallScreen(context)
+                                ? 20
+                                : 30.0,
+                            color: Colors.white,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
                       ),
                       _buildUnderlineOrange(

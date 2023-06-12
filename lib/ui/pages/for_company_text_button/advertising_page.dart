@@ -470,6 +470,7 @@ class _AdvertisingPage extends State<AdvertisingPage> {
                           fontSize: 30.0,
                           color: Colors.white,
                         ),
+                        textAlign: TextAlign.center,
                       ),
                       _buildUnderlineOrange(
                           Strings.advertising_finder_1.length),
@@ -598,6 +599,7 @@ class _AdvertisingPage extends State<AdvertisingPage> {
                           fontSize: 30.0,
                           color: Colors.white,
                         ),
+                        textAlign: TextAlign.center,
                       ),
                       _buildUnderlineOrange(
                           Strings.advertising_finder_2.length),

@@ -278,6 +278,7 @@ class _LogisticsPage extends State<LogisticsPage> {
               fontSize: ResponsiveWidget.isSmallScreen(context) ? 26 : 36.0,
               color: Colors.white,
             ),
+            textAlign: TextAlign.center,
           ),
           _buildUnderlineOrange(Strings.logistics_text.length),
           SizedBox(height: 24),

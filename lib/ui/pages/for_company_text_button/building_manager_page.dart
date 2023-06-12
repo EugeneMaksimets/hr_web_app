@@ -278,6 +278,7 @@ class _BuildingPage extends State<BuildingPage> {
               fontSize: ResponsiveWidget.isSmallScreen(context) ? 26 : 36.0,
               color: Colors.white,
             ),
+            textAlign: TextAlign.center,
           ),
           _buildUnderlineOrange(Strings.building_text.length),
           SizedBox(height: 24),
@@ -430,6 +431,7 @@ class _BuildingPage extends State<BuildingPage> {
                           fontSize: 30.0,
                           color: Colors.white,
                         ),
+                        textAlign: TextAlign.center,
                       ),
                       _buildUnderlineOrange(Strings.building_finder_1.length),
                       Padding(

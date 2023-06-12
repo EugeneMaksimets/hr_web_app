@@ -476,17 +476,20 @@ class _ForCompanyPage extends State<ForCompanyPage> {
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    textForButton[i],
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
-                    style: TextStyles.menu_item.copyWith(
-                      fontSize:
-                          ResponsiveWidget.isSmallScreen(context) ? 12 : 16.0,
-                      color: isHoveredImageButton[i]
-                          ? Colors.deepOrange
-                          : Colors.white,
+                  padding: EdgeInsets.all(10.0),
+                  child: Center(
+                    child: Text(
+                      textForButton[i],
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                      style: TextStyles.menu_item.copyWith(
+                        fontSize:
+                            ResponsiveWidget.isSmallScreen(context) ? 12 : 16.0,
+                        color: isHoveredImageButton[i]
+                            ? Colors.deepOrange
+                            : Colors.white,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
                   ),
                 ),

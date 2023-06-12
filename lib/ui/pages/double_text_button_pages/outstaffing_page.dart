@@ -556,6 +556,7 @@ class _OutStaffingPage extends State<OutStaffingPage> {
                           fontSize: 30.0,
                           color: Colors.white,
                         ),
+                        textAlign: TextAlign.center,
                       ),
                       _buildUnderlineOrange(
                           Strings.out_staffing_finder_2.length),

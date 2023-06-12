@@ -284,26 +284,35 @@ class _HeadHuntingPage extends State<HeadHuntingPage> {
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    _buildFormCallMe(400, 500, _formKey),
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 50),
+                        child: _buildFormCallMe(450, 500, _formKey),
+                      ),
+                    ),
                     SizedBox(width: 100),
-                    Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Text(
-                            Strings.why_this_method,
-                            style: TextStyles.heading.copyWith(
-                              fontSize: 36.0,
-                              color: Colors.white,
+                    Expanded(
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Text(
+                              Strings.why_this_method,
+                              style: TextStyles.heading.copyWith(
+                                fontSize: 36.0,
+                                color: Colors.white,
+                              ),
+                              textAlign: TextAlign.center,
                             ),
-                          ),
-                          _buildUnderlineOrange(Strings.why_this_method.length),
-                          Container(
-                            width: 600,
-                            child: _buildColumnTextFromList(
-                                Strings.head_hunting_why_more),
-                          ),
-                        ]),
+                            _buildUnderlineOrange(
+                                Strings.why_this_method.length),
+                            Padding(
+                              padding: EdgeInsets.only(right: 50, left: 50),
+                              child: _buildColumnTextFromList(
+                                  Strings.head_hunting_why_more),
+                            ),
+                          ]),
+                    ),
                   ],
                 )
               : Column(
@@ -447,15 +456,22 @@ class _HeadHuntingPage extends State<HeadHuntingPage> {
                 Expanded(
                   child: Column(
                     children: [
-                      Text(
-                        Strings.head_hunting_why_need,
-                        style: TextStyles.logo.copyWith(
-                          fontSize: 30.0,
-                          color: Colors.white,
+                      Padding(
+                        padding: EdgeInsets.only(left: 100.0),
+                        child: Text(
+                          Strings.head_hunting_why_need,
+                          style: TextStyles.logo.copyWith(
+                            fontSize: 30.0,
+                            color: Colors.white,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
                       ),
-                      _buildUnderlineOrange(
-                          Strings.head_hunting_why_need.length),
+                      Padding(
+                        padding: EdgeInsets.only(left: 100.0),
+                        child: _buildUnderlineOrange(
+                            Strings.head_hunting_why_need.length),
+                      ),
                       Padding(
                         padding: EdgeInsets.only(left: 100.0, top: 20.0),
                         child: _buildColumnTextFromList(

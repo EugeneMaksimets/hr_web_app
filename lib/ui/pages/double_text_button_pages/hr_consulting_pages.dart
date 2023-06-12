@@ -553,6 +553,7 @@ class _HrConsultingPage extends State<HrConsultingPage> {
                           fontSize: 30.0,
                           color: Colors.white,
                         ),
+                        textAlign: TextAlign.center,
                       ),
                       _buildUnderlineOrange(
                           Strings.hr_consulting_page_finder_2.length),
